@@ -27,4 +27,9 @@ User will see randomly generated images for unsolved squares.
 User will play the game following normal Sudoku rules. 
 There will be a check solution button and if the numbers are all correct: they are a smart person. 
 
-## 
+## Wireframe Sketch of Design
+Rough sketch of design
+![welcome screen to choose difficulty](welcome-screen.jpg)
+
+Puzzle screen of Sudoku board
+![sudoku board screen](puzzle-screen.jpg)
