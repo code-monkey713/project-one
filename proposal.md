@@ -29,7 +29,7 @@ There will be a check solution button and if the numbers are all correct: they a
 
 ## Wireframe Sketch of Design
 Rough sketch of design
-![welcome screen to choose difficulty](welcome-screen.jpg)
+![welcome screen to choose difficulty](./screenshot-welcome.png)
 
 Puzzle screen of Sudoku board
-![sudoku board screen](puzzle-screen.jpg)
+![sudoku board screen](./screenshot-board.png)
