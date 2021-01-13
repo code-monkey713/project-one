@@ -3,7 +3,7 @@
   width: 2rem;
   height: 2rem;
   margin: .5px;
-  padding: 0;
+  padding: .5px;
   
 }
 
@@ -111,4 +111,16 @@
 #H8, 
 #I8 {
   border-bottom: 4px solid red;
+}
+
+.box1,
+.box2,
+.box3,
+.box4,
+.box5,
+.box6,
+.box7,
+.box8,
+.box9 {
+  text-align: center;
 }
