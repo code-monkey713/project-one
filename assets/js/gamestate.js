@@ -76,6 +76,555 @@ function sBATrySolver (sudokuBoardAll)
     //boxSolved - A vector with a boolean for each subBox describing whether the subBox contains only the integers from 1-9, once each. subBoxes are counted in row-major order (e.g. right then down)
     //sudokuBoardAll - An array of integers (that may have entries greater than 9), holding the remaining possible configurations after trying the first-pass solver on the initial (input) sudokuBoardAll
     
+    var numLoops=0;
+    var numLoopsWithoutChange=0;
+    var maxAllowedNumLoopsWithoutChange=10;
+    var rowSolved=[0,0,0,0,0,0,0,0,0];
+    var colSolved=[0,0,0,0,0,0,0,0,0];
+    var boxSolved=[0,0,0,0,0,0,0,0,0];
+    var currentMax=100;
+    var numbers1to9=[1,2,3,4,5,6,7,8,9];
+    while (currentMax>9)
+    {
+    var sudokuBoardAllOld=[];
+    for (var i=0;i<9;i++)
+    {
+        sudokuBoardAllOld.push(sudokuBoardAll[i]);
+    }
+
+    //Row-Wise Simplification
+    for (var i=0;i<9;i++)
+    {
+        console.log(i);
+        var RowTakens=setdiff(numbers1to9,setdiff(numbers1to9,sudokuBoardAll[i]));
+        console.log(RowTakens);
+        //Remove from possibles in each Row
+        //  If only two 2-values in the col, remove both values from other
+        //  locations in col
+        var found2Values=[];
+        var indicesGreaterThan9=[];
+        for (var j=0;j<9;j++)
+        {
+        if (sudokuBoardAll[i][j]>9)
+        {
+
+            indicesGreaterThan9.push(j);
+            if (sudokuBoardAll[i][j]<100)
+            {
+            found2Values.push(j);
+            }
+        }
+        }
+        // console.log(found2Values);
+        // console.log(sudokuBoardAll[i].find(element => element>9 & element<100));
+        var found2ValuesRemoveFromPermissiveIndices=[];
+        var found2ValuesTable=[];
+        var found2ValuesTableVals=[];
+        var found2ValuesTableValsCount=[];
+        if (found2Values!==undefined)
+        {
+        console.log('b');
+        console.log(found2Values);
+        console.log(found2Values.length);
+        for (var j=0;j<found2Values.length;j++)
+        {
+            if (!found2ValuesTableVals.includes(sudokuBoardAll[i][found2Values[j]]))
+            {
+            console.log(j); 
+            console.log(sudokuBoardAll[i][found2Values[j]]);  
+            console.log(sudokuBoardAll[i].filter(element => element===sudokuBoardAll[i][found2Values[j]]).length);
+            found2ValuesTable.push([sudokuBoardAll[i][found2Values[j]],sudokuBoardAll[i].filter(element => element===sudokuBoardAll[i][found2Values[j]]).length]);
+            found2ValuesTableVals.push(sudokuBoardAll[i][found2Values[j]]);
+            found2ValuesTableValsCount.push(sudokuBoardAll[i].filter(element => element===sudokuBoardAll[i][found2Values[j]]).length);
+            }
+            
+        }
+        console.log(found2ValuesTable);
+        console.log('e');
+        var found2ValuesTable2PresentFind=[];
+        var found2ValuesTable2PresentVals=[];
+        var found2ValuesTable2PresentValsCount=[];
+        for (var j=0;j<found2ValuesTableValsCount.length;j++)
+        {
+            if (found2ValuesTableValsCount[j]===2)
+            {
+            found2ValuesTable2PresentFind.push(j);
+            found2ValuesTable2PresentVals.push(found2ValuesTableVals[j]);
+            found2ValuesTable2PresentValsCount.push(found2ValuesTableValsCount[j]);
+            }
+            
+        }
+        console.log('found2ValuesTable2PresentFind: ');
+        console.log(found2ValuesTable2PresentFind);
+
+
+        if (found2ValuesTable2PresentVals!==undefined)
+        {
+            for (var f2vi=0;f2vi<found2ValuesTable2PresentVals.length;f2vi++)
+            {
+            var thisPermissiveString=found2ValuesTable2PresentVals.join("");
+            console.log('thisPermissiveString: ')
+            console.log(thisPermissiveString);
+            RowTakens.push(parseInt(thisPermissiveString[0])); RowTakens.push(parseInt(thisPermissiveString[1])); 
+            for (var j=0; j<9;j++)
+            {
+                if(sudokuBoardAll[i][j]===found2ValuesTable2PresentVals[f2vi])
+                {
+                found2ValuesRemoveFromPermissiveIndices.push(j);
+                }
+            }
+            // found2ValuesRemoveFromPermissiveIndices.push(sudokuBoardAll[i].findIndex(element => element===found2ValuesTable2PresentVals[f2vi]));
+            }
+        }
+        
+        // for f2vi=1:length(found2ValuesTable2Present(:,1))
+        //         thisPermissiveString=num2str(found2ValuesTable2Present(f2vi,1));
+        //         RowTakens=[RowTakens str2num(thisPermissiveString(1)) str2num(thisPermissiveString(2))];
+        //         found2ValuesRemoveFromPermissiveIndices=[found2ValuesRemoveFromPermissiveIndices reshape(find(sudokuBoardAll(i,:)==found2ValuesTable2Present(f2vi,1)),1,[])];
+        // end
+        }
+        
+        // debugger;
+        console.log(found2ValuesRemoveFromPermissiveIndices);
+        var RowPermissiveIndices=setdiff(indicesGreaterThan9,found2ValuesRemoveFromPermissiveIndices);
+
+        //If there is a number that has yet to appear yet only shows up once in a row, column, or box, then by necessity the value containing that number must be set to that number
+        var individualNumberAppearances=[];
+        for (var j=0;j<RowPermissiveIndices.length;j++)
+        {
+        individualNumberAppearances.push([0,0,0,0,0,0,0,0,0]);
+        }
+        for (var iNA=0;iNA<RowPermissiveIndices.length;iNA++)
+        {
+        var thisPermissiveString=sudokuBoardAll[i][RowPermissiveIndices[iNA]].join("");
+        for (var iNAk=0;iNAk<thisPermissiveString.length;iNAk++)
+        {
+            individualNumberAppearances[iNA][parseInt(thisPermissiveString[iNAk])]=individualNumberAppearances[iNA][parseInt(thisPermissiveString[iNAk])]+1;
+            
+        }
+        }
+        var individualNumberAppearancesSum=[];
+        var individualNumberAppearancesSumOnlyAppearedOnceButPossiblyIncludeRowTakenValues=[];
+        for (var lmo=0;lmo<9;lmo++)
+        {
+        individualNumberAppearancesSum[lmo]=sumArray(getCol(individualNumberAppearances,lmo));
+        if (individualNumberAppearancesSum[lmo]==1)
+        {
+            individualNumberAppearancesSumOnlyAppearedOnceButPossiblyIncludeRowTakenValues.push(individualNumberAppearancesSum[lmo]);
+        }
+        
+        }
+        var individualNumberAppearancesSumOnlyAppearedOnce=setdiff(individualNumberAppearancesSumOnlyAppearedOnceButPossiblyIncludeRowTakenValues,RowTakens);
+        if (individualNumberAppearancesSumOnlyAppearedOnce!==undefined)
+        {
+        var RPIToRemove=[];
+        for (var iNASOAO=0;iNASOAO<individualNumberAppearancesSumOnlyAppearedOnce.length;iNASOAO++)
+        {
+            RowTakens.push(individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]);
+            //Note to self: Should be able to use findIndex(), because there should be only one(?)
+            RPIToRemove.push(RowPermissiveIndices[getCol(individualNumberAppearancesSumOnlyAppearedOnce,iNASOAO).findIndex(element => element===1)]);
+            sudokuBoardAll[i,RPIToRemove[RPIToRemove.length-1]]=individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO];
+        }
+        
+        }
+
+        for (var j=0;j<RowPermissiveIndices.length;j++)
+        {
+        var tempStr="";
+        var thisPermissiveString=sudokuBoardAll[i][RowPermissiveIndices[j]].join("");
+        for (var k=0;k<thisPermissiveString.length;k++)
+        {
+            if (!RowTakens.includes(parseInt(thisPermissiveString[k])))
+            {
+            tempStr=tempStr+thisPermissiveString[k];
+            }
+        }
+        sudokuBoardAll[i][RowPermissiveIndices[j]]=parseInt(tempStr);
+        }
+
+        //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
+        for (setdiff(numbers1to9,sudokuBoardAll[i])===undefined && sudokuBoardAll[i].sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+        {
+        rowSolved[i]=1;
+        }
+
+        // if isempty(setdiff(1:9,sudokuBoardAll(i,:))) && sum(reshape(sort(sudokuBoardAll(i,:)),1,[])-(1:9))==0
+        //       rowSolved(i)=1;
+        //   end
+
+        // for j=1:length(RowPermissiveIndices)
+        //       tempStr="";
+        //       thisPermissiveString=num2str(sudokuBoardAll(i,RowPermissiveIndices(j)));
+        //       for k=1:length(thisPermissiveString)
+        //           if ~ismember(RowTakens,str2num(thisPermissiveString(k)))
+        //               tempStr=tempStr+thisPermissiveString(k);
+        //           end
+        //       end
+        //       sudokuBoardAll(i,RowPermissiveIndices(j))=str2num(tempStr);
+        //   end
+
+        // if ~isempty(individualNumberAppearancesSumOnlyAppearedOnce)
+        //       RPIToRemove=[];
+        //       for iNASOAO=1:length(individualNumberAppearancesSumOnlyAppearedOnce)
+        //           RowTakens=[RowTakens individualNumberAppearancesSumOnlyAppearedOnce(iNASOAO)];
+        //           RPIToRemove=[RPIToRemove RowPermissiveIndices(find(individualNumberAppearances(:,individualNumberAppearancesSumOnlyAppearedOnce(iNASOAO))==1))];
+        //           sudokuBoardAll(i,RPIToRemove(end))=individualNumberAppearancesSumOnlyAppearedOnce(iNASOAO);
+        //       end
+        //       RowPermissiveIndices=setdiff(RowPermissiveIndices,RPIToRemove);
+        //   end
+        
+        // for iNA=1:length(RowPermissiveIndices)
+        //     thisPermissiveString=num2str(sudokuBoardAll(i,RowPermissiveIndices(iNA)));
+        //       for iNAk=1:length(thisPermissiveString)
+        //           individualNumberAppearances(iNA,str2num(thisPermissiveString(iNAk)))=individualNumberAppearances(iNA,str2num(thisPermissiveString(iNAk)))+1;
+        //       end
+        //   end
+    }
+    
+    //Column-Wise Simplification
+    for (var i=0;i<9;i++)
+    {
+        console.log(i);
+        var ColTakens=setdiff(numbers1to9,setdiff(numbers1to9,getCol(sudokuBoardAll,i)));
+        console.log(ColTakens);
+        //Remove from possibles in each Row
+        //  If only two 2-values in the col, remove both values from other
+        //  locations in col
+        var found2Values=[];
+        var indicesGreaterThan9=[];
+        for (var j=0;j<9;j++)
+        {
+        if (sudokuBoardAll[j][i]>9)
+        {
+
+            indicesGreaterThan9.push(j);
+            if (sudokuBoardAll[j][i]<100)
+            {
+            found2Values.push(j);
+            }
+        }
+        }
+
+        var found2ValuesRemoveFromPermissiveIndices=[];
+        var found2ValuesTable=[];
+        var found2ValuesTableVals=[];
+        var found2ValuesTableValsCount=[];
+        if (found2Values!==undefined)
+        {
+        console.log('b');
+        console.log(found2Values);
+        console.log(found2Values.length);
+        for (var j=0;j<found2Values.length;j++)
+        {
+            if (!found2ValuesTableVals.includes(sudokuBoardAll[found2Values[j]][i]))
+            {
+            console.log(j); 
+            console.log(sudokuBoardAll[found2Values[j]][i]);  
+            console.log(getCol(sudokuBoardAll,i).filter(element => element===sudokuBoardAll[found2Values[j]][i]).length);
+            found2ValuesTable.push([sudokuBoardAll[found2Values[j]][i],getCol(sudokuBoardAll,i).filter(element => element===sudokuBoardAll[found2Values[j]][i]).length]);
+            found2ValuesTableVals.push(sudokuBoardAll[found2Values[j]][i]);
+            found2ValuesTableValsCount.push(getCol(sudokuBoardAll,i).filter(element => element===sudokuBoardAll[found2Values[j]][i]).length);
+            }
+            
+        }
+
+        console.log(found2ValuesTable);
+        console.log('e');
+        var found2ValuesTable2PresentFind=[];
+        var found2ValuesTable2PresentVals=[];
+        var found2ValuesTable2PresentValsCount=[];
+        for (var j=0;j<found2ValuesTableValsCount.length;j++)
+        {
+            if (found2ValuesTableValsCount[j]===2)
+            {
+            found2ValuesTable2PresentFind.push(j);
+            found2ValuesTable2PresentVals.push(found2ValuesTableVals[j]);
+            found2ValuesTable2PresentValsCount.push(found2ValuesTableValsCount[j]);
+            }
+            
+        }
+        console.log('found2ValuesTable2PresentFind: ');
+        console.log(found2ValuesTable2PresentFind);
+
+
+        if (found2ValuesTable2PresentVals!==undefined)
+        {
+            for (var f2vi=0;f2vi<found2ValuesTable2PresentVals.length;f2vi++)
+            {
+            var thisPermissiveString=found2ValuesTable2PresentVals.join("");
+            console.log('thisPermissiveString: ')
+            console.log(thisPermissiveString);
+            ColTakens.push(parseInt(thisPermissiveString[0])); ColTakens.push(parseInt(thisPermissiveString[1])); 
+            for (var j=0; j<9;j++)
+            {
+                //Note to self: j and i are switched because we are traversing column by rows, instead of row by columns for row-wise simplification
+                if(sudokuBoardAll[j][i]===found2ValuesTable2PresentVals[f2vi])
+                {
+                found2ValuesRemoveFromPermissiveIndices.push(j);
+                }
+            }
+            // found2ValuesRemoveFromPermissiveIndices.push(sudokuBoardAll[i].findIndex(element => element===found2ValuesTable2PresentVals[f2vi]));
+            }
+        }
+        }
+
+        // debugger;
+        console.log(found2ValuesRemoveFromPermissiveIndices);
+        var ColPermissiveIndices=setdiff(indicesGreaterThan9,found2ValuesRemoveFromPermissiveIndices);
+
+        //If there is a number that has yet to appear yet only shows up once in a row, column, or box, then by necessity the value containing that number must be set to that number
+        var individualNumberAppearances=[];
+        for (var j=0;j<ColPermissiveIndices.length;j++)
+        {
+        individualNumberAppearances.push([0,0,0,0,0,0,0,0,0]);
+        }
+        for (var iNA=0;iNA<ColPermissiveIndices.length;iNA++)
+        {
+        var thisPermissiveString=sudokuBoardAll[ColPermissiveIndices[iNA]][i].join("");
+        for (var iNAk=0;iNAk<thisPermissiveString.length;iNAk++)
+        {
+            individualNumberAppearances[iNA][parseInt(thisPermissiveString[iNAk])]=individualNumberAppearances[iNA][parseInt(thisPermissiveString[iNAk])]+1;
+            
+        }
+        }
+
+        var individualNumberAppearancesSum=[];
+        var individualNumberAppearancesSumOnlyAppearedOnceButPossiblyIncludeColTakenValues=[];
+        for (var lmo=0;lmo<9;lmo++)
+        {
+        individualNumberAppearancesSum[lmo]=sumArray(getCol(individualNumberAppearances,lmo));
+        if (individualNumberAppearancesSum[lmo]==1)
+        {
+            individualNumberAppearancesSumOnlyAppearedOnceButPossiblyIncludeColTakenValues.push(individualNumberAppearancesSum[lmo]);
+        }
+        
+        }
+
+        var individualNumberAppearancesSumOnlyAppearedOnce=setdiff(individualNumberAppearancesSumOnlyAppearedOnceButPossiblyIncludeColTakenValues,ColTakens);
+        if (individualNumberAppearancesSumOnlyAppearedOnce!==undefined)
+        {
+        var CPIToRemove=[];
+        for (var iNASOAO=0;iNASOAO<individualNumberAppearancesSumOnlyAppearedOnce.length;iNASOAO++)
+        {
+            ColTakens.push(individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]);
+            //Note to self: Should be able to use findIndex(), because there should be only one(?)
+            CPIToRemove.push(ColPermissiveIndices[getCol(individualNumberAppearancesSumOnlyAppearedOnce,iNASOAO).findIndex(element => element===1)]);
+            sudokuBoardAll[CPIToRemove[CPIToRemove.length-1]][i]=individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO];
+        }
+        
+        }
+
+        for (var j=0;j<ColPermissiveIndices.length;j++)
+        {
+        var tempStr="";
+        var getColi=getCol(sudokuBoardAll,i);
+        var thisPermissiveString=getColi[ColPermissiveIndices[j]].join("");
+        for (var k=0;k<thisPermissiveString.length;k++)
+        {
+            if (!ColTakens.includes(parseInt(thisPermissiveString[k])))
+            {
+            tempStr=tempStr+thisPermissiveString[k];
+            }
+        }
+        sudokuBoardAll[ColPermissiveIndices[j]][i]=parseInt(tempStr);
+        }
+
+        //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
+        for (setdiff(numbers1to9,getCol(sudokuBoardAll,i))===undefined && getCol(sudokuBoardAll,i).sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+        {
+        colSolved[i]=1;
+        }
+    }
+
+    //Box-Wise Simplification
+    for (var i=0;i<9;i++)
+    {
+        
+        console.log(i);
+        var subBox=[];
+        for (var j=3*(Math.floor(i/3)); j<3+3*(Math.floor(i/3));j++)
+        {
+            var tempsBArr=[];
+            for (var k=3*(i-3*Math.floor((i)/3));k<3+3*(i-3*Math.floor(i/3));k++)
+            {
+                if (sudokuBoardAll[j][k]!==0)
+                {
+                    tempsBArr.push(sudokuBoardAll[j][k]);
+                    BoxFilledPos=BoxFilledPos+1;
+                    boxUsedValues.push(sudokuBoardAll[j][k]);
+                }
+                else
+                {
+                tempsBArr.push(0);
+                }
+            
+            
+            }
+            subBox.push(tempsBArr);
+        }
+
+        var BoxTakens=setdiff(numbers1to9,setdiff(numbers1to9,subBoxToArray(subBox)));
+        console.log(BoxTakens);
+        //Remove from possibles in each subBox
+        //  If only two 2-values in the subBox, remove both values from other
+        //  locations in col
+        var found2Values=[];
+        var indicesGreaterThan9=[];
+        for (var j=0;j<9;j++)
+        {
+        if (getSubBoxLinearIndexValue(subBox,j)>9)
+        {
+
+            indicesGreaterThan9.push(j);
+            if (getSubBoxLinearIndexValue(subBox,j)<100)
+            {
+            found2Values.push(j);
+            }
+        }
+        }
+
+        var found2ValuesRemoveFromPermissiveIndices=[];
+        var found2ValuesTable=[];
+        var found2ValuesTableVals=[];
+        var found2ValuesTableValsCount=[];
+        if (found2Values!==undefined)
+        {
+        console.log('b');
+        console.log(found2Values);
+        console.log(found2Values.length);
+        for (var j=0;j<found2Values.length;j++)
+        {
+            if (!found2ValuesTableVals.includes(getSubBoxLinearIndexValue(subBox,found2Values[j])))
+            {
+            console.log(j); 
+            console.log(sudokuBoardAll[i][found2Values[j]]);  
+            console.log(sudokuBoardAll[i].filter(element => element===sudokuBoardAll[i][found2Values[j]]).length);
+            found2ValuesTable.push([getSubBoxLinearIndexValue(subBox,found2Values[j]),sudokuBoardAll[i].filter(element => element===getSubBoxLinearIndexValue(subBox,found2Values[j])).length]);
+            found2ValuesTableVals.push(getSubBoxLinearIndexValue(subBox,found2Values[j]));
+            found2ValuesTableValsCount.push(sudokuBoardAll[i].filter(element => element===getSubBoxLinearIndexValue(subBox,found2Values[j])).length);
+            }
+            
+        }
+        console.log(found2ValuesTable);
+        console.log('e');
+        var found2ValuesTable2PresentFind=[];
+        var found2ValuesTable2PresentVals=[];
+        var found2ValuesTable2PresentValsCount=[];
+        for (var j=0;j<found2ValuesTableValsCount.length;j++)
+        {
+            if (found2ValuesTableValsCount[j]===2)
+            {
+            found2ValuesTable2PresentFind.push(j);
+            found2ValuesTable2PresentVals.push(found2ValuesTableVals[j]);
+            found2ValuesTable2PresentValsCount.push(found2ValuesTableValsCount[j]);
+            }
+            
+        }
+        console.log('found2ValuesTable2PresentFind: ');
+        console.log(found2ValuesTable2PresentFind);
+
+        if (found2ValuesTable2PresentVals!==undefined)
+        {
+            for (var f2vi=0;f2vi<found2ValuesTable2PresentVals.length;f2vi++)
+            {
+            var thisPermissiveString=found2ValuesTable2PresentVals.join("");
+            console.log('thisPermissiveString: ')
+            console.log(thisPermissiveString);
+            BoxTakens.push(parseInt(thisPermissiveString[0])); BoxTakens.push(parseInt(thisPermissiveString[1])); 
+            for (var j=0; j<9;j++)
+            {
+                if(getSubBoxLinearIndexValue(subBox,j)===found2ValuesTable2PresentVals[f2vi])
+                {
+                found2ValuesRemoveFromPermissiveIndices.push(j);
+                }
+            }
+            // found2ValuesRemoveFromPermissiveIndices.push(sudokuBoardAll[i].findIndex(element => element===found2ValuesTable2PresentVals[f2vi]));
+            }
+        }
+
+    }
+
+        // debugger;
+        console.log(found2ValuesRemoveFromPermissiveIndices);
+        var BoxPermissiveIndices=setdiff(indicesGreaterThan9,found2ValuesRemoveFromPermissiveIndices);
+
+
+        //If there is a number that has yet to appear yet only shows up once in a row, column, or box, then by necessity the value containing that number must be set to that number
+        var individualNumberAppearances=[];
+        for (var j=0;j<BoxPermissiveIndices.length;j++)
+        {
+        individualNumberAppearances.push([0,0,0,0,0,0,0,0,0]);
+        }
+        for (var iNA=0;iNA<BoxPermissiveIndices.length;iNA++)
+        {
+        var thisPermissiveString=getSubBoxLinearIndexValue(subBox,BoxPermissiveIndices[iNA]).join("");
+        for (var iNAk=0;iNAk<thisPermissiveString.length;iNAk++)
+        {
+            individualNumberAppearances[iNA][parseInt(thisPermissiveString[iNAk])]=individualNumberAppearances[iNA][parseInt(thisPermissiveString[iNAk])]+1;
+            
+        }
+        }
+
+        var individualNumberAppearancesSum=[];
+        var individualNumberAppearancesSumOnlyAppearedOnceButPossiblyIncludeBoxTakenValues=[];
+        for (var lmo=0;lmo<9;lmo++)
+        {
+        individualNumberAppearancesSum[lmo]=sumArray(getCol(individualNumberAppearances,lmo));
+        if (individualNumberAppearancesSum[lmo]==1)
+        {
+            individualNumberAppearancesSumOnlyAppearedOnceButPossiblyIncludeBoxTakenValues.push(individualNumberAppearancesSum[lmo]);
+        }
+        
+        }
+
+        var individualNumberAppearancesSumOnlyAppearedOnce=setdiff(individualNumberAppearancesSumOnlyAppearedOnceButPossiblyIncludeBoxTakenValues,BoxTakens);
+        if (individualNumberAppearancesSumOnlyAppearedOnce!==undefined)
+        {
+        var BPIToRemove=[];
+        for (var iNASOAO=0;iNASOAO<individualNumberAppearancesSumOnlyAppearedOnce.length;iNASOAO++)
+        {
+            BoxTakens.push(individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]);
+            //Note to self: Should be able to use findIndex(), because there should be only one(?)
+            BPIToRemove.push(BoxPermissiveIndices[getCol(individualNumberAppearancesSumOnlyAppearedOnce,iNASOAO).findIndex(element => element===1)]);
+            subBox=assignLinearIndexSubBoxValue(subBox,BPIToRemove[BPIToRemove.length-1],individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]);
+        }
+        
+        }
+
+        for (var j=0;j<BoxPermissiveIndices.length;j++)
+        {
+        var tempStr="";
+        var thisPermissiveString=getSubBoxLinearIndexValue(subBox,j).join("");
+        for (var k=0;k<thisPermissiveString.length;k++)
+        {
+            if (!BoxTakens.includes(parseInt(thisPermissiveString[k])))
+            {
+            tempStr=tempStr+thisPermissiveString[k];
+            }
+        }
+        subBox=assignLinearIndexSubBoxValue(subBox,j,parseInt(tempStr));
+        
+        }
+
+        //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
+        for (setdiff(numbers1to9,subBox)===undefined && subBoxToArray(subBox).sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+        {
+        boxSolved[i]=1;
+        }
+    }
+    currentMax=5;
+    }
+    numLoops=numLoops+1;
+    if sum(sum(sudokuBoardAllOld-sudokuBoardAll))==0
+        numLoopsWithoutChange=numLoopsWithoutChange+1;
+    else
+        %             recordedBoards{end+1}=sudokuBoardAll;
+    end
+    if (numLoopsWithoutChange>maxAllowedNumLoopsWithoutChange)
+        break;
+    end
+
+    // return null;
     return rowSolved,colSolved,boxSolved,sudokuBoardAll;
 }
 
@@ -150,3 +699,20 @@ function getCol(a,colToGet)
 
     return colGot;
 }
+
+
+  function sumArray(array)
+  {
+    var summed=0;
+    for (var i=0;i<array.length;i++)
+    {
+      summed=summed+array[i];
+    }
+    return summed;
+  }
+
+  function compareNumbers(a,b)
+  {
+    //Learned from user:Paul Dixon @ https://stackoverflow.com/questions/1063007/how-to-sort-an-array-of-integers-correctly
+    return a-b;
+  }
