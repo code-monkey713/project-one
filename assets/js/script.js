@@ -1,11 +1,12 @@
 // A $( document ).ready() block.
 $(document).ready(function() {
-    console.log("document ready!");
+  let giphyAPIkey = 'rrQWLPsJMZUYbQXyP8iY5m23dAYvfmKO';
+  let gifSubject = 'baby+yoda';
+  let queryURL = `https://api.giphy.com/v1/gifs/search?q=${gifSubject}&api_key=${giphyAPIkey}`;
 
 const colArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
 // AJAX "Get" from GIPHY API and displaying on HTML page
-let queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=rrQWLPsJMZUYbQXyP8iY5m23dAYvfmKO";
 $.ajax({
     url: queryURL,
     method: "GET"
