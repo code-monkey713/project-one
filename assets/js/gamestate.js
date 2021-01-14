@@ -298,7 +298,7 @@ function initializeAllOptions (sudokuBoard)
             {
 
               indicesGreaterThan9.push(j);
-              if (sudokuBoardAll[j][i<100)
+              if (sudokuBoardAll[j][i]<100)
               {
                 found2Values.push(j);
               }
