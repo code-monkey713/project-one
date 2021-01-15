@@ -107,6 +107,7 @@ $.ajax(
                     // console.log(`filled for A${y}`);
                     if (col[y] === 0) {
                       // $(`#A${y}`).css('opacity', 0.0);
+                      $(`#A${y}`).html('');
                       $(`#A${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
                       if (imgIndex > 49) {
@@ -116,6 +117,7 @@ $.ajax(
                 } else if (x === 1) {
                     $(`#B${y}`).html(col[y]);
                     if (col[y] === 0) {
+                      $(`#B${y}`).html('');
                       $(`#B${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
                       if (imgIndex > 49) {
@@ -125,6 +127,7 @@ $.ajax(
                 } else if (x === 2) {
                     $(`#C${y}`).html(col[y]);
                     if (col[y] === 0) {
+                      $(`#C${y}`).html('');
                       $(`#C${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
                       if (imgIndex > 49) {
@@ -135,6 +138,7 @@ $.ajax(
                 } else if (x === 3) {
                     $(`#D${y}`).html(col[y]);
                     if (col[y] === 0) {
+                      $(`#D${y}`).html('');
                       $(`#D${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
                       if (imgIndex > 49) {
@@ -145,6 +149,7 @@ $.ajax(
                 } else if (x === 4) {
                     $(`#E${y}`).html(col[y]);
                     if (col[y] === 0) {
+                      $(`#E${y}`).html('');
                       $(`#E${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
                       if (imgIndex > 49) {
@@ -155,6 +160,7 @@ $.ajax(
                 } else if (x === 5) {
                     $(`#F${y}`).html(col[y]);
                     if (col[y] === 0) {
+                      $(`#F${y}`).html('');
                       $(`#F${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
                       if (imgIndex > 49) {
@@ -165,6 +171,7 @@ $.ajax(
                 } else if (x === 6) {
                     $(`#G${y}`).html(col[y]);
                     if (col[y] === 0) {
+                      $(`#G${y}`).html('');
                       $(`#G${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
                       if (imgIndex > 49) {
@@ -175,6 +182,7 @@ $.ajax(
                 } else if (x === 7) {
                     $(`#H${y}`).html(col[y]);
                     if (col[y] === 0) {
+                      $(`#H${y}`).html('');
                       $(`#H${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
                       if (imgIndex > 49) {
@@ -185,6 +193,7 @@ $.ajax(
                 } else if (x === 8) {
                     $(`#I${y}`).html(col[y]);
                     if (col[y] === 0) {
+                      $(`#I${y}`).html('');
                       $(`#I${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
                       if (imgIndex > 49) {
