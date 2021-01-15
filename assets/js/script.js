@@ -109,18 +109,27 @@ $.ajax(
                       // $(`#A${y}`).css('opacity', 0.0);
                       $(`#A${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
+                      if (imgIndex > 49) {
+                        imgIndex = 0;
+                      }
                     }
                 } else if (x === 1) {
                     $(`#B${y}`).html(col[y]);
                     if (col[y] === 0) {
                       $(`#B${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
+                      if (imgIndex > 49) {
+                        imgIndex = 0;
+                      }
                     }
                 } else if (x === 2) {
                     $(`#C${y}`).html(col[y]);
                     if (col[y] === 0) {
                       $(`#C${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
+                      if (imgIndex > 49) {
+                        imgIndex = 0;
+                      }
                     }
                     // $(`#C${y}`).css('background-image', 'url(' + imgArray[2] + ')');
                 } else if (x === 3) {
@@ -128,6 +137,9 @@ $.ajax(
                     if (col[y] === 0) {
                       $(`#D${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
+                      if (imgIndex > 49) {
+                        imgIndex = 0;
+                      }
                     }
                     // $(`#D${y}`).css('background-image', 'url(' + imgArray[3] + ')');
                 } else if (x === 4) {
@@ -135,6 +147,9 @@ $.ajax(
                     if (col[y] === 0) {
                       $(`#E${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
+                      if (imgIndex > 49) {
+                        imgIndex = 0;
+                      }
                     }
                     // $(`#E${y}`).css('background-image', 'url(' + imgArray[4] + ')');
                 } else if (x === 5) {
@@ -142,6 +157,9 @@ $.ajax(
                     if (col[y] === 0) {
                       $(`#F${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
+                      if (imgIndex > 49) {
+                        imgIndex = 0;
+                      }
                     }
                     // $(`#F${y}`).css('background-image', 'url(' + imgArray[5] + ')');
                 } else if (x === 6) {
@@ -149,6 +167,9 @@ $.ajax(
                     if (col[y] === 0) {
                       $(`#G${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
+                      if (imgIndex > 49) {
+                        imgIndex = 0;
+                      }
                     }
                     // $(`#G${y}`).css('background-image', 'url(' + imgArray[6] + ')');
                 } else if (x === 7) {
@@ -156,6 +177,9 @@ $.ajax(
                     if (col[y] === 0) {
                       $(`#H${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
+                      if (imgIndex > 49) {
+                        imgIndex = 0;
+                      }
                     }
                     // $(`#H${y}`).css('background-image', 'url(' + imgArray[7] + ')');
                 } else if (x === 8) {
@@ -163,6 +187,9 @@ $.ajax(
                     if (col[y] === 0) {
                       $(`#I${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
                       imgIndex++;
+                      if (imgIndex > 49) {
+                        imgIndex = 0;
+                      }
                     }
                     // $(`#I${y}`).css('background-image', 'url(' + imgArray[8] + ')');
                 }
