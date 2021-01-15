@@ -1,39 +1,73 @@
 // A $( document ).ready() block.
 $(document).ready(function() {
-    console.log("document ready!");
+  let giphyAPIkey = 'rrQWLPsJMZUYbQXyP8iY5m23dAYvfmKO';
+  let gifSubject = 'baby+yoda';
+  let queryURL = `https://api.giphy.com/v1/gifs/search?q=${gifSubject}&api_key=${giphyAPIkey}`;
 
 const colArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+let imgValZero = 0;
+let imgValOne = 9;
+let imgValTwo = 18;
+let imgValThree = 27;
+let imgValFour = 36;
 
 // AJAX "Get" from GIPHY API and displaying on HTML page
-let queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=rrQWLPsJMZUYbQXyP8iY5m23dAYvfmKO";
 $.ajax({
     url: queryURL,
     method: "GET"
 }).then(function (response) {
     console.log(response);
+    // console.log(response.data[0]);
     const data = response.data;
     //const img = $('<img>').attr('src', data[i].images.fixed_width_small.url);
     const img = $('<img>').attr('src', data[1].images.fixed_width_small.url);
     colArray.forEach(function() {
         for (let y = 0; y < 9; y++) {
             if (colArray[y] === 'A') {
-                $(`#A${y}`).css('background-image', 'url(' + data[0].images.fixed_width_small.url + ')');
+                for (let yy = 0; yy < 9; yy++) {
+                    $(`#A${yy}`).css('background-image', 'url(' + data[imgValZero].images.fixed_width_small.url + ')');
+                    imgValZero++;
+                };
             } else if (colArray[y] === 'B') {
-                $(`#B${y}`).css('background-image', 'url(' + data[1].images.fixed_width_small.url + ')');
+                for (let yy = 0; yy < 9; yy++) {
+                    $(`#B${yy}`).css('background-image', 'url(' + data[imgValZero].images.fixed_width_small.url + ')');
+                    imgValZero++;
+            };
             } else if (colArray[y] === 'C') {
-                $(`#C${y}`).css('background-image', 'url(' + data[2].images.fixed_width_small.url + ')');
+                for (let yy = 0; yy < 9; yy++) {
+                    $(`#B${yy}`).css('background-image', 'url(' + data[imgValZero].images.fixed_width_small.url + ')');
+                    imgValZero++;
+            };
             } else if (colArray[y] === 'D') {
-                $(`#D${y}`).css('background-image', 'url(' + data[3].images.fixed_width_small.url + ')');
+                for (let yy = 0; yy < 9; yy++) {
+                    $(`#B${yy}`).css('background-image', 'url(' + data[imgValThree].images.fixed_width_small.url + ')');
+                    imgValThree++;
+            };
             } else if (colArray[y] === 'E') {
-                $(`#E${y}`).css('background-image', 'url(' + data[4].images.fixed_width_small.url + ')');
+                for (let yy = 0; yy < 9; yy++) {
+                    $(`#B${yy}`).css('background-image', 'url(' + data[imgValFour].images.fixed_width_small.url + ')');
+                    imgValFour++;
+            };
             } else if (colArray[y] === 'F') {
-                $(`#F${y}`).css('background-image', 'url(' + data[5].images.fixed_width_small.url + ')');
+                for (let yy = 0; yy < 9; yy++) {
+                    $(`#B${yy}`).css('background-image', 'url(' + data[imgValZero].images.fixed_width_small.url + ')');
+                    imgValZero++;
+            };
             } else if (colArray[y] === 'G') {
-                $(`#G${y}`).css('background-image', 'url(' + data[6].images.fixed_width_small.url + ')');
+                for (let yy = 0; yy < 9; yy++) {
+                    $(`#B${yy}`).css('background-image', 'url(' + data[imgValOne].images.fixed_width_small.url + ')');
+                    imgValOne++;
+            };
             } else if (colArray[y] === 'H') {
-                $(`#H${y}`).css('background-image', 'url(' + data[7].images.fixed_width_small.url + ')');
+                for (let yy = 0; yy < 9; yy++) {
+                    $(`#B${yy}`).css('background-image', 'url(' + data[imgValTwo].images.fixed_width_small.url + ')');
+                    imgValTwo++;
+            };
             } else if (colArray[y] === 'I') {
-                $(`#I${y}`).css('background-image', 'url(' + data[8].images.fixed_width_small.url + ')');
+                for (let yy = 0; yy < 9; yy++) {
+                    $(`#B${yy}`).css('background-image', 'url(' + data[imgValThree].images.fixed_width_small.url + ')');
+                    imgValThree++;
+            };
             }
         };
     });
