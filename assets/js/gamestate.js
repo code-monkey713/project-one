@@ -746,6 +746,88 @@ function testIsSolution(rowSolved,colSolved,boxSolved,sudokuBoardAll)
     //Computes and returns the boolean variable boardSolved
     //If each row is solved, and each column is solved, and each subBox is solved, then the board is solved!
     //Otherwise, board not solved. :(
+    var maxsudokuBoardAll=0;
+    var boardSolved=0;
+    for (var i=0;i<9;i++)
+    {
+      maxsudokuBoardAll=Math.max(maxsudokuBoardAll,Math.max(...sudokuBoardAll[i]));
+    }
+
+    if (maxsudokuBoardAll===9)
+    {
+      var allRise=1;
+      for (var i=0;i<9;i++)
+      {
+        //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
+        if (setdiff(numbers1to9,sudokuBoardAll[i])===undefined && sudokuBoardAll[i].sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+        {
+          rowSolved[i]=1;
+          
+        }
+        else
+        {
+          allRise=0;
+        }
+
+        //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
+        if (setdiff(numbers1to9,getCol(sudokuBoardAll,i))===undefined && getCol(sudokuBoardAll,i).sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+        {
+          colSolved[i]=1;
+        }
+        else
+        {
+          allRise=0;
+        }
+
+        var subBox=[];
+        for (var j=3*(Math.floor(i/3)); j<3+3*(Math.floor(i/3));j++)
+        {
+            var tempsBArr=[];
+            for (var k=3*(i-3*Math.floor((i)/3));k<3+3*(i-3*Math.floor(i/3));k++)
+            {
+                if (sudokuBoardAll[j][k]!==0)
+                {
+                    tempsBArr.push(sudokuBoardAll[j][k]);
+                    // BoxFilledPos=BoxFilledPos+1;
+                    // boxUsedValues.push(sudokuBoardAll[j][k]);
+                }
+                else
+                {
+                tempsBArr.push(0);
+                }
+            
+            
+            }
+            subBox.push(tempsBArr);
+        }
+
+        //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
+        if (setdiff(numbers1to9,subBox)===undefined && subBoxToArray(subBox).sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+        {
+          boxSolved[i]=1;
+        }
+        else
+        {
+          allRise=0;
+        }
+
+        if (allRise===1)
+        {
+          boardSolved=1;
+        }
+        else
+        {
+          boardSolved=0;
+        }
+
+
+      }
+    }
+    else
+    {
+      boardSolved=0;
+    }
+    
 
     return boardSolved;
 }
@@ -756,6 +838,80 @@ function hailMaryUnsolvedBoards(boardSolved,sudokuBoardAll)
     //storeBoards - An Object containing potentially multiple nested arrays, with the terminal node on each branch corresponding to an initially unsolved configuration of the initial input baord
     //storeBoardsSolvedMaybe - An Object containing potentially multiple nested arrays, with the terminal node on each branch corresponding to either a solved or unsolved configuration of the initial input baord, corresponding to the second-pass solver applied to the corresponding entry in storeBoards
     //storeBoardsSolvedVars - An Object containing potentially multiple nested vectors, with the terminal node on each branch corresponding to a boolean, indicating whether the corresponding entry of storeBoardsSolvedMaybe is solved (the terminal node has a value of 1), or unsolved (the terminal node has a value of 0)
+    var storeBoards=[];
+    var storeBoardsSolvedMaybe=[];
+    var storeBoardsSolvedVars=[];
+    if (boardSolved===0)
+    {
+      var nlr=[];
+      var nlc=[];
+      for (var i=0;i<9;i++)
+      {
+        for (var j=0;j<9;j++)
+        {
+          if (sudokuBoardAll[i][j]>9)
+          {
+            nlr.push(i);
+            nlc.push(j);
+          }
+        }
+      }
+
+      var selectPosToDecideIndex=Math.floor(nlr.length*Math.rand());
+      var thisPermissiveString=sudokuBoardAll[nlr[selectPosToDecideIndex]][nlc[selectPosToDecideIndex]].toString();
+      for (var k=0;k<thisPermissiveString.length;k++)
+      {
+        var thisSudokuBoardAllCopy=[];
+        for (var m=0;m<9;m++)
+        {
+          var tempsBAC=[];
+          for (var n=0;n<9;n++)
+          {
+            tempsBAC.push(sudokuBoardAll[m][n]);
+          }
+          thisSudokuBoardAllCopy.push(tempsBAC);
+        }
+
+        [rowSolved,colSolved,boxSolved,thisSudokuBoardAllCopyII] = sBATrySolver(thisSudokuBoardAllCopy);
+        thisSudokuBoardAllCopy=thisSudokuBoardAllCopyII;
+
+        boardSolvedII=testIsSolution(rowSolved,colSolved,boxSolved,thisSudokuBoardAllCopy);
+
+        var maxsudokuBoardAllCopy=0;
+        for (var i=0;i<9;i++)
+        {
+          maxsudokuBoardAllCopy=Math.max(maxsudokuBoardAllCopy,Math.max(...maxsudokuBoardAllCopy[i]));
+        }
+
+
+        if (boardSolvedII===1)
+        {
+            storeBoards.push(thisSudokuBoardAllCopy);
+            storeBoardsSolvedMaybe.push(thisSudokuBoardAllCopy);
+            storeBoardsSolvedVars.push(boardSolvedII);
+        }
+        else if (boardSolvedII===0 && maxsudokuBoardAllCopy===9)
+        {
+            storeBoards.push(thisSudokuBoardAllCopy);
+            storeBoardsSolvedMaybe.push(thisSudokuBoardAllCopy);
+            storeBoardsSolvedVars.push(boardSolvedII);
+        }
+        else
+        {
+          [storeBoardsII,storeBoardsSolvedMaybeII,storeBoardsSolvedVarsII]=hailMaryUnsolvedBoards(boardSolvedII,thisSudokuBoardAllCopy);
+          storeBoards.push(storeBoardsII);
+          storeBoardsSolvedMaybe.push(storeBoardsSolvedMaybeII);
+          storeBoardsSolvedVars.push(storeBoardsSolvedVarsII);
+        }
+      }
+
+    }
+    else
+    {
+      storeBoards.push(sudokuBoardAll);
+      storeBoardsSolvedMaybe.push(sudokuBoardAll);
+      storeBoardsSolvedMaybe.push(boardSolved);
+    }
 
     return storeBoards,storeBoardsSolvedMaybe,storeBoardsSolvedVars;
 }
