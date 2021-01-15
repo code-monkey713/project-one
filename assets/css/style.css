@@ -1,5 +1,6 @@
 .square {
   background-color: skyblue;
+  font-weight: bolder;
   width: 3rem;
   height: 3rem;
   margin: 1px;
