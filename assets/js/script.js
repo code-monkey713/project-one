@@ -4,14 +4,9 @@ $(document).ready(function() {
   let gifSubject = 'baby+yoda';
   let queryURL = `https://api.giphy.com/v1/gifs/search?q=${gifSubject}&api_key=${giphyAPIkey}`;
 
-// const colArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
-// let imgValZero = 0;
-// let imgValOne = 9;
-// let imgValTwo = 18;
-// let imgValThree = 27;
-// let imgValFour = 36;
-let imgArray = [];
-let imgIndex = 0;
+  let imgArray = [];
+  let imgIndex = 0;
+  let currSquare = '';
 
 // AJAX "Get" from GIPHY API and displaying on HTML page
 $.ajax({
@@ -19,66 +14,12 @@ $.ajax({
     method: "GET"
 }).then(function (response) {
     console.log(response);
-    // console.log(response.data[0]);
-    // const data = response.data;
-    // const img = $('<img>').attr('src', data[1].images.fixed_width_small.url);
     // adding the URL to imgArray to be used outside of the AJAX call
     for (i = 0; i < response.data.length; i++) {
       let newURL = response.data[i].images.fixed_width_small.url;
       imgArray.push(newURL);
     }
     console.log(imgArray);
-
-    // colArray.forEach(function() {
-    //     for (let y = 0; y < 9; y++) {
-    //         if (colArray[y] === 'A') {
-    //             for (let yy = 0; yy < 9; yy++) {
-    //                 $(`#A${yy}`).css('background-image', 'url(' + data[imgValZero].images.fixed_width_small.url + ')');
-    //                 imgValZero++;
-    //             };
-    //         } else if (colArray[y] === 'B') {
-    //             for (let yy = 0; yy < 9; yy++) {
-    //                 $(`#B${yy}`).css('background-image', 'url(' + data[imgValZero].images.fixed_width_small.url + ')');
-    //                 imgValZero++;
-    //         };
-    //         } else if (colArray[y] === 'C') {
-    //             for (let yy = 0; yy < 9; yy++) {
-    //                 $(`#B${yy}`).css('background-image', 'url(' + data[imgValZero].images.fixed_width_small.url + ')');
-    //                 imgValZero++;
-    //         };
-    //         } else if (colArray[y] === 'D') {
-    //             for (let yy = 0; yy < 9; yy++) {
-    //                 $(`#B${yy}`).css('background-image', 'url(' + data[imgValThree].images.fixed_width_small.url + ')');
-    //                 imgValThree++;
-    //         };
-    //         } else if (colArray[y] === 'E') {
-    //             for (let yy = 0; yy < 9; yy++) {
-    //                 $(`#B${yy}`).css('background-image', 'url(' + data[imgValFour].images.fixed_width_small.url + ')');
-    //                 imgValFour++;
-    //         };
-    //         } else if (colArray[y] === 'F') {
-    //             for (let yy = 0; yy < 9; yy++) {
-    //                 $(`#B${yy}`).css('background-image', 'url(' + data[imgValZero].images.fixed_width_small.url + ')');
-    //                 imgValZero++;
-    //         };
-    //         } else if (colArray[y] === 'G') {
-    //             for (let yy = 0; yy < 9; yy++) {
-    //                 $(`#B${yy}`).css('background-image', 'url(' + data[imgValOne].images.fixed_width_small.url + ')');
-    //                 imgValOne++;
-    //         };
-    //         } else if (colArray[y] === 'H') {
-    //             for (let yy = 0; yy < 9; yy++) {
-    //                 $(`#B${yy}`).css('background-image', 'url(' + data[imgValTwo].images.fixed_width_small.url + ')');
-    //                 imgValTwo++;
-    //         };
-    //         } else if (colArray[y] === 'I') {
-    //             for (let yy = 0; yy < 9; yy++) {
-    //                 $(`#B${yy}`).css('background-image', 'url(' + data[imgValThree].images.fixed_width_small.url + ')');
-    //                 imgValThree++;
-    //         };
-    //         }
-    //     };
-    // });
 });
 
 
@@ -207,5 +148,15 @@ $.ajax(
     }
 );
 
+$(".square").click(function(){
+  // console.log(this);
+  $(this).css('background-image', 'none');
+  currSquare = $(this).attr('id');
+  // console.log(currSquare);
+  });
 
+  $(".fieldBtn").click(function(){
+    $(`#${currSquare}`).html($(this).val());
+    // console.log(currSquare);
+    });
 });
