@@ -12,50 +12,51 @@
 </head>
 
 <body>
-  <header><button class="button expanded large">An image of Sudoku Game!</button></header>
+  <header><button class="button expanded large">TSM's Themed Sudoku!</button></header>
   <main class="grid-container" id="welcome">
     <div class="grid-x text-center">
       <div class="cell small-12">
-        <button class="button large">Select your difficulty!</button>
+        <button class="button large theme-head">Select an Awesome theme from below.</button>
       </div>
     </div>
     <div class="grid-x text-center">
-      <div class="small-4 cell">
-        <button class="button">Easy</button>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="cars">Vroom</button>
       </div>
-      <div class="small-4 cell">
-        <button class="button">Medium</button>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="doggo">Doggo</button>
       </div>
-      <div class="small-4 cell">
-        <button class="button">Hard</button>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="cats">Meow Meow</button>
+      </div>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="superheroes">Superheroes</button>
+      </div>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="epic+fail">Epic Fail</button>
+      </div>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="food">FEAST!!!</button>
       </div>
     </div>
 
     <div class="grid-x text-center">
       <div class="cell small-12">
-        <button class="button large">Select a funny theme!</button>
+        <button class="button large diff-head">Select your difficulty!</button>
       </div>
     </div>
     <div class="grid-x text-center">
-      <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Cars</button>
+      <div class="small-4 cell">
+        <button class="button difficulty" data-lvl="easy">Easy</button>
       </div>
-      <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Dogs</button>
+      <div class="small-4 cell">
+        <button class="button difficulty" data-lvl="medium">Medium</button>
       </div>
-      <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Cats</button>
-      </div>
-      <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Theme 4</button>
-      </div>
-      <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Theme 5</button>
-      </div>
-      <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Theme 6</button>
+      <div class="small-4 cell">
+        <button class="button difficulty" data-lvl="hard">Hard</button>
       </div>
     </div>
+
 
     <div class="text-center gameBoard">
       <div class="grid-x row0">

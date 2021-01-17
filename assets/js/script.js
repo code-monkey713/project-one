@@ -1,32 +1,57 @@
 // A $( document ).ready() block.
 $(document).ready(function() {
-  let giphyAPIkey = 'rrQWLPsJMZUYbQXyP8iY5m23dAYvfmKO';
-  let gifSubject = 'baby+yoda';
-  let queryURL = `https://api.giphy.com/v1/gifs/search?q=${gifSubject}&api_key=${giphyAPIkey}`;
 
   let imgArray = [];
   let imgIndex = 0;
   let currSquare = '';
 
+function getTheme (currentTheme) {
+  let giphyAPIkey = 'rrQWLPsJMZUYbQXyP8iY5m23dAYvfmKO';
+  let gifSubject = currentTheme;
+  let queryURL = `https://api.giphy.com/v1/gifs/search?q=${gifSubject}&api_key=${giphyAPIkey}`;
+
+
 // AJAX "Get" from GIPHY API and displaying on HTML page
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response);
-    // adding the URL to imgArray to be used outside of the AJAX call
-    for (i = 0; i < response.data.length; i++) {
-      let newURL = response.data[i].images.fixed_width_small.url;
-      imgArray.push(newURL);
-    }
-    console.log(imgArray);
+  $.ajax({
+      url: queryURL,
+      method: "GET"
+  }).then(function (response) {
+      console.log(response);
+      // adding the URL to imgArray to be used outside of the AJAX call
+      for (i = 0; i < response.data.length; i++) {
+        let newURL = response.data[i].images.fixed_width_small.url;
+        imgArray.push(newURL);
+      }
+      console.log(imgArray);
+  });
+};
+
+$('.theme').on('click', function() {
+  let currentTheme = $(this).attr('data-theme');
+  $('.theme').hide();
+  $('.theme-head').hide();
+  getTheme(currentTheme);
+
 });
 
+$('.difficulty').on('click', function(){
+  let diff = $(this).attr('data-lvl');
+  console.log(diff);
+  $('.difficulty').hide();
+  $('.diff-head').hide();
+  getDifficulty(diff);
+  //show reset button...Make onclick for reset button
+
+});
+
+
+
+function getDifficulty (diff) {
 
 // AJAX Call to get info from the Sudoku API
 $.ajax(
     {
-        url:'https://sugoku.herokuapp.com/board?difficulty=hard',
+        url:'https://sugoku.herokuapp.com/board?difficulty=' + diff,
         method:'GET'
     }
 ).then(function (response)
@@ -147,6 +172,7 @@ $.ajax(
         };
     }
 );
+};
 
 $(".square").click(function(){
   // console.log(this);
