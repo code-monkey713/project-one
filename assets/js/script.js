@@ -144,7 +144,6 @@ $(document).ready(function () {
         let newURL = response.data[i].images.fixed_width_small.url;
         imgArray.push(newURL);
       }
-      // console.log(imgArray);
     });
   };
 
@@ -156,17 +155,10 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
       console.log(response);
+      currBoard.push(response.board);
       if (mode === 'easy') {
         easyBoard.push(response.board);
         console.log(easyBoard);
-        console.log(easyBoard[0].length);
-        renderBoard(easyBoard);
-        // easyBoard = response.map((x) => x);
-        // response.map(easyBoard);
-        // easyBoard.map(response);
-        // let copyResponse = [...response];
-        // let copyResponse = response.splice();
-        // console.log(copyResponse);
       }
       if (mode === 'medium') {
         mediumBoard.push(response.board);
@@ -182,23 +174,13 @@ $(document).ready(function () {
   // function to render the board from array of numbers
   function renderBoard(arr) {
     console.log(arr);
-    // console.log('What is the length of arr?');
-    // let userSelect = easyBoard;
-    // console.log(easyBoard);
-    // console.log('calling the render board function');
     for (let x = 0; x < arr[0].length; x++) {
-      // console.log(response.board[colIndex]);
-      // console.log("I'm inside the loop!");
       let col = arr[0][x];
-      // console.log(col);
 
       for (let y = 0; y < 9; y++) {
-
-        // console.log(response.board[x][y]);
         if (x === 0) {
           $(`#A${y}`).html(col[y]);
           if (col[y] === 0) {
-            // $(`#A${y}`).css('opacity', 0.0);
             $(`#A${y}`).html('');
             $(`#A${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
             imgIndex++;
@@ -291,25 +273,28 @@ $(document).ready(function () {
     };
   };
 
-  // function to get all the values from the playing board and convert to array *** WIP ***
-  function getState() {
-    console.log('called on function to get current state of board and store to array');
-    // newArr = $(".square").arr.map(function() {
-    //   return $(this).text();
-    //   console.log('array map function called');
-    // }).get();
-
-    // console.log('function to store current board state to array');
+  // function to get the value from the playing squared and add the value to the index
+  function getState(currBoard,pressedID,valueToChange) {
+    let currBoardExtract=currBoard[0];
+    // console.log('called on function to get current state of board and store to array');
+    console.log(currBoardExtract);
+    let alphaArr=['A','B','C','D','E','F','G','H','I'];
+    let rowToBeChanged=alphaArr.indexOf(pressedID[1]);
+    console.log(pressedID);
+    let colToBeChanged=pressedID[0];
+    currBoardExtract[rowToBeChanged][colToBeChanged]=valueToChange;
+    currBoard[0]=currBoardExtract;
   };
 
   // function to get initial screen up with initial board ready to play
   function initialState() {
-    // getPix('epic+fail');
-    // getGameBoard('easy');
-    // getGameBoard('medium');
-    // getGameBoard('hard');
-    // console.log(easyBoard[0].length);
+    getGameBoard('easy');
+    getGameBoard('medium');
+    getGameBoard('hard');
     // renderBoard(easyBoard);
+    // solverFunction(easy);
+    // solverFunction(medium);
+    // solverFunction(hard);
   };
 
   $(".square").click(function () {
@@ -322,23 +307,23 @@ $(document).ready(function () {
 
   $(".fieldBtn").click(function () {
     $(`#${currSquare}`).html($(this).val());
-    // getState();
+    getState(currBoard,currSquare,parseInt($(this).val()));
+    renderBoard(currBoard[0]);
   });
 
   $('body').keydown(function (e) {
     $(`#${currSquare}`).html(e.key);
-    getState(currBoard);
+    getState(currBoard,currSquare,parseInt(e.key));
+    renderBoard(currBoard[0]);
   });
 
   $('.theme').on('click', function () {
     let currentTheme = $(this).attr('data-theme');
     $('.theme').hide();
     $('.theme-head').hide();
-    // getTheme(currentTheme);
     getPix(currentTheme);
     setTheme = true;
     if (setTheme === true && setDifficulty === true) {
-      // console.log('theme and difficulty is set');
       $('#reset').removeClass('hide');
       $('#gameBoard').removeClass('hide');
     }
@@ -349,10 +334,11 @@ $(document).ready(function () {
     console.log(diff);
     $('.difficulty').hide();
     $('.diff-head').hide();
-    getDifficulty(diff);
+    // getDifficulty(diff);
+    currBoard.push(easyBoard);
+    console.log(currBoard);
     setDifficulty = true;
     if (setTheme === true && setDifficulty === true) {
-      // console.log('theme and difficulty is set');
       $('#reset').removeClass('hide');
       $('#gameBoard').removeClass('hide');
     }
