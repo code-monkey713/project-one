@@ -161,8 +161,9 @@ $(document).ready(function () {
   function getState(currBoard,pressedID,valueToChange) {
     console.log(currBoard);
     console.log(`pressed ID: ${pressedID}; value to change: ${valueToChange}`);
-    let currBoardExtract = []
-    currBoardExtract.push(currBoard[0]);
+    // let currBoardExtract = [];
+    // currBoardExtract.push(currBoard[0]);
+    let currBoardExtract = currBoard[0];
     console.log(currBoardExtract);
     let alphaArr=['A','B','C','D','E','F','G','H','I'];
     let split = pressedID.split("");
@@ -173,8 +174,9 @@ $(document).ready(function () {
     // console.log(rowToBeChanged);
     // currBoard.splice(rowToBeChanged, colToBeChanged, valueToChange);
     // currBoard[rowToBeChanged, colToBeChanged] = valueToChange;
+    currBoardExtract[rowToBeChanged][colToBeChanged]=valueToChange;
     console.log(currBoard);
-    currBoardExtract.splice([rowToBeChanged][colToBeChanged],1,valueToChange);
+    // currBoardExtract.splice([rowToBeChanged][colToBeChanged],1,valueToChange);
     console.log(currBoardExtract);
     // currBoardExtract[rowToBeChanged][colToBeChanged]=push(valueToChange);
     // currBoard = [];
