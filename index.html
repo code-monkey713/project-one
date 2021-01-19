@@ -12,52 +12,112 @@
 </head>
 
 <body>
-  <header><button class="button expanded large">An image of Sudoku Game!</button></header>
+  <header><button class="button expanded large">TSM's Themed Sudoku!</button></header>
   <main class="grid-container" id="welcome">
+
+    <!-- Theme Selectors below -->
     <div class="grid-x text-center">
       <div class="cell small-12">
-        <button class="button large">Select your difficulty!</button>
+        <button class="button large theme-head">First: Select an Awesome theme from below.</button>
       </div>
     </div>
     <div class="grid-x text-center">
-      <div class="small-4 cell">
-        <button class="button">Easy</button>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="cars">Vroom</button>
       </div>
-      <div class="small-4 cell">
-        <button class="button">Medium</button>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="doggo">Doggo</button>
       </div>
-      <div class="small-4 cell">
-        <button class="button">Hard</button>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="cats">Meow Meow</button>
+      </div>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="superheroes">Superheroes</button>
+      </div>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="epic+fail">Epic Fail</button>
+      </div>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button theme" data-theme="">None</button>
+      </div>
+      <div class="small-4 medium-3 large-2 cell hide">
+        <button class="button theme" data-theme="food">FEAST!!!</button>
       </div>
     </div>
 
+    <br>
+
+    <!-- Difficulty selectors below -->
     <div class="grid-x text-center">
       <div class="cell small-12">
-        <button class="button large">Select a funny theme!</button>
+        <button class="button large diff-head">Second: Select your difficulty!</button>
       </div>
     </div>
     <div class="grid-x text-center">
+      <div class="small-4 cell">
+        <button class="button difficulty" data-lvl="easy">Easy</button>
+      </div>
+      <div class="small-4 cell">
+        <button class="button difficulty" data-lvl="medium">Medium</button>
+      </div>
+      <div class="small-4 cell">
+        <button class="button difficulty" data-lvl="hard">Hard</button>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- Mode selectors below -->
+    <div class="grid-x grid-margin-center text-center">
+      <div class="cell small-12">
+        <button class="button large diff-head">Third: Select your Mode of Play</button>
+      </div>
+    </div>
+    <div class="grid-x text-center">
+      <div class="small-6 cell">
+        <button class="button mode" data-lvl="normal">Normal</button>
+      </div>
+      <div class="small-6 cell">
+        <button class="button mode" data-lvl="interactive">Interactive</button>
+      </div>
+    </div>
+
+
+    <!-- Start Over button which is hidden until theme and difficulty are selected -->
+    <div class="grid-x text-center">
+      <div class="cell small-12">
+        <button class="button small hide" id="reset">Start Over</button>
+      </div>
+    </div>
+
+    <!-- Gameboard grid below, each cell with a unique ID -->
+    <!-- <div class="text-center gameBoard">
+
       <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Cars</button>
+        <button class="button">Baby Yoda</button>
       </div>
       <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Dogs</button>
+        <button class="button">Epic Fail</button>
       </div>
       <div class="small-4 medium-3 large-2 cell">
         <button class="button">Cats</button>
       </div>
       <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Theme 4</button>
+        <button class="button">Dogs</button>
       </div>
       <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Theme 5</button>
+        <button class="button">Nicholas Cage</button>
       </div>
       <div class="small-4 medium-3 large-2 cell">
-        <button class="button">Theme 6</button>
+        <button class="button">Gaming</button>
       </div>
-    </div>
+      <div class="small-4 medium-3 large-2 cell">
+        <button class="button">None</button>
+      </div>
+    </div> -->
 
-    <div class="text-center gameBoard">
+    <div class="text-center gameBoard hide" id="gameBoard">
+
       <div class="grid-x row0">
         <div class="cell auto"></div>
           <div class="grid-y cell square box1" id="A0"></div>
@@ -175,6 +235,9 @@
           <div class="grid-y cell square box9" id="I8"></div>
           <div class="cell auto"></div>
         </div>
+        <!-- End of Gameboard grid -->
+
+      <!-- Section for the numbers to fill in "blank" cells -->
       <div class="grid-x text-center">
         <div class="cell instruction">
           <button class="button success">Use the buttons below to fill in the square selected above</button>
@@ -182,16 +245,26 @@
       </div>
       <div class="grid-x">
         <div class="cell auto"></div>
-        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn1">1</button></div></div>
-        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn2">2</button></div></div>
-        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn3">3</button></div></div>
-        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn4">4</button></div></div>
-        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn5">5</button></div></div>
-        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn6">6</button></div></div>
-        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn7">7</button></div></div>
-        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn8">8</button></div></div>
-        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn9">9</button></div></div>
+        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn1" value="1">1</button></div></div>
+        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn2" value="2">2</button></div></div>
+        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn3" value="3">3</button></div></div>
+        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn4" value="4">4</button></div></div>
+        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn5" value="5">5</button></div></div>
+        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn6" value="6">6</button></div></div>
+        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn7" value="7">7</button></div></div>
+        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn8" value="8">8</button></div></div>
+        <div class="grid-y"><div class="cell small-1"><button class="button secondary fieldBtn" id="btn9" value="9">9</button></div></div>
         <div class="cell auto"></div>
+      </div>
+    </div>
+
+    <!-- Make text box for scrolling interactive mode -->
+    <div class="grid-x">
+      
+      <button class="button small " id="checkBtn">Check</button>
+      <button class="button small " id="hintBtn">Hint</button>
+      <div class="grid-y "> 
+        <h2>Steps for Solve</h2>
       </div>
     </div>
 
@@ -202,10 +275,12 @@
 
   </main>
 
-  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.5.0.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="assets/js/vendor.js"></script>
   <script src="assets/js/foundation.js"></script>
   <script src="assets/js/script.js"></script>
+  <script src="assets/js/gamestate.js"></script>
 </body>
 
 </html>
