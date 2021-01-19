@@ -1,9 +1,13 @@
 .square {
   background-color: skyblue;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 3rem;
   height: 3rem;
-  margin: 1px;
-  padding: 1px;
+  margin: .5px;
+  /* padding: 1px; */
   color: aliceblue;
 }
 
@@ -19,6 +23,19 @@
 .spacer {
   padding: 1rem;
   margin: 2rem;
+}
+
+/* attempting to reduce img size to div size */
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+
+.selectedCell {
+  /* background-image: 'none'; */
+  border: 1px solid #000;
+  /* border-radius: 3px; */
 }
 
 /* #A0, #B0, #C0, #D0, #E0, #F0, #G0, #H0, 

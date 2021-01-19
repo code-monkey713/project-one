@@ -59,7 +59,6 @@ $(document).ready(function () {
   function renderBoard(arr) {
     console.log(arr);
     let alphaArr=['A','B','C','D','E','F','G','H','I'];
-
     for (let x = 0; x < arr[0].length; x++) {
       let col = arr[0][x];
 
@@ -69,6 +68,10 @@ $(document).ready(function () {
           if (col[y] === 0) {
             $(`#${alphaArr[y]}${x}`).html('');
             $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+          $(`#A${y}`).html(col[y]);
+          if (col[y] === 0) {
+            $(`#A${y}`).html('');
+            $(`#A${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
@@ -248,6 +251,89 @@ $(document).ready(function () {
         //     }
         //   }
         // }
+
+        } else if (x === 1) {
+          $(`#B${y}`).html(col[y]);
+          if (col[y] === 0) {
+            $(`#B${y}`).html('');
+            $(`#B${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            imgIndex++;
+            if (imgIndex > 49) {
+              imgIndex = 0;
+            }
+          }
+        } else if (x === 2) {
+          $(`#C${y}`).html(col[y]);
+          if (col[y] === 0) {
+            $(`#C${y}`).html('');
+            $(`#C${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            imgIndex++;
+            if (imgIndex > 49) {
+              imgIndex = 0;
+            }
+          }
+        } else if (x === 3) {
+          $(`#D${y}`).html(col[y]);
+          if (col[y] === 0) {
+            $(`#D${y}`).html('');
+            $(`#D${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            imgIndex++;
+            if (imgIndex > 49) {
+              imgIndex = 0;
+            }
+          }
+        } else if (x === 4) {
+          $(`#E${y}`).html(col[y]);
+          if (col[y] === 0) {
+            $(`#E${y}`).html('');
+            $(`#E${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            imgIndex++;
+            if (imgIndex > 49) {
+              imgIndex = 0;
+            }
+          }
+        } else if (x === 5) {
+          $(`#F${y}`).html(col[y]);
+          if (col[y] === 0) {
+            $(`#F${y}`).html('');
+            $(`#F${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            imgIndex++;
+            if (imgIndex > 49) {
+              imgIndex = 0;
+            }
+          }
+        } else if (x === 6) {
+          $(`#G${y}`).html(col[y]);
+          if (col[y] === 0) {
+            $(`#G${y}`).html('');
+            $(`#G${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            imgIndex++;
+            if (imgIndex > 49) {
+              imgIndex = 0;
+            }
+          }
+        } else if (x === 7) {
+          $(`#H${y}`).html(col[y]);
+          if (col[y] === 0) {
+            $(`#H${y}`).html('');
+            $(`#H${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            imgIndex++;
+            if (imgIndex > 49) {
+              imgIndex = 0;
+            }
+          }
+        } else if (x === 8) {
+          $(`#I${y}`).html(col[y]);
+          if (col[y] === 0) {
+            $(`#I${y}`).html('');
+            $(`#I${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            imgIndex++;
+            if (imgIndex > 49) {
+              imgIndex = 0;
+            }
+          }
+        }
+
       };
     };
   };
@@ -428,6 +514,30 @@ $(document).ready(function () {
     
     }
   });
+    }
+  });
+
+  $('.difficulty').on('click', function () {
+    difficultySelected = $(this).attr('data-lvl');
+    $('.difficulty').hide();
+    $('.diff-head').hide();
+    if(difficultySelected === 'easy'){
+      currBoard.push(easyBoard[0]);
+    }
+    if(difficultySelected === 'medium'){
+      currBoard.push(mediumBoard[0]);
+    }
+    if(difficultySelected === 'hard'){
+      currBoard.push(hardBoard[0]);
+    }
+    // console.log(currBoard);
+    renderBoard(currBoard);
+    setDifficulty = true;
+    if (setTheme === true && setDifficulty === true) {
+      $('#reset').removeClass('hide');
+      $('#gameBoard').removeClass('hide');
+    }
+  });
 
   $('#reset').on('click', function () {
     location.reload();
@@ -446,7 +556,6 @@ $(document).ready(function () {
       console.log(checkThisBoard);
     }
 });
-
   initialState();
   solverState();
 });
