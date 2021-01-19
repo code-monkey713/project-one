@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  // let gifTheme = 'baby+yoda';
   let imgArray = [];
   let imgIndex = 0;
   let currSquare = '';
@@ -28,29 +27,24 @@ $(document).ready(function () {
     });
   };
 
-  // function for getting all three difficulty initial boards and storing it in an array
+  // function for getting initial solved squares and storing it in an array for solver
   function getGameBoard(mode) {
     let queryURL = `https://sugoku.herokuapp.com/board?difficulty=${mode}`;
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function (response) {
-      // console.log(response);
-      // currBoard.push(response.board);
       if (mode === 'easy') {
         easyBoard = [];
         easyBoard.push(response.board);
-        console.log(easyBoard);
       }
       if (mode === 'medium') {
         mediumBoard = [];
         mediumBoard.push(response.board);
-        console.log(mediumBoard);
       }
       if (mode === 'hard') {
         hardBoard = [];
         hardBoard.push(response.board);
-        console.log(hardBoard);
       };
     });
   };
@@ -160,38 +154,21 @@ $(document).ready(function () {
   // function to get the value from the playing squared and add the value to the index
   function getState(currBoard,pressedID,valueToChange) {
     console.log(currBoard);
-    console.log(`pressed ID: ${pressedID}; value to change: ${valueToChange}`);
-    // let currBoardExtract = [];
-    // currBoardExtract.push(currBoard[0]);
     let currBoardExtract = currBoard[0];
-    console.log(currBoardExtract);
     let alphaArr=['A','B','C','D','E','F','G','H','I'];
     let split = pressedID.split("");
     let colValue=split[0];
     let colToBeChanged=alphaArr.indexOf(colValue);
-    // console.log(colToBeChanged);
     let rowToBeChanged=parseInt(split[1]);
-    // console.log(rowToBeChanged);
-    // currBoard.splice(rowToBeChanged, colToBeChanged, valueToChange);
-    // currBoard[rowToBeChanged, colToBeChanged] = valueToChange;
     currBoardExtract[rowToBeChanged][colToBeChanged]=valueToChange;
-    console.log(currBoard);
-    // currBoardExtract.splice([rowToBeChanged][colToBeChanged],1,valueToChange);
-    console.log(currBoardExtract);
-    // currBoardExtract[rowToBeChanged][colToBeChanged]=push(valueToChange);
-    // currBoard = [];
-    // console.log(currBoard);
-    // currBoard.push(currBoardExtract);
-    // console.log(currBoardExtract);
-    // currBoardExtract = [];
   };
 
-  // function to clear the playing board of all the squares
-  function clearBoard() {
-    console.log('this clears the playing field');
+  // function to erase the square from the playing board and array 
+  function eraseSquare() {
+    console.log('this the value from the playing field and currBoard array');
   };
 
-  // function to get initial screen up with initial board ready to play
+  // function to get initial solved squares and to run solver for each board while user makes their selection
   function initialState() {
     getGameBoard('easy');
     getGameBoard('medium');
