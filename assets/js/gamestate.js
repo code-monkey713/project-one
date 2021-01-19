@@ -905,7 +905,7 @@ function testIsSolutionRevamped(sudokuBoardAll)
     var numbers1to9=[1,2,3,4,5,6,7,8,9];
     for (var i=0;i<9;i++)
     {
-      maxsudokuBoardAll=Math.max(maxsudokuBoardAll,Math.max(...sudokuBoardAll[i]));
+      // maxsudokuBoardAll=Math.max(maxsudokuBoardAll,Math.max(...sudokuBoardAll[i]));
     }
 
     if (maxsudokuBoardAll===9)
@@ -1075,7 +1075,6 @@ function hailMaryUnsolvedBoards(boardSolved,sudokuBoardAll)
 
 //The commented code below is the flow of calls to the functions above copied from my MATLAB script, and will be translated subsequently to completion of the functions
 // sudokuBoardAll = initializeAllOptions(sudokuBoard);
-         
 // sudokuBoardAllInitial=sudokuBoardAll;
 
 // [rowSolved,colSolved,boxSolved,sudokuBoardAllII] = sBATrySolver(sudokuBoardAll);
