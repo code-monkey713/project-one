@@ -5,7 +5,7 @@ $(document).ready(function () {
   let easyBoard = [];
   let mediumBoard = [];
   let hardBoard = [];
-  let difficultySelected; 
+  let difficultySelected;
   let currBoard = [];
   let setTheme = false;
   let setDifficulty = false;
@@ -52,7 +52,7 @@ $(document).ready(function () {
   // function to render the board from array of numbers passed to
   function renderBoard(arr) {
     console.log(arr);
-    let alphaArr=['A','B','C','D','E','F','G','H','I'];
+    let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
     for (let x = 0; x < arr[0].length; x++) {
       let col = arr[0][x];
 
@@ -62,17 +62,17 @@ $(document).ready(function () {
           if (col[y] === 0) {
             $(`#${alphaArr[y]}${x}`).html('');
             $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-          $(`#A${y}`).html(col[y]);
-          if (col[y] === 0) {
-            $(`#A${y}`).html('');
-            $(`#A${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-            imgIndex++;
-            if (imgIndex > 49) {
-              imgIndex = 0;
+            $(`#A${y}`).html(col[y]);
+            if (col[y] === 0) {
+              $(`#A${y}`).html('');
+              $(`#A${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+              imgIndex++;
+              if (imgIndex > 49) {
+                imgIndex = 0;
+              }
             }
           }
-        }
-        else if (x === 1) {
+          else if (x === 1) {
             $(`#${alphaArr[y]}${x}`).html(col[y]);
             if (col[y] === 0) {
               $(`#${alphaArr[y]}${x}`).html('');
@@ -153,98 +153,98 @@ $(document).ready(function () {
               }
             }
           }
-        // if (x === 0) {
-        //   $(`#A${y}`).html(col[y]);
-        //   if (col[y] === 0) {
-        //     $(`#A${y}`).html('');
-        //     $(`#A${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-        //     imgIndex++;
-        //     if (imgIndex > 49) {
-        //       imgIndex = 0;
-        //     }
-        //   }
-        // }
-        // } else if (x === 1) {
-        //   $(`#B${y}`).html(col[y]);
-        //   if (col[y] === 0) {
-        //     $(`#B${y}`).html('');
-        //     $(`#B${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-        //     imgIndex++;
-        //     if (imgIndex > 49) {
-        //       imgIndex = 0;
-        //     }
-        //   }
-        // } else if (x === 2) {
-        //   $(`#C${y}`).html(col[y]);
-        //   if (col[y] === 0) {
-        //     $(`#C${y}`).html('');
-        //     $(`#C${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-        //     imgIndex++;
-        //     if (imgIndex > 49) {
-        //       imgIndex = 0;
-        //     }
-        //   }
-        // } else if (x === 3) {
-        //   $(`#D${y}`).html(col[y]);
-        //   if (col[y] === 0) {
-        //     $(`#D${y}`).html('');
-        //     $(`#D${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-        //     imgIndex++;
-        //     if (imgIndex > 49) {
-        //       imgIndex = 0;
-        //     }
-        //   }
-        // } else if (x === 4) {
-        //   $(`#E${y}`).html(col[y]);
-        //   if (col[y] === 0) {
-        //     $(`#E${y}`).html('');
-        //     $(`#E${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-        //     imgIndex++;
-        //     if (imgIndex > 49) {
-        //       imgIndex = 0;
-        //     }
-        //   }
-        // } else if (x === 5) {
-        //   $(`#F${y}`).html(col[y]);
-        //   if (col[y] === 0) {
-        //     $(`#F${y}`).html('');
-        //     $(`#F${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-        //     imgIndex++;
-        //     if (imgIndex > 49) {
-        //       imgIndex = 0;
-        //     }
-        //   }
-        // } else if (x === 6) {
-        //   $(`#G${y}`).html(col[y]);
-        //   if (col[y] === 0) {
-        //     $(`#G${y}`).html('');
-        //     $(`#G${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-        //     imgIndex++;
-        //     if (imgIndex > 49) {
-        //       imgIndex = 0;
-        //     }
-        //   }
-        // } else if (x === 7) {
-        //   $(`#H${y}`).html(col[y]);
-        //   if (col[y] === 0) {
-        //     $(`#H${y}`).html('');
-        //     $(`#H${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-        //     imgIndex++;
-        //     if (imgIndex > 49) {
-        //       imgIndex = 0;
-        //     }
-        //   }
-        // } else if (x === 8) {
-        //   $(`#I${y}`).html(col[y]);
-        //   if (col[y] === 0) {
-        //     $(`#I${y}`).html('');
-        //     $(`#I${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
-        //     imgIndex++;
-        //     if (imgIndex > 49) {
-        //       imgIndex = 0;
-        //     }
-        //   }
-        // }
+          // if (x === 0) {
+          //   $(`#A${y}`).html(col[y]);
+          //   if (col[y] === 0) {
+          //     $(`#A${y}`).html('');
+          //     $(`#A${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+          //     imgIndex++;
+          //     if (imgIndex > 49) {
+          //       imgIndex = 0;
+          //     }
+          //   }
+          // }
+          // } else if (x === 1) {
+          //   $(`#B${y}`).html(col[y]);
+          //   if (col[y] === 0) {
+          //     $(`#B${y}`).html('');
+          //     $(`#B${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+          //     imgIndex++;
+          //     if (imgIndex > 49) {
+          //       imgIndex = 0;
+          //     }
+          //   }
+          // } else if (x === 2) {
+          //   $(`#C${y}`).html(col[y]);
+          //   if (col[y] === 0) {
+          //     $(`#C${y}`).html('');
+          //     $(`#C${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+          //     imgIndex++;
+          //     if (imgIndex > 49) {
+          //       imgIndex = 0;
+          //     }
+          //   }
+          // } else if (x === 3) {
+          //   $(`#D${y}`).html(col[y]);
+          //   if (col[y] === 0) {
+          //     $(`#D${y}`).html('');
+          //     $(`#D${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+          //     imgIndex++;
+          //     if (imgIndex > 49) {
+          //       imgIndex = 0;
+          //     }
+          //   }
+          // } else if (x === 4) {
+          //   $(`#E${y}`).html(col[y]);
+          //   if (col[y] === 0) {
+          //     $(`#E${y}`).html('');
+          //     $(`#E${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+          //     imgIndex++;
+          //     if (imgIndex > 49) {
+          //       imgIndex = 0;
+          //     }
+          //   }
+          // } else if (x === 5) {
+          //   $(`#F${y}`).html(col[y]);
+          //   if (col[y] === 0) {
+          //     $(`#F${y}`).html('');
+          //     $(`#F${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+          //     imgIndex++;
+          //     if (imgIndex > 49) {
+          //       imgIndex = 0;
+          //     }
+          //   }
+          // } else if (x === 6) {
+          //   $(`#G${y}`).html(col[y]);
+          //   if (col[y] === 0) {
+          //     $(`#G${y}`).html('');
+          //     $(`#G${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+          //     imgIndex++;
+          //     if (imgIndex > 49) {
+          //       imgIndex = 0;
+          //     }
+          //   }
+          // } else if (x === 7) {
+          //   $(`#H${y}`).html(col[y]);
+          //   if (col[y] === 0) {
+          //     $(`#H${y}`).html('');
+          //     $(`#H${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+          //     imgIndex++;
+          //     if (imgIndex > 49) {
+          //       imgIndex = 0;
+          //     }
+          //   }
+          // } else if (x === 8) {
+          //   $(`#I${y}`).html(col[y]);
+          //   if (col[y] === 0) {
+          //     $(`#I${y}`).html('');
+          //     $(`#I${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+          //     imgIndex++;
+          //     if (imgIndex > 49) {
+          //       imgIndex = 0;
+          //     }
+          //   }
+          // }
 
         } else if (x === 1) {
           $(`#B${y}`).html(col[y]);
@@ -333,15 +333,15 @@ $(document).ready(function () {
   };
 
   // function to get the value from the playing squared and add the value to the index
-  function getState(currBoard,pressedID,valueToChange) {
+  function getState(currBoard, pressedID, valueToChange) {
     console.log(currBoard);
     let currBoardExtract = currBoard[0];
-    let alphaArr=['A','B','C','D','E','F','G','H','I'];
+    let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
     let split = pressedID.split("");
-    let colValue=split[0];
-    let colToBeChanged=alphaArr.indexOf(colValue);
-    let rowToBeChanged=parseInt(split[1]);
-    currBoardExtract[rowToBeChanged][colToBeChanged]=valueToChange;
+    let colValue = split[0];
+    let colToBeChanged = alphaArr.indexOf(colValue);
+    let rowToBeChanged = parseInt(split[1]);
+    currBoardExtract[rowToBeChanged][colToBeChanged] = valueToChange;
   };
 
   // function to erase the square from the playing board and array 
@@ -359,43 +359,35 @@ $(document).ready(function () {
     // solverFunction(hard);
   };
 
-  function solverState()
-  {
-    var thisBoard=currBoard[0];
-    var numAttemptsSingleConfig=0;
-    var maxNumAttemptsSingleConfig=2;
+  function solverState() {
+    var thisBoard = currBoard[0];
+    var numAttemptsSingleConfig = 0;
+    var maxNumAttemptsSingleConfig = 2;
 
-    while (testIsSolutionRevamped(thisBoard)===false && numAttemptsSingleConfig<maxNumAttemptsSingleConfig)
-    {
-      var oldBoard=[];
-      for (var i=0;i<9;i++)
-      {
-        var tempoBArr=[];
-        for (var j=0;j<9;j++)
-        {
-          tempoBArr.push(thisBoard[i][j]);
+    while (testIsSolutionRevamped(thisBoard) === false && numAttemptsSingleConfig < maxNumAttemptsSingleConfig) {
+      var oldBoard = [];
+      for (var i = 0; i < 9; i++) {
+        var tempoBArr = [];
+        for (var j = 0; j < 9; j++) {
+          // tempoBArr.push(thisBoard[i][j]);
         }
         oldBoard.push(tempoBArr);
       }
 
-      var sBAFPResults=sBATrySolver(thisBoard);
+      var sBAFPResults = sBATrySolver(thisBoard);
       // var rowSolved=sBAFPResults[0];
       // var colSolved=sBAFPResults[1];
       // var boxSolved=sBAFPResults[2];
-      var sudokuBoardAll=sBAFPResults[3];
+      var sudokuBoardAll = sBAFPResults[3];
 
-      var sudokuBoardAllForRender=[];
-      for (var i=0;i<9;i++)
-      {
-        var tempoBArr=[];
-        for (var j=0;j<9;j++)
-        {
-          if (sudokuBoardAll[i][j]<=9)
-          {
+      var sudokuBoardAllForRender = [];
+      for (var i = 0; i < 9; i++) {
+        var tempoBArr = [];
+        for (var j = 0; j < 9; j++) {
+          if (sudokuBoardAll[i][j] <= 9) {
             tempoBArr.push(sudokuBoardAll[i][j]);
           }
-          else
-          {
+          else {
             tempoBArr.push(0);
           }
           tempoBArr.push(sudokuBoardAll[i][j]);
@@ -404,30 +396,25 @@ $(document).ready(function () {
       }
 
 
-      var emptyForRender=[];
+      var emptyForRender = [];
       emptyForRender.push(sudokuBoardAllForRender);
 
-      var AllTheSame=true;
-      for (var i=0;i<9;i++)
-      {
-        for (var j=0;j<9;j++)
-        {
-          if (oldBoard[i][j]!==sudokuBoardAllForRender[i][j])
-          {
-            AllTheSame=false;
+      var AllTheSame = true;
+      for (var i = 0; i < 9; i++) {
+        for (var j = 0; j < 9; j++) {
+          if (oldBoard[i][j] !== sudokuBoardAllForRender[i][j]) {
+            AllTheSame = false;
           }
         }
       }
 
       renderBoard(emptyForRender);
-      if (AllTheSame===true)
-      {
-        numAttemptsSingleConfig=numAttemptsSingleConfig+1;
+      if (AllTheSame === true) {
+        numAttemptsSingleConfig = numAttemptsSingleConfig + 1;
       }
-      else
-      {
-        numAttemptsSingleConfig=0;
-        currBoard[0]=sudokuBoardAllForRender;
+      else {
+        numAttemptsSingleConfig = 0;
+        currBoard[0] = sudokuBoardAllForRender;
         // Update currBoard
       }
     }
@@ -444,14 +431,14 @@ $(document).ready(function () {
 
   $(".fieldBtn").click(function () {
     $(`#${currSquare}`).html($(this).val());
-    getState(currBoard,currSquare,parseInt($(this).val()));
+    getState(currBoard, currSquare, parseInt($(this).val()));
     // clearBoard();
     // renderBoard(currBoard[0]);
   });
 
   $('body').keydown(function (e) {
     $(`#${currSquare}`).html(e.key);
-    getState(currBoard,currSquare,parseInt(e.key));
+    getState(currBoard, currSquare, parseInt(e.key));
     // clearBoard();
     // renderBoard(currBoard[0]);
   });
@@ -472,13 +459,13 @@ $(document).ready(function () {
     difficultySelected = $(this).attr('data-lvl');
     $('.difficulty').hide();
     $('.diff-head').hide();
-    if(difficultySelected === 'easy'){
+    if (difficultySelected === 'easy') {
       currBoard.push(easyBoard[0]);
     }
-    if(difficultySelected === 'medium'){
+    if (difficultySelected === 'medium') {
       currBoard.push(mediumBoard[0]);
     }
-    if(difficultySelected === 'hard'){
+    if (difficultySelected === 'hard') {
       currBoard.push(hardBoard[0]);
     }
     // console.log(currBoard);
@@ -488,9 +475,6 @@ $(document).ready(function () {
       $('#reset').removeClass('hide');
       $('#gameBoard').removeClass('hide');
       testIsSolutionRevamped(currBoard[0]);
-    
-    }
-  });
     }
   });
 
@@ -498,13 +482,13 @@ $(document).ready(function () {
     difficultySelected = $(this).attr('data-lvl');
     $('.difficulty').hide();
     $('.diff-head').hide();
-    if(difficultySelected === 'easy'){
+    if (difficultySelected === 'easy') {
       currBoard.push(easyBoard[0]);
     }
-    if(difficultySelected === 'medium'){
+    if (difficultySelected === 'medium') {
       currBoard.push(mediumBoard[0]);
     }
-    if(difficultySelected === 'hard'){
+    if (difficultySelected === 'hard') {
       currBoard.push(hardBoard[0]);
     }
     // console.log(currBoard);
@@ -520,19 +504,16 @@ $(document).ready(function () {
     location.reload();
   })
 
-  $("#checkBtn").on('click', function()
-{
-  var checkThisBoard=testIsSolutionRevamped(currBoard[0]);
-    if (checkThisBoard)
-    {
+  $("#checkBtn").on('click', function () {
+    var checkThisBoard = testIsSolutionRevamped(currBoard[0]);
+    if (checkThisBoard) {
       $("#checkBtn").addClass('green');
     }
-    else
-    {
+    else {
       $("#checkBtn").addClass('red');
       console.log(checkThisBoard);
     }
-});
+  });
   initialState();
-  solverState();
+  // solverState();
 });
