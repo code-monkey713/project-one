@@ -296,6 +296,80 @@ $(document).ready(function () {
     // solverFunction(hard);
   };
 
+  function solverState()
+  {
+    var thisBoard=currBoard[0];
+    var numAttemptsSingleConfig=0;
+    var maxNumAttemptsSingleConfig=2;
+
+    while (testIsSolutionRevamped(thisBoard)===false && numAttemptsSingleConfig<maxNumAttemptsSingleConfig)
+    {
+      var oldBoard=[];
+      for (var i=0;i<9;i++)
+      {
+        var tempoBArr=[];
+        for (var j=0;j<9;j++)
+        {
+          tempoBArr.push(thisBoard[i][j]);
+        }
+        oldBoard.push(tempoBArr);
+      }
+
+      var sBAFPResults=sBATrySolver(thisBoard);
+      // var rowSolved=sBAFPResults[0];
+      // var colSolved=sBAFPResults[1];
+      // var boxSolved=sBAFPResults[2];
+      var sudokuBoardAll=sBAFPResults[3];
+
+      var sudokuBoardAllForRender=[];
+      for (var i=0;i<9;i++)
+      {
+        var tempoBArr=[];
+        for (var j=0;j<9;j++)
+        {
+          if (sudokuBoardAll[i][j]<=9)
+          {
+            tempoBArr.push(sudokuBoardAll[i][j]);
+          }
+          else
+          {
+            tempoBArr.push(0);
+          }
+          tempoBArr.push(sudokuBoardAll[i][j]);
+        }
+        sudokuBoardAllForRender.push(tempoBArr);
+      }
+
+
+      var emptyForRender=[];
+      emptyForRender.push(sudokuBoardAllForRender);
+
+      var AllTheSame=true;
+      for (var i=0;i<9;i++)
+      {
+        for (var j=0;j<9;j++)
+        {
+          if (oldBoard[i][j]!==sudokuBoardAllForRender[i][j])
+          {
+            AllTheSame=false;
+          }
+        }
+      }
+
+      renderBoard(emptyForRender);
+      if (AllTheSame===true)
+      {
+        numAttemptsSingleConfig=numAttemptsSingleConfig+1;
+      }
+      else
+      {
+        numAttemptsSingleConfig=0;
+        currBoard[0]=sudokuBoardAllForRender;
+        // Update currBoard
+      }
+    }
+  };
+
   $(".square").click(function () {
     // console.log(this);
     // $((this)).addClass('selectedCell');
@@ -350,6 +424,8 @@ $(document).ready(function () {
     if (setTheme === true && setDifficulty === true) {
       $('#reset').removeClass('hide');
       $('#gameBoard').removeClass('hide');
+      testIsSolutionRevamped(currBoard[0]);
+    
     }
   });
 
@@ -372,4 +448,5 @@ $(document).ready(function () {
 });
 
   initialState();
+  solverState();
 });

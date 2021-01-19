@@ -899,6 +899,7 @@ function testIsSolutionRevamped(sudokuBoardAll)
     //Computes and returns the boolean variable boardSolved
     //If each row is solved, and each column is solved, and each subBox is solved, then the board is solved!
     //Otherwise, board not solved. :(
+    // debugger;
     var maxsudokuBoardAll=0;
     var boardSolved=false;
     var numbers1to9=[1,2,3,4,5,6,7,8,9];
