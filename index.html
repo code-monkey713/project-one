@@ -12,43 +12,45 @@
 </head>
 
 <body>
-  <header><button class="button expanded large">TSM's Themed Sudoku!</button></header>
+  <header><button class="button expanded titleBar">TSM's Themed Sudoku!</button></header>
   <main class="grid-container" id="welcome">
 
     <!-- Theme Selectors below -->
     <div class="grid-x text-center">
       <div class="cell small-12">
-        <button class="button large theme-head">First: Select an Awesome theme from below.</button>
+        <!-- <button class="button large theme-head">First: Select an Awesome theme from below.</button> -->
+        <h4>First: Select an Awesome theme from below.</h4>
       </div>
-    </div>
-    <div class="grid-x text-center">
-      <div class="small-4 medium-3 large-2 cell">
+    <div class="grid-x content-align-center text-center">
+      <div class="small-4 cell">
         <button class="button theme" data-theme="cars">Vroom</button>
       </div>
-      <div class="small-4 medium-3 large-2 cell">
+      <div class="small-4 cell">
         <button class="button theme" data-theme="doggo">Doggo</button>
       </div>
-      <div class="small-4 medium-3 large-2 cell">
+      <div class="small-4 cell">
         <button class="button theme" data-theme="cats">Meow Meow</button>
       </div>
-      <div class="small-4 medium-3 large-2 cell">
+      <div class="small-4 cell">
         <button class="button theme" data-theme="superheroes">Superheroes</button>
       </div>
-      <div class="small-4 medium-3 large-2 cell">
+      <div class="small-4 cell">
         <button class="button theme" data-theme="epic+fail">Epic Fail</button>
       </div>
-      <div class="small-4 medium-3 large-2 cell hide">
+      <div class="small-4 cell">
         <button class="button theme" data-theme="food">FEAST!!!</button>
       </div>
-      <div class="small-4 medium-3 large-2 cell">
+      <div class="small-12 cell">
         <button class="button theme" data-theme="">None</button>
       </div>
     </div>
+  </div>
 
     <!-- Difficulty selectors below -->
     <div class="grid-x text-center">
       <div class="cell small-12">
-        <button class="button large diff-head">Second: Select your difficulty!</button>
+        <!-- <button class="button large diff-head">Second: Select your difficulty!</button> -->
+        <h4 class="diff-head">Second: Select your difficulty!</h4>
       </div>
     </div>
     <div class="grid-x text-center">
@@ -68,7 +70,8 @@
     <!-- Mode selectors below -->
     <div class="grid-x grid-margin-center text-center">
       <div class="cell small-12">
-        <button class="button large diff-head">Third: Select your Mode of Play</button>
+        <!-- <button class="button large diff-head">Third: Select your Mode of Play</button> -->
+        <h4 class="diff-head">Third: Select your Mode of Play</h4>
       </div>
     </div>
     <div class="grid-x text-center">
@@ -125,7 +128,7 @@
         <div class="grid-y cell square box2" id="E2"></div>
         <div class="grid-y cell square box2" id="F2"></div>
         <div class="grid-y cell square box3" id="G2"></div>
-        <div class="grid-y cell square box3" id="H2"></div>
+        <div class="grid-y cell square box3" id="h3"></div>
         <div class="grid-y cell square box3" id="I2"></div>
         <div class="cell auto"></div>
       </div>
@@ -253,7 +256,7 @@
       <button class="button small " id="checkBtn">Check</button>
       <button class="button small " id="hintBtn">Hint</button>
       <div class="grid-y ">
-        <h2>Steps for Solve</h2>
+        <h3>Steps for Solve</h3>
       </div>
     </div>
 

@@ -1,3 +1,9 @@
+.titleBar {
+  font-weight: bolder;
+  font-size: 40px;
+  padding: 0px 35px;
+}
+
 .square {
   background-color: skyblue;
   font-weight: bolder;
