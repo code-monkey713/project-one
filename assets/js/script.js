@@ -6,6 +6,7 @@ $(document).ready(function () {
   let mediumBoard = [];
   let hardBoard = [];
   let difficultySelected;
+  let modeSelected;
   let currBoard = [];
   let setTheme = false;
   let setDifficulty = false;
@@ -280,11 +281,28 @@ $(document).ready(function () {
     if (difficultySelected === 'hard') {
       currBoard.push(hardBoard[0]);
     }
+    // renderBoard(currBoard);
+    setDifficulty = true;
+    // if (setTheme === true && setDifficulty === true) {
+    //   $('#reset').removeClass('hide');
+    //   $('#gameBoard').removeClass('hide');
+    //   // testIsSolutionRevamped(currBoard[0]);
+    // }
+  });
+
+  // Mode button funtionality
+  $('.mode').on('click', function() {
+    modeSelected = $(this).attr('data-mode');
+    $('.mode').hide();
+    $('.mode-head').hide();
+
     renderBoard(currBoard);
     setDifficulty = true;
     if (setTheme === true && setDifficulty === true) {
       $('#reset').removeClass('hide');
       $('#gameBoard').removeClass('hide');
+      $('#checkBtn').removeClass('hide');
+      $('#hintBtn').removeClass('hide');
       // testIsSolutionRevamped(currBoard[0]);
     }
   });
