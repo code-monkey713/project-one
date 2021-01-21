@@ -132,6 +132,7 @@ function initializeAllOptions (sudokuBoard)
       var currentMax=100;
       var numbers1to9=[1,2,3,4,5,6,7,8,9];
       var maxLoopsExceeded=0;
+      let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
       while (currentMax>9 && maxLoopsExceeded!==1)
       {
         var sudokuBoardAllOld=[];
@@ -227,6 +228,8 @@ function initializeAllOptions (sudokuBoard)
                     found2ValuesRemoveFromPermissiveIndices.push(j);
                   }
                 }
+                console.log(`Remove ${parseInt(thisPermissiveString[0])} and ${parseInt(thisPermissiveString[1])} from all entries in row ${i} except ${alphaArr[found2ValuesRemoveFromPermissiveIndices[found2ValuesRemoveFromPermissiveIndices.length-2]]}${i} and ${alphaArr[found2ValuesRemoveFromPermissiveIndices[found2ValuesRemoveFromPermissiveIndices.length-1]]}${i}`);
+                // debugger;
                 // found2ValuesRemoveFromPermissiveIndices.push(sudokuBoardAll[i].findIndex(element => element===found2ValuesTable2PresentVals[f2vi]));
               }
             }
@@ -289,6 +292,7 @@ function initializeAllOptions (sudokuBoard)
                 // console.log(RowPermissiveIndices[getCol(individualNumberAppearances,individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]-1).findIndex(element => element===1)]);
                 RPIToRemove.push(RowPermissiveIndices[getCol(individualNumberAppearances,individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]-1).findIndex(element => element===1)]);
                 sudokuBoardAll[i][RPIToRemove[RPIToRemove.length-1]]=individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO];
+                console.log(`Since ${individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]} only appears once in this row, entry ${alphaArr[RPIToRemove[RPIToRemove.length-1]]}${i} must be ${individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]}.`);
                 }
               }
               
@@ -905,7 +909,15 @@ function testIsSolutionRevamped(sudokuBoardAll)
     var numbers1to9=[1,2,3,4,5,6,7,8,9];
     for (var i=0;i<9;i++)
     {
-      // maxsudokuBoardAll=Math.max(maxsudokuBoardAll,Math.max(...sudokuBoardAll[i]));
+      try
+      {
+        maxsudokuBoardAll=Math.max(maxsudokuBoardAll,Math.max(...sudokuBoardAll[i]));
+      }
+      catch
+      {
+        debugger;
+      }
+      
     }
 
     if (maxsudokuBoardAll===9)

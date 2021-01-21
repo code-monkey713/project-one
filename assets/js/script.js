@@ -10,6 +10,8 @@ $(document).ready(function () {
   let currBoard = [];
   let setTheme = false;
   let setDifficulty = false;
+  let arrayIDsNotToChange=[];
+  let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
 
   // function for getting giphy images URL and store it in an array
   function getPix(topic) {
@@ -18,10 +20,12 @@ $(document).ready(function () {
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function (response) {
+    }).then(function (response) 
+    {
       console.log(response);
       imgArray = [];
-      for (i = 0; i < response.data.length; i++) {
+      for (i = 0; i < response.data.length; i++) 
+      {
         let newURL = response.data[i].images.fixed_width_small.url;
         imgArray.push(newURL);
       }
@@ -29,21 +33,26 @@ $(document).ready(function () {
   };
 
   // function for getting initial solved squares and storing it in an array for solver
-  function getGameBoard(mode) {
+  function getGameBoard(mode) 
+  {
     let queryURL = `https://sugoku.herokuapp.com/board?difficulty=${mode}`;
     $.ajax({
       url: queryURL,
       method: "GET"
-    }).then(function (response) {
-      if (mode === 'easy') {
+    }).then(function (response) 
+    {
+      if (mode === 'easy') 
+      {
         easyBoard = [];
         easyBoard.push(response.board);
       }
-      if (mode === 'medium') {
+      if (mode === 'medium') 
+      {
         mediumBoard = [];
         mediumBoard.push(response.board);
       }
-      if (mode === 'hard') {
+      if (mode === 'hard') 
+      {
         hardBoard = [];
         hardBoard.push(response.board);
       };
@@ -62,6 +71,7 @@ $(document).ready(function () {
           if (col[y] === 0) {
             $(`#${alphaArr[y]}${x}`).html('');
             $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            // debugger;
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
@@ -148,10 +158,102 @@ $(document).ready(function () {
               imgIndex = 0;
             }
           }
-        }
+        // if (x === 0) {
+        //   $(`#A${y}`).html(col[y]);
+        //   if (col[y] === 0) {
+        //     $(`#A${y}`).html('');
+        //     $(`#A${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+        //     imgIndex++;
+        //     if (imgIndex > 49) {
+        //       imgIndex = 0;
+        //     }
+        //   }
+        // }
+        // } else if (x === 1) {
+        //   $(`#B${y}`).html(col[y]);
+        //   if (col[y] === 0) {
+        //     $(`#B${y}`).html('');
+        //     $(`#B${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+        //     imgIndex++;
+        //     if (imgIndex > 49) {
+        //       imgIndex = 0;
+        //     }
+        //   }
+        // } else if (x === 2) {
+        //   $(`#C${y}`).html(col[y]);
+        //   if (col[y] === 0) {
+        //     $(`#C${y}`).html('');
+        //     $(`#C${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+        //     imgIndex++;
+        //     if (imgIndex > 49) {
+        //       imgIndex = 0;
+        //     }
+        //   }
+        // } else if (x === 3) {
+        //   $(`#D${y}`).html(col[y]);
+        //   if (col[y] === 0) {
+        //     $(`#D${y}`).html('');
+        //     $(`#D${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+        //     imgIndex++;
+        //     if (imgIndex > 49) {
+        //       imgIndex = 0;
+        //     }
+        //   }
+        // } else if (x === 4) {
+        //   $(`#E${y}`).html(col[y]);
+        //   if (col[y] === 0) {
+        //     $(`#E${y}`).html('');
+        //     $(`#E${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+        //     imgIndex++;
+        //     if (imgIndex > 49) {
+        //       imgIndex = 0;
+        //     }
+        //   }
+        // } else if (x === 5) {
+        //   $(`#F${y}`).html(col[y]);
+        //   if (col[y] === 0) {
+        //     $(`#F${y}`).html('');
+        //     $(`#F${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+        //     imgIndex++;
+        //     if (imgIndex > 49) {
+        //       imgIndex = 0;
+        //     }
+        //   }
+        // } else if (x === 6) {
+        //   $(`#G${y}`).html(col[y]);
+        //   if (col[y] === 0) {
+        //     $(`#G${y}`).html('');
+        //     $(`#G${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+        //     imgIndex++;
+        //     if (imgIndex > 49) {
+        //       imgIndex = 0;
+        //     }
+        //   }
+        // } else if (x === 7) {
+        //   $(`#H${y}`).html(col[y]);
+        //   if (col[y] === 0) {
+        //     $(`#H${y}`).html('');
+        //     $(`#H${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+        //     imgIndex++;
+        //     if (imgIndex > 49) {
+        //       imgIndex = 0;
+        //     }
+        //   }
+        // } else if (x === 8) {
+        //   $(`#I${y}`).html(col[y]);
+        //   if (col[y] === 0) {
+        //     $(`#I${y}`).html('');
+        //     $(`#I${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+        //     imgIndex++;
+        //     if (imgIndex > 49) {
+        //       imgIndex = 0;
+        //     }
+        //   }
+        // }
       };
     };
   };
+};
 
   // function to get the value from the playing squared and add the value to the index
   function getState(currBoard, pressedID, valueToChange) {
@@ -180,27 +282,8 @@ $(document).ready(function () {
     // solverFunction(hard);
   };
 
-  function solverState() {
-    var thisBoard = currBoard[0];
-    var numAttemptsSingleConfig = 0;
-    var maxNumAttemptsSingleConfig = 2;
-
-    while (testIsSolutionRevamped(thisBoard) === false && numAttemptsSingleConfig < maxNumAttemptsSingleConfig) {
-      var oldBoard = [];
-      for (var i = 0; i < 9; i++) {
-        var tempoBArr = [];
-        for (var j = 0; j < 9; j++) {
-          // tempoBArr.push(thisBoard[i][j]);
-        }
-        oldBoard.push(tempoBArr);
-      }
-
-      var sBAFPResults = sBATrySolver(thisBoard);
-      // var rowSolved=sBAFPResults[0];
-      // var colSolved=sBAFPResults[1];
-      // var boxSolved=sBAFPResults[2];
-      var sudokuBoardAll = sBAFPResults[3];
-
+  function cleansudokuBoardForRendering(sudokuBoardAll)
+  {
       var sudokuBoardAllForRender = [];
       for (var i = 0; i < 9; i++) {
         var tempoBArr = [];
@@ -211,7 +294,6 @@ $(document).ready(function () {
           else {
             tempoBArr.push(0);
           }
-          tempoBArr.push(sudokuBoardAll[i][j]);
         }
         sudokuBoardAllForRender.push(tempoBArr);
       }
@@ -220,35 +302,96 @@ $(document).ready(function () {
       var emptyForRender = [];
       emptyForRender.push(sudokuBoardAllForRender);
 
-      var AllTheSame = true;
-      for (var i = 0; i < 9; i++) {
-        for (var j = 0; j < 9; j++) {
-          if (oldBoard[i][j] !== sudokuBoardAllForRender[i][j]) {
-            AllTheSame = false;
-          }
-        }
-      }
+      // console.log('sudokuBoardAllForRender: ');
+      // console.log(sudokuBoardAllForRender);
+      // renderBoard(emptyForRender);
+      return emptyForRender;
+  }
 
-      renderBoard(emptyForRender);
-      if (AllTheSame === true) {
-        numAttemptsSingleConfig = numAttemptsSingleConfig + 1;
-      }
-      else {
-        numAttemptsSingleConfig = 0;
-        currBoard[0] = sudokuBoardAllForRender;
-        // Update currBoard
-      }
-    }
+  function solverState() {
+    var thisBoard = currBoard[0];
+    var numAttemptsSingleConfig = 0;
+    var maxNumAttemptsSingleConfig = 2;
+    var sBAFPResults = sBATrySolver(thisBoard); 
+    var sudokuBoardAll = sBAFPResults[3];
+    renderBoard(sudokuBoardAll);
+
+
+    // while (testIsSolutionRevamped(thisBoard) === false && numAttemptsSingleConfig < maxNumAttemptsSingleConfig) 
+    // {
+    //   var oldBoard = [];
+    //   for (var i = 0; i < 9; i++) {
+    //     var tempoBArr = [];
+    //     for (var j = 0; j < 9; j++) {
+    //       // tempoBArr.push(thisBoard[i][j]);
+    //     }
+    //     oldBoard.push(tempoBArr);
+    //   }
+
+    //   var sBAFPResults = sBATrySolver(thisBoard);  
+    //   // var rowSolved=sBAFPResults[0];
+    //   // var colSolved=sBAFPResults[1];
+    //   // var boxSolved=sBAFPResults[2];
+    //   var sudokuBoardAll = sBAFPResults[3];
+
+    //   var sudokuBoardAllForRender = [];
+    //   for (var i = 0; i < 9; i++) {
+    //     var tempoBArr = [];
+    //     for (var j = 0; j < 9; j++) {
+    //       if (sudokuBoardAll[i][j] <= 9) {
+    //         tempoBArr.push(sudokuBoardAll[i][j]);
+    //       }
+    //       else {
+    //         tempoBArr.push(0);
+    //       }
+    //       tempoBArr.push(sudokuBoardAll[i][j]);
+    //     }
+    //     sudokuBoardAllForRender.push(tempoBArr);
+    //   }
+
+
+    //   var emptyForRender = [];
+    //   emptyForRender.push(sudokuBoardAllForRender);
+
+    //   var AllTheSame = true;
+    //   for (var i = 0; i < 9; i++) {
+    //     for (var j = 0; j < 9; j++) {
+    //       if (oldBoard[i][j] !== sudokuBoardAllForRender[i][j]) {
+    //         AllTheSame = false;
+    //       }
+    //     }
+    //   }
+
+    //   renderBoard(emptyForRender);
+    //   if (AllTheSame === true) {
+    //     numAttemptsSingleConfig = numAttemptsSingleConfig + 1;
+    //   }
+    //   else {
+    //     numAttemptsSingleConfig = 0;
+    //     currBoard[0] = sudokuBoardAllForRender;
+    //     // Update currBoard
+    //   }
+    // }
   };
 
   $(".square").click(function () {
     currSquare = $(this).attr('id');
     $(this).css('background-image', 'none');
+    console.log(currSquare);
+    // console.log(currSquare);
   });
 
   $(".fieldBtn").click(function () {
-    $(`#${currSquare}`).html($(this).val());
-    getState(currBoard, currSquare, parseInt($(this).val()));
+    if (!arrayIDsNotToChange.includes(currSquare))
+    {
+      $(`#${currSquare}`).html($(this).val());
+      getState(currBoard, currSquare, parseInt($(this).val()));
+        var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+        var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
+        var sudokuBoardAll=sBAFPResults[3];
+        renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+        console.log(sudokuBoardAll);
+    }
   });
 
   $('body').keydown(function (e) {
@@ -274,15 +417,68 @@ $(document).ready(function () {
     $('.diff-head').hide();
     if (difficultySelected === 'easy') {
       currBoard.push(easyBoard[0]);
+      var thisBoard=currBoard[0];
+
+      for (var i=0;i<9;i++)
+      {
+        for (var j=0;j<9;j++)
+        {
+          if (thisBoard[i][j]!==0)
+          {
+            arrayIDsNotToChange.push(`${alphaArr[j]}${i}`);
+          }
+        }
+      }
     }
     if (difficultySelected === 'medium') {
       currBoard.push(mediumBoard[0]);
+
+      var thisBoard=currBoard[0];
+
+      for (var i=0;i<9;i++)
+      {
+        for (var j=0;j<9;j++)
+        {
+          if (thisBoard[i][j]!==0)
+          {
+            arrayIDsNotToChange.push(`${alphaArr[j]}${i}`);
+          }
+        }
+      }
     }
     if (difficultySelected === 'hard') {
       currBoard.push(hardBoard[0]);
+
+      var thisBoard=currBoard[0];
+
+      for (var i=0;i<9;i++)
+      {
+        for (var j=0;j<9;j++)
+        {
+          if (thisBoard[i][j]!==0)
+          {
+            arrayIDsNotToChange.push(`${alphaArr[j]}${i}`);
+          }
+        }
+      }
     }
     setDifficulty = true;
     renderBoard(currBoard);
+
+    if (setTheme === true && setDifficulty === true) {
+      $('#reset').removeClass('hide');
+      $('#gameBoard').removeClass('hide');
+  
+      var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+      var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
+      var sudokuBoardAll=sBAFPResults[3];
+      renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+      // var sBAFPResults = sBATrySolver(sudokuBoardAll); 
+      // var sudokuBoardAll = sBAFPResults[3];
+      // console.log('sudokuBoardAll 3: '); 
+      console.log(sudokuBoardAll);
+      // testIsSolutionRevamped(currBoard[0]);
+    }
     // if (setTheme === true && setDifficulty === true) {
     //   $('#reset').removeClass('hide');
     //   $('#gameBoard').removeClass('hide');
@@ -307,18 +503,24 @@ $(document).ready(function () {
 
   $('#reset').on('click', function () {
     location.reload();
-  })
+  });
 
-  $("#checkBtn").on('click', function () {
-    var checkThisBoard = testIsSolutionRevamped(currBoard[0]);
-    if (checkThisBoard) {
+  $("#checkBtn").on('click', function()
+{
+  // debugger;
+  var checkThisBoard=testIsSolutionRevamped(currBoard[0]);
+    if (checkThisBoard)
+    {
       $("#checkBtn").addClass('green');
     }
-    else {
+    else
+    {
       $("#checkBtn").addClass('red');
       console.log(checkThisBoard);
     }
-  });
+});
+
+  
   initialState();
-  // solverState();
+  
 });
