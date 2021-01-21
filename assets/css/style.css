@@ -1,7 +1,34 @@
-.titleBar {
+#titleBar {
   font-weight: bolder;
   font-size: 40px;
-  padding: 0px 35px;
+  padding: 10px 0px;
+  color: #8860D0;
+  /* background-color: #C1C8E4; */
+  background-color: #84CEEB;
+}
+
+.clean {
+  background: -webkit-linear-gradient(to right, #B993D6, #8CA6DB, #C1C8E4);
+  background: linear-gradient(to right, #B993D6, #8CA6DB, #C1C8E4);
+  /* background-image: url(https://assets.awwwards.com/awards/sites_of_the_day/2016/06/awwwards-sotd-TIMELIKES-1-.jpg); */
+  /* background-image: url(/assets/images/pexels-pixabay-414645.jpg); */
+  width: 100%;
+  height: 100%;
+}
+
+h4 {
+  color: #5680E9;
+}
+
+.button {
+  background-color: #C1C8E4;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
 
 .square {
@@ -43,18 +70,6 @@ img {
   border: 1px solid #000;
   /* border-radius: 3px; */
 }
-
-/* #A0, #B0, #C0, #D0, #E0, #F0, #G0, #H0, 
-#B1, #B0, #C0, #D0, #E0, #F0, #G0, #H0, 
-#C2, #B0, #C0, #D0, #E0, #F0, #G0, #H0, 
-#D3, #B0, #C0, #D0, #E0, #F0, #G0, #H0, 
-#E4, #B0, #C0, #D0, #E0, #F0, #G0, #H0, 
-#F5, #B0, #C0, #D0, #E0, #F0, #G0, #H0, 
-#G6, #B0, #C0, #D0, #E0, #F0, #G0, #H0, 
-#H7, #B0, #C0, #D0, #E0, #F0, #G0, #H0, 
-#I8, #B0, #C0, #D0, #E0, #F0, #G0, #H0 {
-  color: skyblue;
-} */
 
 #C0, 
 #C1, 

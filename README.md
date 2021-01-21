@@ -18,6 +18,10 @@ See the following SCREENSHOTS to get an idea of what the "TSM's Themed Sudoku" l
 ![Themed Sudoku Image 3](./assets/readme-images/image3.JPG)
 
 For more information, please contact:
-Tony Tran via e-mail:  
+Tony Tran via e-mail:  codemonkey713@gmail.com
 Senyo Ahadzie via e-mail:  
 Michael Llanes via e-mail: llanesm@gmail.com
+
+## References
+
+https://www.pexels.com/photo/cup-of-fresh-cappuccino-near-laptop-keyboard-and-notebook-414645/
