@@ -401,6 +401,11 @@ $(document).ready(function () {
 
   $('.theme').on('click', function () {
     let currentTheme = $(this).attr('data-theme');
+    console.log(currentTheme);
+    if (currentTheme === "none") {
+      $('#option1').removeClass('hide');
+      $('#option2').removeClass('hide');
+    };
     $('.theme').hide();
     $('.theme-head').hide();
     getPix(currentTheme);
