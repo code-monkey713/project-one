@@ -464,6 +464,21 @@ $(document).ready(function () {
     }
     setDifficulty = true;
     renderBoard(currBoard);
+
+    if (setTheme === true && setDifficulty === true) {
+      $('#reset').removeClass('hide');
+      $('#gameBoard').removeClass('hide');
+  
+      var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+      var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
+      var sudokuBoardAll=sBAFPResults[3];
+      renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+      // var sBAFPResults = sBATrySolver(sudokuBoardAll); 
+      // var sudokuBoardAll = sBAFPResults[3];
+      // console.log('sudokuBoardAll 3: '); 
+      console.log(sudokuBoardAll);
+      // testIsSolutionRevamped(currBoard[0]);
+    }
     // if (setTheme === true && setDifficulty === true) {
     //   $('#reset').removeClass('hide');
     //   $('#gameBoard').removeClass('hide');
@@ -492,7 +507,7 @@ $(document).ready(function () {
 
   $("#checkBtn").on('click', function()
 {
-  debugger;
+  // debugger;
   var checkThisBoard=testIsSolutionRevamped(currBoard[0]);
     if (checkThisBoard)
     {
