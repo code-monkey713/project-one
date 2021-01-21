@@ -6,6 +6,7 @@ $(document).ready(function () {
   let mediumBoard = [];
   let hardBoard = [];
   let difficultySelected;
+  let modeSelected;
   let currBoard = [];
   let setTheme = false;
   let setDifficulty = false;
@@ -404,10 +405,10 @@ $(document).ready(function () {
     $('.theme-head').hide();
     getPix(currentTheme);
     setTheme = true;
-    if (setTheme === true && setDifficulty === true) {
-      $('#reset').removeClass('hide');
-      $('#gameBoard').removeClass('hide');
-    }
+    // if (setTheme === true && setDifficulty === true) {
+    //   $('#reset').removeClass('hide');
+    //   $('#gameBoard').removeClass('hide');
+    // }
   });
 
   $('.difficulty').on('click', function () {
@@ -461,21 +462,26 @@ $(document).ready(function () {
         }
       }
     }
-    renderBoard(currBoard);
     setDifficulty = true;
-    
+    renderBoard(currBoard);
+    // if (setTheme === true && setDifficulty === true) {
+    //   $('#reset').removeClass('hide');
+    //   $('#gameBoard').removeClass('hide');
+    //   // testIsSolutionRevamped(currBoard[0]);
+    // }
+  });
+
+  // Mode button functionality
+  $('.mode').on('click', function() {
+    modeSelected = $(this).attr('data-mode');
+    $('.mode').hide();
+    $('.mode-head').hide();
     if (setTheme === true && setDifficulty === true) {
       $('#reset').removeClass('hide');
       $('#gameBoard').removeClass('hide');
-  
-      var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
-      var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
-      var sudokuBoardAll=sBAFPResults[3];
-      renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
-      // var sBAFPResults = sBATrySolver(sudokuBoardAll); 
-      // var sudokuBoardAll = sBAFPResults[3];
-      // console.log('sudokuBoardAll 3: '); 
-      console.log(sudokuBoardAll);
+      $('#checkBtn').removeClass('hide');
+      $('#hintBtn').removeClass('hide');
+      // renderBoard(currBoard);
       // testIsSolutionRevamped(currBoard[0]);
     }
   });
