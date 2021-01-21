@@ -262,10 +262,10 @@ $(document).ready(function () {
     $('.theme-head').hide();
     getPix(currentTheme);
     setTheme = true;
-    if (setTheme === true && setDifficulty === true) {
-      $('#reset').removeClass('hide');
-      $('#gameBoard').removeClass('hide');
-    }
+    // if (setTheme === true && setDifficulty === true) {
+    //   $('#reset').removeClass('hide');
+    //   $('#gameBoard').removeClass('hide');
+    // }
   });
 
   $('.difficulty').on('click', function () {
@@ -281,8 +281,8 @@ $(document).ready(function () {
     if (difficultySelected === 'hard') {
       currBoard.push(hardBoard[0]);
     }
-    // renderBoard(currBoard);
     setDifficulty = true;
+    renderBoard(currBoard);
     // if (setTheme === true && setDifficulty === true) {
     //   $('#reset').removeClass('hide');
     //   $('#gameBoard').removeClass('hide');
@@ -290,19 +290,17 @@ $(document).ready(function () {
     // }
   });
 
-  // Mode button funtionality
+  // Mode button functionality
   $('.mode').on('click', function() {
     modeSelected = $(this).attr('data-mode');
     $('.mode').hide();
     $('.mode-head').hide();
-
-    renderBoard(currBoard);
-    setDifficulty = true;
     if (setTheme === true && setDifficulty === true) {
       $('#reset').removeClass('hide');
       $('#gameBoard').removeClass('hide');
       $('#checkBtn').removeClass('hide');
       $('#hintBtn').removeClass('hide');
+      // renderBoard(currBoard);
       // testIsSolutionRevamped(currBoard[0]);
     }
   });
