@@ -2,14 +2,14 @@
   font-weight: bolder;
   font-size: 40px;
   padding: 10px 0px;
-  color: #8860D0;
+  color: #8860d0;
   /* background-color: #C1C8E4; */
-  background-color: #84CEEB;
+  background-color: #84ceeb;
 }
 
 .clean {
-  background: -webkit-linear-gradient(to right, #B993D6, #8CA6DB, #C1C8E4);
-  background: linear-gradient(to right, #B993D6, #8CA6DB, #C1C8E4);
+  background: -webkit-linear-gradient(to right, #b993d6, #8ca6db, #c1c8e4);
+  background: linear-gradient(to right, #b993d6, #8ca6db, #c1c8e4);
   /* background-image: url(https://assets.awwwards.com/awards/sites_of_the_day/2016/06/awwwards-sotd-TIMELIKES-1-.jpg); */
   /* background-image: url(/assets/images/pexels-pixabay-414645.jpg); */
   width: 100%;
@@ -17,11 +17,11 @@
 }
 
 h4 {
-  color: #5680E9;
+  color: #5680e9;
 }
 
 .button {
-  background-color: #C1C8E4;
+  background-color: #c1c8e4;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -39,7 +39,7 @@ h4 {
   align-items: center;
   width: 3rem;
   height: 3rem;
-  margin: .5px;
+  margin: 0.5px;
   /* padding: 1px; */
   color: aliceblue;
 }
@@ -63,7 +63,7 @@ h4 {
 
 .fieldBtn {
   border: 3px solid yellow;
-  margin: .1rem;
+  margin: 0.1rem;
 }
 
 .spacer {
@@ -84,99 +84,99 @@ img {
   /* border-radius: 3px; */
 }
 
-#C0, 
-#C1, 
-#C2, 
-#C3, 
-#C4, 
-#C5, 
-#C6, 
-#C7, 
+#C0,
+#C1,
+#C2,
+#C3,
+#C4,
+#C5,
+#C6,
+#C7,
 #C8 {
   border-right: 4px dotted blue;
 }
 
-#G0, 
-#G1, 
-#G2, 
-#G3, 
-#G4, 
-#G5, 
-#G6, 
-#G7, 
+#G0,
+#G1,
+#G2,
+#G3,
+#G4,
+#G5,
+#G6,
+#G7,
 #G8 {
   border-left: 4px dotted blue;
 }
 
-#A3, 
-#B3, 
-#C3, 
-#D3, 
-#E3, 
-#F3, 
-#G3, 
-#H3, 
+#A3,
+#B3,
+#C3,
+#D3,
+#E3,
+#F3,
+#G3,
+#H3,
 #I3 {
   border-top: 4px dotted blue;
 }
 
-#A6, 
-#B6, 
-#C6, 
-#D6, 
-#E6, 
-#F6, 
-#G6, 
-#H6, 
+#A6,
+#B6,
+#C6,
+#D6,
+#E6,
+#F6,
+#G6,
+#H6,
 #I6 {
   border-top: 4px dotted blue;
 }
 
 /* border around the board */
-#A0, 
-#A1, 
-#A2, 
-#A3, 
-#A4, 
-#A5, 
-#A6, 
-#A7, 
+#A0,
+#A1,
+#A2,
+#A3,
+#A4,
+#A5,
+#A6,
+#A7,
 #A8 {
   border-left: 4px solid red;
 }
 
-#I0, 
-#I1, 
-#I2, 
-#I3, 
-#I4, 
-#I5, 
-#I6, 
-#I7, 
+#I0,
+#I1,
+#I2,
+#I3,
+#I4,
+#I5,
+#I6,
+#I7,
 #I8 {
   border-right: 4px solid red;
 }
 
-#A0, 
-#B0, 
-#C0, 
-#D0, 
-#E0, 
-#F0, 
-#G0, 
-#H0, 
+#A0,
+#B0,
+#C0,
+#D0,
+#E0,
+#F0,
+#G0,
+#H0,
 #I0 {
   border-top: 4px solid red;
 }
 
-#A8, 
-#B8, 
-#C8, 
-#D8, 
-#E8, 
-#F8, 
-#G8, 
-#H8, 
+#A8,
+#B8,
+#C8,
+#D8,
+#E8,
+#F8,
+#G8,
+#H8,
 #I8 {
   border-bottom: 4px solid red;
 }

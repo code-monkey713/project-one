@@ -6,7 +6,7 @@ $(document).ready(function () {
   let mediumBoard = [];
   let hardBoard = [];
   let difficultySelected;
-  let modeSelected;
+  let interactiveMode = false;
   let currBoard = [];
   let setTheme = false;
   let setDifficulty = false;
@@ -719,6 +719,11 @@ $(document).ready(function () {
 
   $('.theme').on('click', function () {
     let currentTheme = $(this).attr('data-theme');
+    console.log(currentTheme);
+    if (currentTheme === "") {
+      $('#option1').removeClass('hide');
+      $('#option2').removeClass('hide');
+    };
     $('.theme').hide();
     $('.theme-head').hide();
     getPix(currentTheme);
@@ -807,6 +812,12 @@ $(document).ready(function () {
   // Mode button functionality
   $('.mode').on('click', function() {
     modeSelected = $(this).attr('data-mode');
+    // console.log(modeSelected);
+    if (modeSelected === 'interactive') {
+      // run interactive mode
+    } else {
+      // run normal mode
+    };
     $('.mode').hide();
     $('.mode-head').hide();
     if (setTheme === true && setDifficulty === true) {
