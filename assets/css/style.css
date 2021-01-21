@@ -44,6 +44,19 @@ h4 {
   color: aliceblue;
 }
 
+.subSquare {
+  background-color: firebrick;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin: .5px;
+  /* padding: 1px; */
+  color: aliceblue;
+}
+
 .instruction {
   margin-top: 1rem;
 }

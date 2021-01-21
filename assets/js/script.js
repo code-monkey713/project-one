@@ -12,6 +12,7 @@ $(document).ready(function () {
   let setDifficulty = false;
   let arrayIDsNotToChange=[];
   let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+  var interactiveMode=1;
 
   // function for getting giphy images URL and store it in an array
   function getPix(topic) {
@@ -69,8 +70,46 @@ $(document).ready(function () {
         if (x === 0) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (col[y] === 0) {
-            $(`#${alphaArr[y]}${x}`).html('');
-            $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            if (interactiveMode===0)
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            }
+            else
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              var thisHTML=$(`#${alphaArr[y]}${x}`).html();
+              
+            
+              //Add div
+              thisHTML=thisHTML+"<div> ";
+              //  For loop add row div
+              for (var im=0;im<3;im++)
+              {
+                //    For loop add col div
+                thisHTML=thisHTML+`<div class="grid-x subrow${im}"> <div class="cell auto subrow${im}"></div> `;
+                
+                for (var imn=0;imn<3;imn++)
+                {
+                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  //    Add ids and classes
+                  //    Close col div
+                }
+                //  Close row div
+                thisHTML=thisHTML+'<div class="cell auto"></div> </div>';
+              }
+              //Close div
+              thisHTML=thisHTML+" </div>";
+              $(`#${alphaArr[y]}${x}`).html(thisHTML);
+              
+            }
+            
+            // var subsubBox=$("<div>");
+            // var h6Test=$("<h6>");
+            // h6Test.html('LOL');
+            // subsubBox.add(h6Test);
+            // // $(`#${alphaArr[y]}${x}`).add(subsubBox);
+            // $(`#${alphaArr[y]}${x}`).html('<div> <h1> LOL </h1> </div>');
             // debugger;
             imgIndex++;
             if (imgIndex > 49) {
@@ -81,8 +120,39 @@ $(document).ready(function () {
         else if (x === 1) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (col[y] === 0) {
-            $(`#${alphaArr[y]}${x}`).html('');
-            $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            if (interactiveMode===0)
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            }
+            else
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              var thisHTML=$(`#${alphaArr[y]}${x}`).html();
+              
+            
+              //Add div
+              thisHTML=thisHTML+"<div> ";
+              //  For loop add row div
+              for (var im=0;im<3;im++)
+              {
+                //    For loop add col div
+                thisHTML=thisHTML+`<div class="grid-x subrow${im}"> <div class="cell auto subrow${im}"></div> `;
+                
+                for (var imn=0;imn<3;imn++)
+                {
+                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  //    Add ids and classes
+                  //    Close col div
+                }
+                //  Close row div
+                thisHTML=thisHTML+'<div class="cell auto"></div> </div>';
+              }
+              //Close div
+              thisHTML=thisHTML+" </div>";
+              $(`#${alphaArr[y]}${x}`).html(thisHTML);
+              
+            }
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
@@ -91,8 +161,39 @@ $(document).ready(function () {
         } else if (x === 2) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (col[y] === 0) {
-            $(`#${alphaArr[y]}${x}`).html('');
-            $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            if (interactiveMode===0)
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            }
+            else
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              var thisHTML=$(`#${alphaArr[y]}${x}`).html();
+              
+            
+              //Add div
+              thisHTML=thisHTML+"<div> ";
+              //  For loop add row div
+              for (var im=0;im<3;im++)
+              {
+                //    For loop add col div
+                thisHTML=thisHTML+`<div class="grid-x subrow${im}"> <div class="cell auto subrow${im}"></div> `;
+                
+                for (var imn=0;imn<3;imn++)
+                {
+                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  //    Add ids and classes
+                  //    Close col div
+                }
+                //  Close row div
+                thisHTML=thisHTML+'<div class="cell auto"></div> </div>';
+              }
+              //Close div
+              thisHTML=thisHTML+" </div>";
+              $(`#${alphaArr[y]}${x}`).html(thisHTML);
+              
+            }
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
@@ -101,8 +202,39 @@ $(document).ready(function () {
         } else if (x === 3) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (col[y] === 0) {
-            $(`#${alphaArr[y]}${x}`).html('');
-            $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            if (interactiveMode===0)
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            }
+            else
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              var thisHTML=$(`#${alphaArr[y]}${x}`).html();
+              
+            
+              //Add div
+              thisHTML=thisHTML+"<div> ";
+              //  For loop add row div
+              for (var im=0;im<3;im++)
+              {
+                //    For loop add col div
+                thisHTML=thisHTML+`<div class="grid-x subrow${im}"> <div class="cell auto subrow${im}"></div> `;
+                
+                for (var imn=0;imn<3;imn++)
+                {
+                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  //    Add ids and classes
+                  //    Close col div
+                }
+                //  Close row div
+                thisHTML=thisHTML+'<div class="cell auto"></div> </div>';
+              }
+              //Close div
+              thisHTML=thisHTML+" </div>";
+              $(`#${alphaArr[y]}${x}`).html(thisHTML);
+              
+            }
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
@@ -111,8 +243,39 @@ $(document).ready(function () {
         } else if (x === 4) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (col[y] === 0) {
-            $(`#${alphaArr[y]}${x}`).html('');
-            $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            if (interactiveMode===0)
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            }
+            else
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              var thisHTML=$(`#${alphaArr[y]}${x}`).html();
+              
+            
+              //Add div
+              thisHTML=thisHTML+"<div> ";
+              //  For loop add row div
+              for (var im=0;im<3;im++)
+              {
+                //    For loop add col div
+                thisHTML=thisHTML+`<div class="grid-x subrow${im}"> <div class="cell auto subrow${im}"></div> `;
+                
+                for (var imn=0;imn<3;imn++)
+                {
+                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  //    Add ids and classes
+                  //    Close col div
+                }
+                //  Close row div
+                thisHTML=thisHTML+'<div class="cell auto"></div> </div>';
+              }
+              //Close div
+              thisHTML=thisHTML+" </div>";
+              $(`#${alphaArr[y]}${x}`).html(thisHTML);
+              
+            }
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
@@ -121,8 +284,39 @@ $(document).ready(function () {
         } else if (x === 5) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (col[y] === 0) {
-            $(`#${alphaArr[y]}${x}`).html('');
-            $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            if (interactiveMode===0)
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            }
+            else
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              var thisHTML=$(`#${alphaArr[y]}${x}`).html();
+              
+            
+              //Add div
+              thisHTML=thisHTML+"<div> ";
+              //  For loop add row div
+              for (var im=0;im<3;im++)
+              {
+                //    For loop add col div
+                thisHTML=thisHTML+`<div class="grid-x subrow${im}"> <div class="cell auto subrow${im}"></div> `;
+                
+                for (var imn=0;imn<3;imn++)
+                {
+                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  //    Add ids and classes
+                  //    Close col div
+                }
+                //  Close row div
+                thisHTML=thisHTML+'<div class="cell auto"></div> </div>';
+              }
+              //Close div
+              thisHTML=thisHTML+" </div>";
+              $(`#${alphaArr[y]}${x}`).html(thisHTML);
+              
+            }
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
@@ -131,8 +325,70 @@ $(document).ready(function () {
         } else if (x === 6) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (col[y] === 0) {
-            $(`#${alphaArr[y]}${x}`).html('');
-            $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            if (interactiveMode===0)
+            {
+              if (interactiveMode===0)
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            }
+            else
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              var thisHTML=$(`#${alphaArr[y]}${x}`).html();
+              
+            
+              //Add div
+              thisHTML=thisHTML+"<div> ";
+              //  For loop add row div
+              for (var im=0;im<3;im++)
+              {
+                //    For loop add col div
+                thisHTML=thisHTML+`<div class="grid-x subrow${im}"> <div class="cell auto subrow${im}"></div> `;
+                
+                for (var imn=0;imn<3;imn++)
+                {
+                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  //    Add ids and classes
+                  //    Close col div
+                }
+                //  Close row div
+                thisHTML=thisHTML+'<div class="cell auto"></div> </div>';
+              }
+              //Close div
+              thisHTML=thisHTML+" </div>";
+              $(`#${alphaArr[y]}${x}`).html(thisHTML);
+              
+            }
+            }
+            else
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              var thisHTML=$(`#${alphaArr[y]}${x}`).html();
+              
+            
+              //Add div
+              thisHTML=thisHTML+"<div> ";
+              //  For loop add row div
+              for (var im=0;im<3;im++)
+              {
+                //    For loop add col div
+                thisHTML=thisHTML+`<div class="grid-x subrow${im}"> <div class="cell auto subrow${im}"></div> `;
+                
+                for (var imn=0;imn<3;imn++)
+                {
+                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  //    Add ids and classes
+                  //    Close col div
+                }
+                //  Close row div
+                thisHTML=thisHTML+'<div class="cell auto"></div> </div>';
+              }
+              //Close div
+              thisHTML=thisHTML+" </div>";
+              $(`#${alphaArr[y]}${x}`).html(thisHTML);
+              
+            }
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
@@ -141,8 +397,39 @@ $(document).ready(function () {
         } else if (x === 7) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (col[y] === 0) {
-            $(`#${alphaArr[y]}${x}`).html('');
-            $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            if (interactiveMode===0)
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            }
+            else
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              var thisHTML=$(`#${alphaArr[y]}${x}`).html();
+              
+            
+              //Add div
+              thisHTML=thisHTML+"<div> ";
+              //  For loop add row div
+              for (var im=0;im<3;im++)
+              {
+                //    For loop add col div
+                thisHTML=thisHTML+`<div class="grid-x subrow${im}"> <div class="cell auto subrow${im}"></div> `;
+                
+                for (var imn=0;imn<3;imn++)
+                {
+                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  //    Add ids and classes
+                  //    Close col div
+                }
+                //  Close row div
+                thisHTML=thisHTML+'<div class="cell auto"></div> </div>';
+              }
+              //Close div
+              thisHTML=thisHTML+" </div>";
+              $(`#${alphaArr[y]}${x}`).html(thisHTML);
+              
+            }
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
@@ -151,8 +438,39 @@ $(document).ready(function () {
         } else if (x === 8) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (col[y] === 0) {
-            $(`#${alphaArr[y]}${x}`).html('');
-            $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            if (interactiveMode===0)
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              $(`#${alphaArr[y]}${x}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
+            }
+            else
+            {
+              $(`#${alphaArr[y]}${x}`).html('');
+              var thisHTML=$(`#${alphaArr[y]}${x}`).html();
+              
+            
+              //Add div
+              thisHTML=thisHTML+"<div> ";
+              //  For loop add row div
+              for (var im=0;im<3;im++)
+              {
+                //    For loop add col div
+                thisHTML=thisHTML+`<div class="grid-x subrow${im}"> <div class="cell auto subrow${im}"></div> `;
+                
+                for (var imn=0;imn<3;imn++)
+                {
+                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  //    Add ids and classes
+                  //    Close col div
+                }
+                //  Close row div
+                thisHTML=thisHTML+'<div class="cell auto"></div> </div>';
+              }
+              //Close div
+              thisHTML=thisHTML+" </div>";
+              $(`#${alphaArr[y]}${x}`).html(thisHTML);
+              
+            }
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
