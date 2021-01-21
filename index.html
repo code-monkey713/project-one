@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>An image for Sudoku</title>
+  <title>Themed Sudoku</title>
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/foundation.css">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -81,8 +81,10 @@
 
     <!-- Start Over button which is hidden until theme and difficulty are selected -->
     <div class="grid-x text-center">
-      <div class="cell small-12">
+      <div class="button-group align-justify small-12">
+        <div class="button tiny" id="checkBtn">Check</div>
         <button class="button small hide" id="reset">Start Over</button>
+        <div class="button tiny" id="hintBtn">Hint</div>
       </div>
     </div>
 
@@ -250,11 +252,10 @@
     <br>
 
     <!-- Make text box for scrolling interactive mode -->
-    <div class="grid-x">
-      <button class="button small " id="checkBtn">Check</button>
-      <button class="button small " id="hintBtn">Hint</button>
-      <div class="grid-y ">
-        <h3>Steps for Solve</h3>
+    <div class="grid-x text-center">
+      <div class="cell text-center">
+        <h4>Steps for Solve</h4>
+        <div id="interactiveDiv"></div>
       </div>
     </div>
 
