@@ -951,10 +951,10 @@ $(document).ready(function () {
         
         // console.log(sudokuBoardAll);
 
-      var emptyArrForRender = [];
-      emptyArrForRender.push(sudokuBoardAll);
-      renderBoard(emptyArrForRender);
-      console.log(sudokuBoardAll);
+      // var emptyArrForRender = [];
+      // emptyArrForRender.push(sudokuBoardAll);
+      // renderBoard(emptyArrForRender);
+      // console.log(sudokuBoardAll);
 
     }
   });
