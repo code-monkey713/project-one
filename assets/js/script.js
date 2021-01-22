@@ -6,7 +6,7 @@ $(document).ready(function () {
   let mediumBoard = [];
   let hardBoard = [];
   let difficultySelected;
-  let interactiveMode = false;
+  let optionSelected = false;
   let currBoard = [];
   let setTheme = false;
   let setDifficulty = false;
