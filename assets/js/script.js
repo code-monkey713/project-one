@@ -63,13 +63,14 @@ $(document).ready(function () {
   // function to render the board from array of numbers passed to
   function renderBoard(arr) {
     console.log(arr);
+    var numbers1to9=[1,2,3,4,5,6,7,8,9];
     let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
     for (let x = 0; x < arr[0].length; x++) {
       let col = arr[0][x];
       for (let y = 0; y < 9; y++) {
         if (x === 0) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
-          if (col[y] === 0) {
+          if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
             {
               $(`#${alphaArr[y]}${x}`).html('');
@@ -91,7 +92,19 @@ $(document).ready(function () {
                 
                 for (var imn=0;imn<3;imn++)
                 {
-                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  console.log(col[y].toString());
+                  console.log('For the subsubBox');
+                  console.log((3*im+imn+1).toString());
+                  // 
+                  if (col[y].toString().includes((3*im+imn+1).toString()))
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;">${(3*im+imn+1).toString()}</p> </div> `;
+                  }
+                  else
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;"></p> </div> `;
+                  }
+                  
                   //    Add ids and classes
                   //    Close col div
                 }
@@ -119,7 +132,7 @@ $(document).ready(function () {
         }
         else if (x === 1) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
-          if (col[y] === 0) {
+          if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
             {
               $(`#${alphaArr[y]}${x}`).html('');
@@ -141,7 +154,18 @@ $(document).ready(function () {
                 
                 for (var imn=0;imn<3;imn++)
                 {
-                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  console.log(col[y].toString());
+                  console.log('For the subsubBox');
+                  console.log((3*im+imn+1).toString());
+                  // 
+                  if (col[y].toString().includes((3*im+imn+1).toString()))
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;">${(3*im+imn+1).toString()}</p> </div> `;
+                  }
+                  else
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;"></p> </div> `;
+                  }
                   //    Add ids and classes
                   //    Close col div
                 }
@@ -160,7 +184,7 @@ $(document).ready(function () {
           }
         } else if (x === 2) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
-          if (col[y] === 0) {
+          if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
             {
               $(`#${alphaArr[y]}${x}`).html('');
@@ -182,7 +206,18 @@ $(document).ready(function () {
                 
                 for (var imn=0;imn<3;imn++)
                 {
-                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  console.log(col[y].toString());
+                  console.log('For the subsubBox');
+                  console.log((3*im+imn+1).toString());
+                  // 
+                  if (col[y].toString().includes((3*im+imn+1).toString()))
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;">${(3*im+imn+1).toString()}</p> </div> `;
+                  }
+                  else
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;"></p> </div> `;
+                  }
                   //    Add ids and classes
                   //    Close col div
                 }
@@ -201,7 +236,7 @@ $(document).ready(function () {
           }
         } else if (x === 3) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
-          if (col[y] === 0) {
+          if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
             {
               $(`#${alphaArr[y]}${x}`).html('');
@@ -223,7 +258,18 @@ $(document).ready(function () {
                 
                 for (var imn=0;imn<3;imn++)
                 {
-                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  console.log(col[y].toString());
+                  console.log('For the subsubBox');
+                  console.log((3*im+imn+1).toString());
+                  // 
+                  if (col[y].toString().includes((3*im+imn+1).toString()))
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;">${(3*im+imn+1).toString()}</p> </div> `;
+                  }
+                  else
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;"></p> </div> `;
+                  }
                   //    Add ids and classes
                   //    Close col div
                 }
@@ -242,7 +288,7 @@ $(document).ready(function () {
           }
         } else if (x === 4) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
-          if (col[y] === 0) {
+          if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
             {
               $(`#${alphaArr[y]}${x}`).html('');
@@ -264,7 +310,18 @@ $(document).ready(function () {
                 
                 for (var imn=0;imn<3;imn++)
                 {
-                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  console.log(col[y].toString());
+                  console.log('For the subsubBox');
+                  console.log((3*im+imn+1).toString());
+                  // 
+                  if (col[y].toString().includes((3*im+imn+1).toString()))
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;">${(3*im+imn+1).toString()}</p> </div> `;
+                  }
+                  else
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;"></p> </div> `;
+                  }
                   //    Add ids and classes
                   //    Close col div
                 }
@@ -283,7 +340,7 @@ $(document).ready(function () {
           }
         } else if (x === 5) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
-          if (col[y] === 0) {
+          if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
             {
               $(`#${alphaArr[y]}${x}`).html('');
@@ -305,7 +362,18 @@ $(document).ready(function () {
                 
                 for (var imn=0;imn<3;imn++)
                 {
-                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  console.log(col[y].toString());
+                  console.log('For the subsubBox');
+                  console.log((3*im+imn+1).toString());
+                  // 
+                  if (col[y].toString().includes((3*im+imn+1).toString()))
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;">${(3*im+imn+1).toString()}</p> </div> `;
+                  }
+                  else
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;"></p> </div> `;
+                  }
                   //    Add ids and classes
                   //    Close col div
                 }
@@ -324,7 +392,7 @@ $(document).ready(function () {
           }
         } else if (x === 6) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
-          if (col[y] === 0) {
+          if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
             {
               if (interactiveMode===0)
@@ -348,7 +416,18 @@ $(document).ready(function () {
                 
                 for (var imn=0;imn<3;imn++)
                 {
-                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  console.log(col[y].toString());
+                  console.log('For the subsubBox');
+                  console.log((3*im+imn+1).toString());
+                  // 
+                  if (col[y].toString().includes((3*im+imn+1).toString()))
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;">${(3*im+imn+1).toString()}</p> </div> `;
+                  }
+                  else
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;"></p> </div> `;
+                  }
                   //    Add ids and classes
                   //    Close col div
                 }
@@ -377,7 +456,18 @@ $(document).ready(function () {
                 
                 for (var imn=0;imn<3;imn++)
                 {
-                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  console.log(col[y].toString());
+                  console.log('For the subsubBox');
+                  console.log((3*im+imn+1).toString());
+                  // 
+                  if (col[y].toString().includes((3*im+imn+1).toString()))
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;">${(3*im+imn+1).toString()}</p> </div> `;
+                  }
+                  else
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;"></p> </div> `;
+                  }
                   //    Add ids and classes
                   //    Close col div
                 }
@@ -396,7 +486,7 @@ $(document).ready(function () {
           }
         } else if (x === 7) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
-          if (col[y] === 0) {
+          if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
             {
               $(`#${alphaArr[y]}${x}`).html('');
@@ -418,7 +508,18 @@ $(document).ready(function () {
                 
                 for (var imn=0;imn<3;imn++)
                 {
-                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  console.log(col[y].toString());
+                  console.log('For the subsubBox');
+                  console.log((3*im+imn+1).toString());
+                  // 
+                  if (col[y].toString().includes((3*im+imn+1).toString()))
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;">${(3*im+imn+1).toString()}</p> </div> `;
+                  }
+                  else
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;"></p> </div> `;
+                  }
                   //    Add ids and classes
                   //    Close col div
                 }
@@ -437,7 +538,7 @@ $(document).ready(function () {
           }
         } else if (x === 8) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
-          if (col[y] === 0) {
+          if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
             {
               $(`#${alphaArr[y]}${x}`).html('');
@@ -459,7 +560,18 @@ $(document).ready(function () {
                 
                 for (var imn=0;imn<3;imn++)
                 {
-                  thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"></div> `;
+                  console.log(col[y].toString());
+                  console.log('For the subsubBox');
+                  console.log((3*im+imn+1).toString());
+                  // 
+                  if (col[y].toString().includes((3*im+imn+1).toString()))
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;">${(3*im+imn+1).toString()}</p> </div> `;
+                  }
+                  else
+                  {
+                    thisHTML=thisHTML+`<div class="grid-y cell subSquare subsubbox${Math.floor(imn/3)} " id="${alphaArr[y]}${x}_${im}${imn}"> <p style="font-size: 0.1rem; margin-top:3rem; margin-bottom:3rem;"></p> </div> `;
+                  }
                   //    Add ids and classes
                   //    Close col div
                 }
@@ -478,7 +590,7 @@ $(document).ready(function () {
           }
         // if (x === 0) {
         //   $(`#A${y}`).html(col[y]);
-        //   if (col[y] === 0) {
+        //   if (!numbers1to9.includes(col[y])) {
         //     $(`#A${y}`).html('');
         //     $(`#A${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
         //     imgIndex++;
@@ -489,7 +601,7 @@ $(document).ready(function () {
         // }
         // } else if (x === 1) {
         //   $(`#B${y}`).html(col[y]);
-        //   if (col[y] === 0) {
+        //   if (!numbers1to9.includes(col[y])) {
         //     $(`#B${y}`).html('');
         //     $(`#B${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
         //     imgIndex++;
@@ -499,7 +611,7 @@ $(document).ready(function () {
         //   }
         // } else if (x === 2) {
         //   $(`#C${y}`).html(col[y]);
-        //   if (col[y] === 0) {
+        //   if (!numbers1to9.includes(col[y])) {
         //     $(`#C${y}`).html('');
         //     $(`#C${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
         //     imgIndex++;
@@ -509,7 +621,7 @@ $(document).ready(function () {
         //   }
         // } else if (x === 3) {
         //   $(`#D${y}`).html(col[y]);
-        //   if (col[y] === 0) {
+        //   if (!numbers1to9.includes(col[y])) {
         //     $(`#D${y}`).html('');
         //     $(`#D${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
         //     imgIndex++;
@@ -519,7 +631,7 @@ $(document).ready(function () {
         //   }
         // } else if (x === 4) {
         //   $(`#E${y}`).html(col[y]);
-        //   if (col[y] === 0) {
+        //   if (!numbers1to9.includes(col[y])) {
         //     $(`#E${y}`).html('');
         //     $(`#E${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
         //     imgIndex++;
@@ -529,7 +641,7 @@ $(document).ready(function () {
         //   }
         // } else if (x === 5) {
         //   $(`#F${y}`).html(col[y]);
-        //   if (col[y] === 0) {
+        //   if (!numbers1to9.includes(col[y])) {
         //     $(`#F${y}`).html('');
         //     $(`#F${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
         //     imgIndex++;
@@ -539,7 +651,7 @@ $(document).ready(function () {
         //   }
         // } else if (x === 6) {
         //   $(`#G${y}`).html(col[y]);
-        //   if (col[y] === 0) {
+        //   if (!numbers1to9.includes(col[y])) {
         //     $(`#G${y}`).html('');
         //     $(`#G${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
         //     imgIndex++;
@@ -549,7 +661,7 @@ $(document).ready(function () {
         //   }
         // } else if (x === 7) {
         //   $(`#H${y}`).html(col[y]);
-        //   if (col[y] === 0) {
+        //   if (!numbers1to9.includes(col[y])) {
         //     $(`#H${y}`).html('');
         //     $(`#H${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
         //     imgIndex++;
@@ -559,7 +671,7 @@ $(document).ready(function () {
         //   }
         // } else if (x === 8) {
         //   $(`#I${y}`).html(col[y]);
-        //   if (col[y] === 0) {
+        //   if (!numbers1to9.includes(col[y])) {
         //     $(`#I${y}`).html('');
         //     $(`#I${y}`).css('background-image', 'url(' + imgArray[imgIndex] + ')');
         //     imgIndex++;
@@ -707,7 +819,8 @@ $(document).ready(function () {
         var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
         var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
         var sudokuBoardAll=sBAFPResults[3];
-        renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+        //renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+        renderBoard(sudokuBoardAll);
         console.log(sudokuBoardAll);
     }
   });
@@ -781,7 +894,7 @@ $(document).ready(function () {
       }
     }
     setDifficulty = true;
-    renderBoard(currBoard);
+    // renderBoard(currBoard);
 
     if (setTheme === true && setDifficulty === true) {
       $('#reset').removeClass('hide');
@@ -790,7 +903,10 @@ $(document).ready(function () {
       var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
       var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
       var sudokuBoardAll=sBAFPResults[3];
-      renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+      // renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+      var emptyArrForRender=[];
+      emptyArrForRender.push(sudokuBoardAll);
+      renderBoard(emptyArrForRender);
       // var sBAFPResults = sBATrySolver(sudokuBoardAll); 
       // var sudokuBoardAll = sBAFPResults[3];
       // console.log('sudokuBoardAll 3: '); 
