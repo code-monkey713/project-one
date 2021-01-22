@@ -917,14 +917,182 @@ function testIsSolutionTheSequel(sudokuBoardAll)
   var rowCounts=[];
   var colCounts=[];
   var subBoxCounts=[];
+  var rowSolved=[0,0,0,0,0,0,0,0,0];
+  var colSolved=[0,0,0,0,0,0,0,0,0];
+  var boxSolved=[0,0,0,0,0,0,0,0,0];
+  var maxsudokuBoardAll=0;
+  debugger;
 
-  var rowSolved=[];
-  var colSolved=[];
-  var subBoxSolved=[];
+  for (var i=0;i<9;i++)
+  {
+    rowCounts.push([0,0,0,0,0,0,0,0,0]);
+    colCounts.push([0,0,0,0,0,0,0,0,0]);
+    subBoxCounts.push([0,0,0,0,0,0,0,0,0]);
+  }
+  var maxOccurrencesInRCsBUnit=0;
+
+
+  for (var i=0;i<9;i++)
+  {
+    var rowI=sudokuBoardAll[i];
+    for (var j=0;j<9;j++)
+    {
+      if (rowI[j]<=9 && rowI[j]>0)
+      {
+      rowCounts[i][parseInt(rowI[j])-1]=rowCounts[i][parseInt(rowI[j])-1]+1;
+      maxOccurrencesInRCsBUnit=Math.max(maxOccurrencesInRCsBUnit,rowCounts[i][parseInt(rowI[j])-1]);
+      }
+    }
+    var colI=getCol(sudokuBoardAll,i);
+    for (var j=0;j<9;j++)
+    {
+      if (colI[j]<=9 && colI[j]>0)
+      {
+      colCounts[i][parseInt(colI[j])-1]=colCounts[i][parseInt(colI[j])-1]+1;
+      maxOccurrencesInRCsBUnit=Math.max(maxOccurrencesInRCsBUnit,colCounts[i][parseInt(colI[j])-1]);
+      }
+    }
+    var subBoxI=[];
+    var numbers1to9=[1,2,3,4,5,6,7,8,9];
+    var correspondingRows=[3*(Math.floor(i/3)), 1+3*(Math.floor(i/3)), 2+3*(Math.floor(i/3))];
+    // console.log(correspondingRows);
+    var correspondingCols=[3*(i-3*Math.floor((i)/3)), 1+3*(i-3*Math.floor((i)/3)), 2+3*(i-3*Math.floor((i)/3))];
+    // console.log(correspondingCols);
+    for (var j=3*(Math.floor(i/3)); j<3+3*(Math.floor(i/3));j++)
+    {
+        var tempsBArr=[];
+        for (var k=3*(i-3*Math.floor((i)/3));k<3+3*(i-3*Math.floor(i/3));k++)
+        {
+            if (sudokuBoardAll[j][k]!==0 && sudokuBoardAll[j][k]<=9)
+            {
+                tempsBArr.push(sudokuBoardAll[j][k]);
+                subBoxCounts[i][parseInt(sudokuBoardAll[j][k])-1]=subBoxCounts[i][parseInt(sudokuBoardAll[j][k])-1]+1;
+                maxOccurrencesInRCsBUnit=Math.max(maxOccurrencesInRCsBUnit,subBoxCounts[i][parseInt(sudokuBoardAll[j][k])-1]);
+            }
+            else
+            {
+              tempsBArr.push(0);
+            }
+        
+        
+        }
+        subBoxI.push(tempsBArr);
+    }
+  }
+
+  
+  //Check if all rowSolved, colSolved,subBoxSolved
+  for (var i=0;i<9;i++)
+  {
+    maxsudokuBoardAll=Math.max(maxsudokuBoardAll,Math.max(...sudokuBoardAll[i]));
+  }
+
+  if (maxsudokuBoardAll===9)
+  {
+    var allRise=1;
+    for (var i=0;i<9;i++)
+    {
+      //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
+      var rowI=[];
+      for (var j=0;j<9;j++)
+      {
+        rowI.push(sudokuBoardAll[i][j]);
+      }
+      if ((setdiff(numbers1to9,rowI)===undefined || setdiff(numbers1to9,rowI).length===0) && rowI.sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+      {
+        rowSolved[i]=1;
+        
+      }
+      else
+      {
+        allRise=0;
+      }
+
+      //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
+      var colI=[];
+      for (var j=0;j<9;j++)
+      {
+        colI.push(sudokuBoardAll[j][i]);
+      }
+      if ((setdiff(numbers1to9,colI)===undefined || setdiff(numbers1to9,colI).length===0) && colI.sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+      {
+        colSolved[i]=1;
+      }
+      else
+      {
+        allRise=0;
+      }
+
+      var subBox=[];
+      for (var j=3*(Math.floor(i/3)); j<3+3*(Math.floor(i/3));j++)
+      {
+          var tempsBArr=[];
+          for (var k=3*(i-3*Math.floor((i)/3));k<3+3*(i-3*Math.floor(i/3));k++)
+          {
+              if (sudokuBoardAll[j][k]!==0)
+              {
+                  tempsBArr.push(sudokuBoardAll[j][k]);
+                  // BoxFilledPos=BoxFilledPos+1;
+                  // boxUsedValues.push(sudokuBoardAll[j][k]);
+              }
+              else
+              {
+              tempsBArr.push(0);
+              }
+          
+          
+          }
+          subBox.push(tempsBArr);
+      }
+
+      //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
+      if ((setdiff(numbers1to9,subBoxToArray(subBox))===undefined || setdiff(numbers1to9,subBoxToArray(subBox)).length===0) && subBoxToArray(subBox).sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+      {
+        boxSolved[i]=1;
+      }
+      else
+      {
+        allRise=0;
+      }
+
+      
+
+
+    }
+
+    debugger;
+    //Check if duplicate entries
+    //  If so, set to -1
+    if (maxOccurrencesInRCsBUnit>1)
+    {
+      return -1;
+    }
+
+
+    if (allRise===1)
+      {
+        boardSolved=1;
+        return boardSolved;
+      }
+      else
+      {
+        boardSolved=0;
+        return boardSolved;
+      }
+  }
+  else
+  {
+    boardSolved=0;
+    return boardSolved;
+  }
+  //  If so, set to 1
+  //  If not, set to 0
+
+  
 
   var duplicateEntry=[];
 
-  return [boardSolved,invalidEntriesIDs];
+  // return [boardSolved,invalidEntriesIDs];
 }
 
 function testIsSolutionRevamped(sudokuBoardAll)
@@ -955,7 +1123,7 @@ function testIsSolutionRevamped(sudokuBoardAll)
       for (var i=0;i<9;i++)
       {
         //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
-        if (setdiff(numbers1to9,sudokuBoardAll[i])===undefined && sudokuBoardAll[i].sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+        if ((setdiff(numbers1to9,sudokuBoardAll[i])===undefined || setdiff(numbers1to9,sudokuBoardAll[i]).length===0) && sudokuBoardAll[i].sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
         {
           rowSolved[i]=1;
           
@@ -966,7 +1134,7 @@ function testIsSolutionRevamped(sudokuBoardAll)
         }
 
         //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
-        if (setdiff(numbers1to9,getCol(sudokuBoardAll,i))===undefined && getCol(sudokuBoardAll,i).sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+        if ((setdiff(numbers1to9,getCol(sudokuBoardAll,i))===undefined || setdiff(numbers1to9,getCol(sudokuBoardAll,i)).length===0) && getCol(sudokuBoardAll,i).sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
         {
           colSolved[i]=1;
         }
@@ -998,7 +1166,7 @@ function testIsSolutionRevamped(sudokuBoardAll)
         }
 
         //JavaScript does not have a built-in sort method like MATLAB does, so....gonna try toString comparison :|
-        if (setdiff(numbers1to9,subBox)===undefined && subBoxToArray(subBox).sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
+        if ((setdiff(numbers1to9,subBoxToArray(subBox))===undefined || setdiff(numbers1to9,subBoxToArray(subBox)).length===0) && subBoxToArray(subBox).sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
         {
           boxSolved[i]=1;
         }

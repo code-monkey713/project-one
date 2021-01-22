@@ -941,6 +941,8 @@ $(document).ready(function () {
         //renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
 
         renderBoard(currBoard);
+        console.log(testIsSolutionTheSequel(currBoard[0]));
+        debugger;
         if (valueToChangeIncludedValid===1)
         {
           
@@ -1054,6 +1056,9 @@ $(document).ready(function () {
       var emptyArrForRender=[];
       emptyArrForRender.push(sudokuBoardAll);
       renderBoard(emptyArrForRender);
+      currBoard=emptyArrForRender;
+      // console.log(testIsSolutionTheSequel(currBoard[0]));
+      debugger;
       lastValidRestorePoints.push(emptyArrForRender);
       // var sBAFPResults = sBATrySolver(sudokuBoardAll); 
       // var sudokuBoardAll = sBAFPResults[3];
@@ -1096,15 +1101,20 @@ $(document).ready(function () {
   $("#checkBtn").on('click', function()
 {
   // debugger;
-  var checkThisBoard=testIsSolutionRevamped(currBoard[0]);
-    if (checkThisBoard)
+  var checkThisBoard=testIsSolutionTheSequel(currBoard[0]);
+  debugger;
+    if (checkThisBoard===1)
     {
       $("#checkBtn").addClass('green');
+    }
+    else if (checkThisBoard===0)
+    {
+      $("#checkBtn").addClass('blue');
     }
     else
     {
       $("#checkBtn").addClass('red');
-      console.log(checkThisBoard);
+      // console.log(checkThisBoard);
     }
 });
 
