@@ -229,6 +229,12 @@ function initializeAllOptions (sudokuBoard)
                   }
                 }
                 console.log(`Remove ${parseInt(thisPermissiveString[0])} and ${parseInt(thisPermissiveString[1])} from all entries in row ${i} except ${alphaArr[found2ValuesRemoveFromPermissiveIndices[found2ValuesRemoveFromPermissiveIndices.length-2]]}${i} and ${alphaArr[found2ValuesRemoveFromPermissiveIndices[found2ValuesRemoveFromPermissiveIndices.length-1]]}${i}`);
+                var tempDiv=$("<div>");
+                tempDiv.addClass("card-section");
+                var tempP=$("<p>");
+                tempP.text(`Remove ${parseInt(thisPermissiveString[0])} and ${parseInt(thisPermissiveString[1])} from all entries in row ${i} except ${alphaArr[found2ValuesRemoveFromPermissiveIndices[found2ValuesRemoveFromPermissiveIndices.length-2]]}${i} and ${alphaArr[found2ValuesRemoveFromPermissiveIndices[found2ValuesRemoveFromPermissiveIndices.length-1]]}${i}`);
+                tempDiv.append(tempP);
+                $('#interactiveDivCard').append(tempDiv);
                 // debugger;
                 // found2ValuesRemoveFromPermissiveIndices.push(sudokuBoardAll[i].findIndex(element => element===found2ValuesTable2PresentVals[f2vi]));
               }
@@ -293,6 +299,12 @@ function initializeAllOptions (sudokuBoard)
                 RPIToRemove.push(RowPermissiveIndices[getCol(individualNumberAppearances,individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]-1).findIndex(element => element===1)]);
                 sudokuBoardAll[i][RPIToRemove[RPIToRemove.length-1]]=individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO];
                 console.log(`Since ${individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]} only appears once in this row, entry ${alphaArr[RPIToRemove[RPIToRemove.length-1]]}${i} must be ${individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]}.`);
+                var tempDiv=$("<div>");
+                tempDiv.addClass("card-section");
+                var tempP=$("<p>");
+                tempP.text(`Since ${individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]} only appears once in this row, entry ${alphaArr[RPIToRemove[RPIToRemove.length-1]]}${i} must be ${individualNumberAppearancesSumOnlyAppearedOnce[iNASOAO]}.`);
+                tempDiv.append(tempP);
+                $('#interactiveDivCard').append(tempDiv);
                 }
               }
               
