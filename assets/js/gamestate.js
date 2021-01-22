@@ -910,6 +910,23 @@ function testIsSolution(rowSolved,colSolved,boxSolved,sudokuBoardAll)
     return boardSolved;
 }
 
+function testIsSolutionTheSequel(sudokuBoardAll)
+{
+  var numbers1to9=[1,2,3,4,5,6,7,8,9];
+  let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+  var rowCounts=[];
+  var colCounts=[];
+  var subBoxCounts=[];
+
+  var rowSolved=[];
+  var colSolved=[];
+  var subBoxSolved=[];
+
+  var duplicateEntry=[];
+
+  return [boardSolved,invalidEntriesIDs];
+}
+
 function testIsSolutionRevamped(sudokuBoardAll)
 {
     //Computes and returns the boolean variable boardSolved
