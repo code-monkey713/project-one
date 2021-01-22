@@ -936,6 +936,7 @@ $(document).ready(function () {
         // var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
         // var sudokuBoardAll=sBAFPResults[3];
         //renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+
         renderBoard(currBoard);
         if (valueToChangeIncludedValid===1)
         {
@@ -949,12 +950,23 @@ $(document).ready(function () {
         }
         
         // console.log(sudokuBoardAll);
+
+      var emptyArrForRender = [];
+      emptyArrForRender.push(sudokuBoardAll);
+      renderBoard(emptyArrForRender);
+      console.log(sudokuBoardAll);
+
     }
   });
 
-  $('body').keydown(function (e) {
-    $(`#${currSquare}`).html(e.key);
-    getState(currBoard, currSquare, parseInt(e.key));
+  $('body').keypress(function (e) {
+    let charCode = e.which;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      console.log('You must enter a number!');
+    } else {
+      $(`#${currSquare}`).html(e.key);
+      getState(currBoard, currSquare, parseInt(e.key));
+    }
   });
 
   $('.theme').on('click', function () {
