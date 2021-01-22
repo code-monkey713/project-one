@@ -184,7 +184,9 @@ $(document).ready(function () {
               imgIndex = 0;
             }
           }
-        } else if (x === 2) {
+        }
+        else if (x === 2) 
+        {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
@@ -236,7 +238,8 @@ $(document).ready(function () {
               imgIndex = 0;
             }
           }
-        } else if (x === 3) {
+        } 
+        else if (x === 3) {
           $(`#${alphaArr[y]}${x}`).html(col[y]);
           if (!numbers1to9.includes(col[y])) {
             if (interactiveMode===0)
