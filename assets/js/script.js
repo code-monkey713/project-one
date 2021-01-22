@@ -6,7 +6,7 @@ $(document).ready(function () {
   let mediumBoard = [];
   let hardBoard = [];
   let difficultySelected;
-  let interactiveMode = false;
+  let optionSelected = false;
   let currBoard = [];
   let setTheme = false;
   let setDifficulty = false;
@@ -820,7 +820,9 @@ $(document).ready(function () {
         var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
         var sudokuBoardAll=sBAFPResults[3];
         //renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
-        renderBoard(sudokuBoardAll);
+        var emptyArrForRender=[];
+        emptyArrForRender.push(sudokuBoardAll);
+        renderBoard(emptyArrForRender);
         console.log(sudokuBoardAll);
     }
   });
