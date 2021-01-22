@@ -752,6 +752,7 @@ $(document).ready(function () {
   // function to get the value from the playing squared and add the value to the index
   function getState(currBoard, pressedID, valueToChange) {
     console.log(currBoard);
+    localStorage.setItem("currentBoard", JSON.stringify(currBoard[0]));
     let currBoardExtract = currBoard[0];
     let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
     let split = pressedID.split("");
