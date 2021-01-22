@@ -80,7 +80,6 @@
 
     <!-- Gameboard grid below, each cell with a unique ID -->
     <div class="text-center gameBoard hide" id="gameBoard">
-
       <div class="grid-x row0">
         <div class="cell auto"></div>
         <div class="grid-y cell square box1" id="A0"></div>
@@ -203,39 +202,22 @@
       <!-- Section for the numbers to fill in "blank" cells -->
       <div class="grid-x grid-margin-align text-center">
         <div class="cell instruction">
-          <button class="button">Use the buttons below to fill in the square selected above</button>
+          <h4>Use the buttons below to fill in the square selected above</h4>
+          <h6>(Rows from TOP to bottom are 0-8 and Columns from Left to Right are A-I)</h6>
         </div>
       </div>
       <div class="grid-x">
-        <div class="cell auto"></div>
-        <div class="grid-y">
-          <div class="cell small-1"><button class="button secondary fieldBtn" id="btn1" value="1">1</button></div>
+        <div class="stacked-for-small button-group align-center">
+          <button class="button secondary fieldBtn" id="btn1" value="1">1</button>
+          <button class="button secondary fieldBtn" id="btn2" value="2">2</button>
+          <button class="button secondary fieldBtn" id="btn3" value="3">3</button>
+          <button class="button secondary fieldBtn" id="btn4" value="4">4</button>
+          <button class="button secondary fieldBtn" id="btn5" value="5">5</button>
+          <button class="button secondary fieldBtn" id="btn6" value="6">6</button>
+          <button class="button secondary fieldBtn" id="btn7" value="7">7</button>
+          <button class="button secondary fieldBtn" id="btn8" value="8">8</button>
+          <button class="button secondary fieldBtn" id="btn9" value="9">9</button>
         </div>
-        <div class="grid-y">
-          <div class="cell small-1"><button class="button secondary fieldBtn" id="btn2" value="2">2</button></div>
-        </div>
-        <div class="grid-y">
-          <div class="cell small-1"><button class="button secondary fieldBtn" id="btn3" value="3">3</button></div>
-        </div>
-        <div class="grid-y">
-          <div class="cell small-1"><button class="button secondary fieldBtn" id="btn4" value="4">4</button></div>
-        </div>
-        <div class="grid-y">
-          <div class="cell small-1"><button class="button secondary fieldBtn" id="btn5" value="5">5</button></div>
-        </div>
-        <div class="grid-y">
-          <div class="cell small-1"><button class="button secondary fieldBtn" id="btn6" value="6">6</button></div>
-        </div>
-        <div class="grid-y">
-          <div class="cell small-1"><button class="button secondary fieldBtn" id="btn7" value="7">7</button></div>
-        </div>
-        <div class="grid-y">
-          <div class="cell small-1"><button class="button secondary fieldBtn" id="btn8" value="8">8</button></div>
-        </div>
-        <div class="grid-y">
-          <div class="cell small-1"><button class="button secondary fieldBtn" id="btn9" value="9">9</button></div>
-        </div>
-        <div class="cell auto"></div>
       </div>
     </div>
 
