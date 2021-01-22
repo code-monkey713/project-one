@@ -13,6 +13,8 @@ $(document).ready(function () {
   let arrayIDsNotToChange=[];
   let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
   var interactiveMode=1;
+  let lastValidRestorePoints=[];
+  let invalidEntriesMasterList=[];
 
   // function for getting giphy images URL and store it in an array
   function getPix(topic) {
@@ -685,6 +687,68 @@ $(document).ready(function () {
   };
 };
 
+  function colorizeInvalidEntries(invalidEntriesIDEntries)
+  {
+    var getAllInvalid=document.getElementsByClassName('invalidEntry');
+    // debugger;
+    //Colorize invalid entries
+    if (typeof(invalidEntriesIDEntries)==='object')
+    {
+      for (var i=0;i<invalidEntriesIDEntries.length;i++)
+      {
+        if (getAllInvalid.length>0)
+        {
+          if (!getAllInvalid.includes(invalidEntriesIDEntries[i]))
+          {
+            $(`#${invalidEntriesIDEntries[i]}`).addClass('invalidEntry');
+          }
+        }
+        else
+        {
+          $(`#${invalidEntriesIDEntries[i]}`).addClass('invalidEntry');
+        }
+          
+      }
+
+      if (getAllInvalid.length>0)
+      {
+        for (var i=0;i<getAllInvalid.length;i++)
+        {
+            if (!invalidEntriesIDEntries.includes(getAllInvalid[i]))
+            {
+              $(`#${getAllInvalid[i]}`).removeClass('invalidEntry');
+            }
+        }
+      }
+    }
+    else
+    {
+      if (getAllInvalid.length>0)
+      {
+        if (!getAllInvalid.includes(invalidEntriesIDEntries))
+        {
+          $(`#${invalidEntriesIDEntries}`).addClass('invalidEntry');
+        }
+      }
+      else
+      {
+        $(`#${invalidEntriesIDEntries}`).addClass('invalidEntry');
+      }
+
+      // if (getAllInvalid.length>0)
+      // {
+      //   if (getAllInvalid[i]!==invalidEntriesIDEntries.includes())
+      //   {
+      //     $(`#${getAllInvalid[i]}`).removeClass('invalidEntry');
+      //   }
+      // }
+
+    }
+
+    //Make sure valid entries that were previously invalid are not still marked as invalid
+    
+  };
+
   // function to get the value from the playing squared and add the value to the index
   function getState(currBoard, pressedID, valueToChange) {
     console.log(currBoard);
@@ -696,6 +760,55 @@ $(document).ready(function () {
     let rowToBeChanged = parseInt(split[1]);
     currBoardExtract[rowToBeChanged][colToBeChanged] = valueToChange;
   };
+
+    // function to get the value from the playing squared and add the value to the index
+    function getStateComparable(currBoard, pressedID, valueToChange) {
+      console.log(currBoard);
+      
+      let currBoardExtract = currBoard[0];
+
+      var sudokuBoardAllInitial = initializeAllOptions(currBoardExtract);
+      var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
+      var sudokuBoardAll=sBAFPResults[3];
+
+      let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
+      let split = pressedID.split("");
+      let colValue = split[0];
+      let colToBeChanged = alphaArr.indexOf(colValue);
+      let rowToBeChanged = parseInt(split[1]);
+
+      let getValidEntryOptions = sudokuBoardAll[rowToBeChanged][colToBeChanged];
+      let validEntryOptionsList=[];
+      var valueToChangeIncludedValid=0;
+      // let invalidEntry=[];
+      var thisPermissibleString=getValidEntryOptions.toString();
+      
+      for (var i=0;i<thisPermissibleString.length;i++)
+      {
+        validEntryOptionsList.push(parseInt(thisPermissibleString[i]));
+        if (parseInt(thisPermissibleString[i])===valueToChange)
+        {
+          valueToChangeIncludedValid=1;
+        }
+      }
+      
+      // lastValidRestorePoints.push(currBoardExtract);
+      // debugger;
+      if (valueToChangeIncludedValid===1)
+      {
+        currBoardExtract[rowToBeChanged][colToBeChanged] = valueToChange;
+        var emptyReturn=[valueToChangeIncludedValid,[]];
+        return emptyReturn;
+      }
+      else
+      {
+        currBoardExtract[rowToBeChanged][colToBeChanged] = valueToChange;
+        // invalidEntry.push(pressedID);
+        return [valueToChangeIncludedValid,[pressedID,validEntryOptionsList,valueToChange]];
+      }
+
+      
+    };
 
   // function to erase the square from the playing board and array 
   function eraseSquare() {
@@ -815,15 +928,34 @@ $(document).ready(function () {
     if (!arrayIDsNotToChange.includes(currSquare))
     {
       $(`#${currSquare}`).html($(this).val());
-      getState(currBoard, currSquare, parseInt($(this).val()));
-        var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
-        var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
-        var sudokuBoardAll=sBAFPResults[3];
+      // getState(currBoard, currSquare, parseInt($(this).val()));
+        var getStateChecked=getStateComparable(currBoard, currSquare, parseInt($(this).val()));
+        var valueToChangeIncludedValid=getStateChecked[0];
+        var IDValidInvalidInfo=getStateChecked[1];
+        // var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+        // var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
+        // var sudokuBoardAll=sBAFPResults[3];
         //renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+
+        renderBoard(currBoard);
+        if (valueToChangeIncludedValid===1)
+        {
+          
+        }
+        else
+        {
+          invalidEntriesMasterList.push(IDValidInvalidInfo);
+          colorizeInvalidEntries(IDValidInvalidInfo[0]);
+
+        }
+        
+        // console.log(sudokuBoardAll);
+
       var emptyArrForRender = [];
       emptyArrForRender.push(sudokuBoardAll);
       renderBoard(emptyArrForRender);
       console.log(sudokuBoardAll);
+
     }
   });
 
@@ -919,6 +1051,7 @@ $(document).ready(function () {
       var emptyArrForRender=[];
       emptyArrForRender.push(sudokuBoardAll);
       renderBoard(emptyArrForRender);
+      lastValidRestorePoints.push(emptyArrForRender);
       // var sBAFPResults = sBATrySolver(sudokuBoardAll); 
       // var sudokuBoardAll = sBAFPResults[3];
       // console.log('sudokuBoardAll 3: '); 

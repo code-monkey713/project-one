@@ -192,3 +192,8 @@ img {
 .box9 {
   text-align: center;
 }
+
+.invalidEntry
+{
+  color:red;
+}
