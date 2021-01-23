@@ -1001,7 +1001,40 @@ $(document).ready(function () {
       console.log('You must enter a number!');
     } else {
       $(`#${currSquare}`).html(e.key);
-      getState(currBoard, currSquare, parseInt(e.key));
+      // getState(currBoard, currSquare, parseInt(e.key));
+      var getStateChecked=getStateComparable(currBoard, currSquare, parseInt(e.key));
+        var valueToChangeIncludedValid=getStateChecked[0];
+        var IDValidInvalidInfo=getStateChecked[1];
+        // var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+        // var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
+        // var sudokuBoardAll=sBAFPResults[3];
+        //renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+
+        if (interactiveMode===0)
+        {
+          renderBoard(currBoard);
+        }
+        else
+        {
+          var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+          var emptyArrForRenderII=[];
+          emptyArrForRenderII.push(sudokuBoardAllInitial);
+          renderBoard(emptyArrForRenderII);
+
+        }
+        
+        // console.log(testIsSolutionTheSequel(currBoard[0]));
+        // debugger;
+        if (valueToChangeIncludedValid===1)
+        {
+          lastValidRestorePoints.push(currBoard);
+        }
+        else
+        {
+          invalidEntriesMasterList.push(IDValidInvalidInfo);
+          colorizeInvalidEntries(IDValidInvalidInfo[0]);
+
+        }
     }
   });
 
