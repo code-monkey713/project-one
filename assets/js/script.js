@@ -12,7 +12,7 @@ $(document).ready(function () {
   let setDifficulty = false;
   let arrayIDsNotToChange=[];
   let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-  var interactiveMode=1;
+  var interactiveMode=0;
   let lastValidRestorePoints=[];
   let invalidEntriesMasterList=[];
 

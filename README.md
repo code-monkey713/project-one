@@ -25,9 +25,9 @@ Upon arriving at TSM's Themed Sudoku site, the playing board will not be viewabl
 
 See the following SCREENSHOTS to get an idea of what the "TSM's Themed Sudoku" looks like:
 
-![Themed Sudoku Image 1](./assets/readme-images/image1.JPG)
-![Themed Sudoku Image 2](./assets/readme-images/image2.JPG)
-![Themed Sudoku Image 3](./assets/readme-images/image3.JPG)
+![Themed Sudoku Image 1](./assets/readme-images/image1.PNG)
+![Themed Sudoku Image 2](./assets/readme-images/image2.PNG)
+![Themed Sudoku Image 3](./assets/readme-images/image3.PNG)
 
 For more information, please contact:
 
