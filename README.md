@@ -7,7 +7,7 @@ Sudoku is a very popular and unique game. If you are one of the millions or peop
 TSM's Themed Sudoku is a new and innovative way for you to enjoy your Sudoku "brain building" skills, with some hilarious background images to tickle your funny bone. Most Sudoku boards have the traditional "numbers given to you" filled in and the blank spaces as, well....blanks. With TSM's Themed Sudoku, not only can you select your difficulty level (easy, medium and hard), but you will also be able to select one of six themes. The blank spaces of the board will be filled with individual gifs/memes pertaining to the theme you selected. Once you select a cell and fill in a number, the background will go away, but the untouched cells will still show your fun theme for your entertainment.
 
 You can use TSM's Themed Sudoku here:
-https://code-monkey713.github.io/project-one/
+https://code-monkey713.github.io/theme-sudoku/
 
 ## Usage
 

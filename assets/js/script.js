@@ -12,7 +12,7 @@ $(document).ready(function () {
   let setDifficulty = false;
   let arrayIDsNotToChange=[];
   let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-  var interactiveMode=0;
+  var interactiveMode = 0;
   let lastValidRestorePoints=[];
   let invalidEntriesMasterList=[];
 
@@ -942,11 +942,11 @@ $(document).ready(function () {
         //renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
 
         renderBoard(currBoard);
-        console.log(testIsSolutionTheSequel(currBoard[0]));
-        debugger;
+        // console.log(testIsSolutionTheSequel(currBoard[0]));
+        // debugger;
         if (valueToChangeIncludedValid===1)
         {
-          
+          lastValidRestorePoints.push(currBoard);
         }
         else
         {
@@ -1044,6 +1044,7 @@ $(document).ready(function () {
       }
     }
     setDifficulty = true;
+    console.log(currBoard[0]);
     // renderBoard(currBoard);
 
     if (setTheme === true && setDifficulty === true) {
@@ -1056,10 +1057,11 @@ $(document).ready(function () {
       // renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
       var emptyArrForRender=[];
       emptyArrForRender.push(sudokuBoardAll);
-      renderBoard(emptyArrForRender);
-      currBoard=emptyArrForRender;
+      // renderBoard(emptyArrForRender);
+      // currBoard=emptyArrForRender;
+      renderBoard(currBoard);
       // console.log(testIsSolutionTheSequel(currBoard[0]));
-      debugger;
+      // debugger;
       lastValidRestorePoints.push(emptyArrForRender);
       // var sBAFPResults = sBATrySolver(sudokuBoardAll); 
       // var sudokuBoardAll = sBAFPResults[3];
@@ -1117,6 +1119,13 @@ $(document).ready(function () {
       $("#checkBtn").addClass('red');
       // console.log(checkThisBoard);
     }
+});
+
+$("#hintBtn").on('click', function()
+{
+  var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+  sBATrySolverForHint(sudokuBoardAllInitial);
+  // renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
 });
 
   
