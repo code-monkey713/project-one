@@ -125,7 +125,7 @@ $(document).ready(function () {
             // subsubBox.add(h6Test);
             // // $(`#${alphaArr[y]}${x}`).add(subsubBox);
             // $(`#${alphaArr[y]}${x}`).html('<div> <h1> LOL </h1> </div>');
-            // debugger;
+            // 
             imgIndex++;
             if (imgIndex > 49) {
               imgIndex = 0;
@@ -693,7 +693,7 @@ $(document).ready(function () {
   function colorizeInvalidEntries(invalidEntriesIDEntries)
   {
     var getAllInvalid=document.getElementsByClassName('invalidEntry');
-    // debugger;
+    // 
     //Colorize invalid entries
     if (typeof(invalidEntriesIDEntries)==='object')
     {
@@ -703,13 +703,13 @@ $(document).ready(function () {
         {
           if (!getAllInvalid.includes(invalidEntriesIDEntries[i]))
           {
-            debugger;
+            
             $(`#${invalidEntriesIDEntries[i]}`).addClass('invalidEntry');
           }
         }
         else
         {
-          // debugger;
+          // 
           $(`#${invalidEntriesIDEntries[i]}`).addClass('invalidEntry');
         }
           
@@ -732,14 +732,14 @@ $(document).ready(function () {
       {
         if (!getAllInvalid.includes(invalidEntriesIDEntries))
         {
-          // debugger;
+          // 
           $(`#${invalidEntriesIDEntries}`).addClass('invalidEntry');
           
         }
       }
       else
       {
-        // debugger;
+        // 
         $(`#${invalidEntriesIDEntries}`).addClass('invalidEntry');
       }
 
@@ -757,23 +757,10 @@ $(document).ready(function () {
     
   };
 
-  // function to get the value from the playing squared and add the value to the index
-  function getState(currBoard, pressedID, valueToChange) {
-    console.log(currBoard);
-    localStorage.setItem("currentBoard", JSON.stringify(currBoard[0]));
-    let currBoardExtract = currBoard[0];
-    let alphaArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-    let split = pressedID.split("");
-    let colValue = split[0];
-    let colToBeChanged = alphaArr.indexOf(colValue);
-    let rowToBeChanged = parseInt(split[1]);
-    currBoardExtract[rowToBeChanged][colToBeChanged] = valueToChange;
-  };
-
     // function to get the value from the playing squared and add the value to the index
     function getStateComparable(currBoard, pressedID, valueToChange) {
       console.log(currBoard);
-      
+      localStorage.setItem("currentBoard", JSON.stringify(currBoard[0]));
       let currBoardExtract = currBoard[0];
 
       var sudokuBoardAllInitial = initializeAllOptions(currBoardExtract);
@@ -802,7 +789,7 @@ $(document).ready(function () {
       }
       
       // lastValidRestorePoints.push(currBoardExtract);
-      // debugger;
+      // 
       if (valueToChangeIncludedValid===1)
       {
         currBoardExtract[rowToBeChanged][colToBeChanged] = valueToChange;
@@ -823,7 +810,7 @@ $(document).ready(function () {
           //Explain why
         }
         // invalidEntry.push(pressedID);
-        // debugger;
+        // 
         var emptyReturn=[valueToChangeIncludedValid,[]];
         return emptyReturn;
         // return [valueToChangeIncludedValid,[pressedID,validEntryOptionsList,valueToChange]];
@@ -973,7 +960,7 @@ $(document).ready(function () {
         }
         
         // console.log(testIsSolutionTheSequel(currBoard[0]));
-        // debugger;
+        // 
         if (valueToChangeIncludedValid===1)
         {
           lastValidRestorePoints.push(currBoard);
@@ -1024,7 +1011,7 @@ $(document).ready(function () {
         }
         
         // console.log(testIsSolutionTheSequel(currBoard[0]));
-        // debugger;
+        // 
         if (valueToChangeIncludedValid===1)
         {
           lastValidRestorePoints.push(currBoard);
@@ -1134,7 +1121,7 @@ $(document).ready(function () {
       }
       
       // console.log(testIsSolutionTheSequel(currBoard[0]));
-      // debugger;
+      // 
       lastValidRestorePoints.push(emptyArrForRender);
       // var sBAFPResults = sBATrySolver(sudokuBoardAll); 
       // var sudokuBoardAll = sBAFPResults[3];
@@ -1176,12 +1163,13 @@ $(document).ready(function () {
 
   $("#checkBtn").on('click', function()
 {
-  // debugger;
+  // 
   var checkThisBoard=testIsSolutionTheSequel(currBoard[0]);
-  debugger;
+  
     if (checkThisBoard===1)
     {
       $("#checkBtn").addClass('green');
+      window.open('./assets/fireworks/fireworks.html', '_blank'); 
     }
     else if (checkThisBoard===0)
     {
@@ -1190,7 +1178,6 @@ $(document).ready(function () {
     else
     {
       $("#checkBtn").addClass('red');
-      // console.log(checkThisBoard);
     }
 });
 

@@ -61,7 +61,7 @@ function initializeAllOptions (sudokuBoard)
         // console.log(j);
         for (var k=0;k<3;k++)
         {
-          // debugger;
+          // 
           // console.log(k);
           var tempsBArrII=[];
           if (subBox[j][k]==0)
@@ -106,9 +106,9 @@ function initializeAllOptions (sudokuBoard)
       // console.log(sudokuBoardAll);
       // console.log(subBox);  
       // console.log(sudokuBoardAll);
-      // debugger;
+      // 
     }
-    // debugger;
+    // 
 
     // console.log(sudokuBoardAll);
 
@@ -169,7 +169,7 @@ function initializeAllOptions (sudokuBoard)
           }
           // console.log('found2Values: ');
           // console.log(found2Values);
-          // debugger;
+          // 
           // console.log(found2Values);
           // console.log(sudokuBoardAll[i].find(element => element>9 & element<100));
           var found2ValuesRemoveFromPermissiveIndices=[];
@@ -235,7 +235,7 @@ function initializeAllOptions (sudokuBoard)
                 tempP.text(`Remove ${parseInt(thisPermissiveString[0])} and ${parseInt(thisPermissiveString[1])} from all entries in row ${i} except ${alphaArr[found2ValuesRemoveFromPermissiveIndices[found2ValuesRemoveFromPermissiveIndices.length-2]]}${i} and ${alphaArr[found2ValuesRemoveFromPermissiveIndices[found2ValuesRemoveFromPermissiveIndices.length-1]]}${i}`);
                 tempDiv.append(tempP);
                 // $('#interactiveDivCard').append(tempDiv);
-                // debugger;
+                // 
                 // found2ValuesRemoveFromPermissiveIndices.push(sudokuBoardAll[i].findIndex(element => element===found2ValuesTable2PresentVals[f2vi]));
               }
             }
@@ -243,7 +243,7 @@ function initializeAllOptions (sudokuBoard)
             
           }
           
-          // debugger;
+          // 
           // console.log(found2ValuesRemoveFromPermissiveIndices);
           var RowPermissiveIndices=setdiff(indicesGreaterThan9,found2ValuesRemoveFromPermissiveIndices);
 
@@ -337,7 +337,7 @@ function initializeAllOptions (sudokuBoard)
           {
             tempRow.push(sudokuBoardAll[i][m]);
           }
-          // debugger;
+          // 
           if (setdiff(numbers1to9,tempRow).length===0 && tempRow.sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
           {
             rowSolved[i]=1;
@@ -471,7 +471,7 @@ function initializeAllOptions (sudokuBoard)
             }
             }
 
-            // debugger;
+            // 
         //   console.log(found2ValuesRemoveFromPermissiveIndices);
             var ColPermissiveIndices=setdiff(indicesGreaterThan9,found2ValuesRemoveFromPermissiveIndices);
 
@@ -675,7 +675,7 @@ function initializeAllOptions (sudokuBoard)
 
         }
 
-            // debugger;
+            // 
         //   console.log(found2ValuesRemoveFromPermissiveIndices);
             var BoxPermissiveIndices=setdiff(indicesGreaterThan9,found2ValuesRemoveFromPermissiveIndices);
 
@@ -812,7 +812,7 @@ function initializeAllOptions (sudokuBoard)
       // end
 
       // return null;
-      // debugger;
+      // 
       return [rowSolved,colSolved,boxSolved,sudokuBoardAll];
   }
 
@@ -872,7 +872,7 @@ function initializeAllOptions (sudokuBoard)
           }
           // console.log('found2Values: ');
           // console.log(found2Values);
-          // debugger;
+          // 
           // console.log(found2Values);
           // console.log(sudokuBoardAll[i].find(element => element>9 & element<100));
           var found2ValuesRemoveFromPermissiveIndices=[];
@@ -940,7 +940,7 @@ function initializeAllOptions (sudokuBoard)
                 $('#interactiveDivCard').append(tempDiv);
                 i=j=100;maxLoopsExceeded=1;
                 break;
-                // debugger;
+                // 
                 // found2ValuesRemoveFromPermissiveIndices.push(sudokuBoardAll[i].findIndex(element => element===found2ValuesTable2PresentVals[f2vi]));
               }
             }
@@ -948,7 +948,7 @@ function initializeAllOptions (sudokuBoard)
             
           }
           
-          // debugger;
+          // 
           // console.log(found2ValuesRemoveFromPermissiveIndices);
           var RowPermissiveIndices=setdiff(indicesGreaterThan9,found2ValuesRemoveFromPermissiveIndices);
 
@@ -1044,7 +1044,7 @@ function initializeAllOptions (sudokuBoard)
           {
             tempRow.push(sudokuBoardAll[i][m]);
           }
-          // debugger;
+          // 
           if (setdiff(numbers1to9,tempRow).length===0 && tempRow.sort(compareNumbers).toString()==numbers1to9.sort(compareNumbers).toString())
           {
             rowSolved[i]=1;
@@ -1178,7 +1178,7 @@ function initializeAllOptions (sudokuBoard)
             }
             }
 
-            // debugger;
+            // 
         //   console.log(found2ValuesRemoveFromPermissiveIndices);
             var ColPermissiveIndices=setdiff(indicesGreaterThan9,found2ValuesRemoveFromPermissiveIndices);
 
@@ -1382,7 +1382,7 @@ function initializeAllOptions (sudokuBoard)
 
         }
 
-            // debugger;
+            // 
         //   console.log(found2ValuesRemoveFromPermissiveIndices);
             var BoxPermissiveIndices=setdiff(indicesGreaterThan9,found2ValuesRemoveFromPermissiveIndices);
 
@@ -1524,7 +1524,7 @@ function initializeAllOptions (sudokuBoard)
       // end
 
       // return null;
-      // debugger;
+      // 
       return [rowSolved,colSolved,boxSolved,sudokuBoardAll];
   }
 
@@ -1633,7 +1633,7 @@ function testIsSolutionTheSequel(sudokuBoardAll)
   var colSolved=[0,0,0,0,0,0,0,0,0];
   var boxSolved=[0,0,0,0,0,0,0,0,0];
   var maxsudokuBoardAll=0;
-  debugger;
+  
 
   for (var i=0;i<9;i++)
   {
@@ -1772,7 +1772,7 @@ function testIsSolutionTheSequel(sudokuBoardAll)
 
     }
 
-    debugger;
+    
     //Check if duplicate entries
     //  If so, set to -1
     if (maxOccurrencesInRCsBUnit>1)
@@ -1812,7 +1812,7 @@ function testIsSolutionRevamped(sudokuBoardAll)
     //Computes and returns the boolean variable boardSolved
     //If each row is solved, and each column is solved, and each subBox is solved, then the board is solved!
     //Otherwise, board not solved. :(
-    // debugger;
+    // 
     var maxsudokuBoardAll=0;
     var boardSolved=false;
     var numbers1to9=[1,2,3,4,5,6,7,8,9];
@@ -1824,7 +1824,7 @@ function testIsSolutionRevamped(sudokuBoardAll)
       }
       catch
       {
-        debugger;
+        
       }
       
     }
