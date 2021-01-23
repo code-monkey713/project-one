@@ -703,11 +703,13 @@ $(document).ready(function () {
         {
           if (!getAllInvalid.includes(invalidEntriesIDEntries[i]))
           {
+            debugger;
             $(`#${invalidEntriesIDEntries[i]}`).addClass('invalidEntry');
           }
         }
         else
         {
+          // debugger;
           $(`#${invalidEntriesIDEntries[i]}`).addClass('invalidEntry');
         }
           
@@ -730,11 +732,14 @@ $(document).ready(function () {
       {
         if (!getAllInvalid.includes(invalidEntriesIDEntries))
         {
+          // debugger;
           $(`#${invalidEntriesIDEntries}`).addClass('invalidEntry');
+          
         }
       }
       else
       {
+        // debugger;
         $(`#${invalidEntriesIDEntries}`).addClass('invalidEntry');
       }
 
@@ -806,9 +811,22 @@ $(document).ready(function () {
       }
       else
       {
-        currBoardExtract[rowToBeChanged][colToBeChanged] = valueToChange;
+        // currBoardExtract[rowToBeChanged][colToBeChanged] = valueToChange;
+        // alert('You have entered an invalid digit, please try again');
+        modal.style.display = "block";
+        if (interactiveMode===0)
+        {
+
+        }
+        else
+        {
+          //Explain why
+        }
         // invalidEntry.push(pressedID);
-        return [valueToChangeIncludedValid,[pressedID,validEntryOptionsList,valueToChange]];
+        // debugger;
+        var emptyReturn=[valueToChangeIncludedValid,[]];
+        return emptyReturn;
+        // return [valueToChangeIncludedValid,[pressedID,validEntryOptionsList,valueToChange]];
       }
 
       
@@ -941,7 +959,19 @@ $(document).ready(function () {
         // var sudokuBoardAll=sBAFPResults[3];
         //renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
 
-        renderBoard(currBoard);
+        if (interactiveMode===0)
+        {
+          renderBoard(currBoard);
+        }
+        else
+        {
+          var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+          var emptyArrForRenderII=[];
+          emptyArrForRenderII.push(sudokuBoardAllInitial);
+          renderBoard(emptyArrForRenderII);
+
+        }
+        
         // console.log(testIsSolutionTheSequel(currBoard[0]));
         // debugger;
         if (valueToChangeIncludedValid===1)
@@ -971,7 +1001,40 @@ $(document).ready(function () {
       console.log('You must enter a number!');
     } else {
       $(`#${currSquare}`).html(e.key);
-      getState(currBoard, currSquare, parseInt(e.key));
+      // getState(currBoard, currSquare, parseInt(e.key));
+      var getStateChecked=getStateComparable(currBoard, currSquare, parseInt(e.key));
+        var valueToChangeIncludedValid=getStateChecked[0];
+        var IDValidInvalidInfo=getStateChecked[1];
+        // var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+        // var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
+        // var sudokuBoardAll=sBAFPResults[3];
+        //renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+
+        if (interactiveMode===0)
+        {
+          renderBoard(currBoard);
+        }
+        else
+        {
+          var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+          var emptyArrForRenderII=[];
+          emptyArrForRenderII.push(sudokuBoardAllInitial);
+          renderBoard(emptyArrForRenderII);
+
+        }
+        
+        // console.log(testIsSolutionTheSequel(currBoard[0]));
+        // debugger;
+        if (valueToChangeIncludedValid===1)
+        {
+          lastValidRestorePoints.push(currBoard);
+        }
+        else
+        {
+          invalidEntriesMasterList.push(IDValidInvalidInfo);
+          colorizeInvalidEntries(IDValidInvalidInfo[0]);
+
+        }
     }
   });
 
@@ -1059,7 +1122,17 @@ $(document).ready(function () {
       emptyArrForRender.push(sudokuBoardAll);
       // renderBoard(emptyArrForRender);
       // currBoard=emptyArrForRender;
-      renderBoard(currBoard);
+      if (interactiveMode===0)
+      {
+        renderBoard(currBoard);
+      }
+      else
+      {
+        var emptyArrForRenderII=[];
+        emptyArrForRenderII.push(sudokuBoardAllInitial);
+        renderBoard(emptyArrForRenderII);
+      }
+      
       // console.log(testIsSolutionTheSequel(currBoard[0]));
       // debugger;
       lastValidRestorePoints.push(emptyArrForRender);
@@ -1125,8 +1198,58 @@ $("#hintBtn").on('click', function()
 {
   var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
   sBATrySolverForHint(sudokuBoardAllInitial);
+  if ($("#interactiveDiv").hasClass('hide'))
+  {
+    $("#interactiveDiv").removeClass('hide');
+    $('#stepsH4').removeClass('hide');
+  }
   // renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
 });
+
+$("#interactiveBtn").on('click', function()
+{
+  interactiveMode=1;
+  var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+  // var sBAFPResults=sBATrySolver(sudokuBoardAllInitial);
+  // var sudokuBoardAll=sBAFPResults[3];
+  // renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+  var emptyArrForRenderII=[];
+  emptyArrForRenderII.push(sudokuBoardAllInitial);
+  renderBoard(emptyArrForRenderII);
+  $("#interactiveDiv").removeClass('hide');
+  $('#stepsH4').removeClass('hide');
+});
+
+$("#normalBtn").on('click', function()
+{
+  interactiveMode=0;
+  renderBoard(currBoard);
+  // var sudokuBoardAllInitial = initializeAllOptions(currBoard[0]);
+  // sBATrySolverForHint(sudokuBoardAllInitial);
+  // renderBoard(cleansudokuBoardForRendering(sudokuBoardAll));
+});
+
+//Modal constructed using https://www.w3schools.com/howto/howto_css_modals.asp
+
+// Get the modal
+var modal = document.getElementById("invalidDigitModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 
   
   initialState();
