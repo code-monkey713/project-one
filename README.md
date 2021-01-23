@@ -43,6 +43,7 @@ The following technologies were used to create TSM's Themed Sudoku:
 - The FRAMEWORK used was ZURB Foundation: https://get.foundation/index.html
 - The API used for the initial Sudoku number arrays was SUGOKU: https://sugoku2.herokuapp.com/
 - The GIPHY API is what was used to pull the images for the blank cell backgrounds: https://developers.giphy.com/docs/sdk/
+- Reference: https://stackoverflow.com/questions/1063007/how-to-sort-an-array-of-integers-correctly
 
 ## License
 
