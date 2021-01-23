@@ -1,6 +1,6 @@
 # Sudoku With a Twist!
 
-Sudoku is a very popular and unique game. If you are one of the millions or people that enjoy this "logic challenging" game, then you have definitely played multiple games over the years. Many Sudoku players have favorite Apps or websites that they use to get their Sudoku fix. If you are looking for a fun version of Sudoku to pass your time, look no further! Here is your solution.
+Sudoku is a very popular and unique game. If you are one of the millions of people that enjoy this "logic challenging" game, then you have definitely played multiple games over the years. Many Sudoku players have favorite Apps or websites that they use to get their Sudoku fix. If you are looking for a fun version of Sudoku to pass your time, look no further! Here is your solution.
 
 ## TSM's Themed Sudoku
 
@@ -15,10 +15,10 @@ Upon arriving at TSM's Themed Sudoku site, the playing board will not be viewabl
 
 - First, a theme needs to be selected. Gifs of the theme you select will fill the number cells that are empty. When you click in the "empty cell" to enter a number, the background will go away.
 - If you choose the theme "NONE," then there will be no backgrounds filled in. HOWEVER, you will now have the option to use an "interactive mode" which will give you hints for numbers to use in the empty cells.
-- Next, you will choose what difficulty level you want your gameplay. Easy, Medium and Hard. More numbers are given to you at the start of an Easy game, and less numbers given as the difficulty level incleases.
+- Next, you will choose what difficulty level you want your gameplay. Easy, Medium and Hard. More numbers are given to you at the start of an Easy game, and less numbers given as the difficulty level increases.
 - Once the difficulty level is selected, the gameboard will appear with your Sudoku board. Simply click in an "empty cell" (there will be a gif in the cell) and either enter a number with your keyboard or use the buttons below the board to fill in the desired number.
 - Start your game and enjoy your Sudoku game while enjoying the gifs in the backgrounds.
-- When you believe you have a solution to the board, click on the "CHECK" button. If your solution is correct, the "CHECK" button will light up green. If the solution is not correct, the "CHECK" button will turn red.
+- When you believe you have a solution to the board, click on the "CHECK" button. If your solution is correct, the "CHECK" button will light up green. If the solution is not correct, the "CHECK" button will turn red. If you click the "CHECK" button during gameplay, it will show blue if you are on the right track.
 - Good luck!
 
 ## Screenshots
