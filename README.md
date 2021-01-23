@@ -47,3 +47,8 @@ The following technologies were used to create TSM's Themed Sudoku:
 ## License
 
 There is no license associated with this app
+
+## Notes
+
+There is an error that appears (in the console) if you select "Normal" or "Interactive" mode BEFORE selecting the difficulty level.
+There is also an error that shows (in the console) when selecting theme "Meow Meow" that states: "undefined:1 GET file:///C:/Users/Mr.%20Llanes/Desktop/Rice-Bootcamp/code/project-one/undefined net::ERR_FILE_NOT_FOUND" (the file path is where the local files are kept, but there is no "undefined" folder in the file structure. We cannot figure out why we are getting this error or how to get rid of it.
