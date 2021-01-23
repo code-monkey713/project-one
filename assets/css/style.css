@@ -13,7 +13,9 @@
   height: 100%;
 }
 
-h4 {
+h4,
+h5,
+h6 {
   color: #5680e9;
 }
 
@@ -48,17 +50,17 @@ h4 {
   align-items: center;
   width: 0.8rem;
   height: 0.8rem;
-  margin: .5px;
+  margin: 0.5px;
   color: aliceblue;
-}
-
-.instruction {
-  margin-top: 1rem;
 }
 
 .fieldBtn {
   border: 3px solid yellow;
   margin: 0.1rem;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .spacer {
@@ -189,4 +191,19 @@ img {
 .invalidEntry
 {
   color:red;
+}
+
+.green
+{
+  background-color: green;
+}
+
+.blue
+{
+  background-color: blue;
+}
+
+.red
+{
+  background-color: red;
 }
