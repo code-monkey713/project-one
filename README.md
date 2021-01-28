@@ -31,7 +31,7 @@ See the following SCREENSHOTS to get an idea of what "TSM's Themed Sudoku" looks
 
 For more information, please contact:
 
-- Tony Tran via e-mail: codemonkey713@gmail.com
+- Tony Tran via e-mail: tony.tran713@outlook.com
 - Senyo Ahadzie via e-mail: Senyo.E.Ahadzie@rice.edu
 - Michael Llanes via e-mail: llanesm@gmail.com
 
@@ -46,7 +46,7 @@ The following technologies were used to create TSM's Themed Sudoku:
 
 ## License
 
-There is no license associated with this app
+MIT
 
 ## Notes
 
