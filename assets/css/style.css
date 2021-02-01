@@ -36,8 +36,8 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   margin: 0.5px;
   color: aliceblue;
 }
@@ -244,4 +244,38 @@ img {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* responsive design for game board */
+@media screen and (max-width: 992px) {
+  .square {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .square {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .square {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+/* responsive design for field buttons for game board entry */
+
+@media screen and (max-width: 640px) {
+  .fieldBtn {
+    border: 3px solid yellow;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
