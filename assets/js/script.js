@@ -545,6 +545,7 @@ $(document).ready(function () {
     };
     $('.theme').hide();
     $('.theme-head').hide();
+    // $('.notice').hide();
     getPix(currentTheme);
     setTheme = true;
   });
