@@ -246,20 +246,12 @@ img {
   cursor: pointer;
 }
 
+/* responsive design for game board */
 @media screen and (max-width: 992px) {
   .square {
     width: 3.5rem;
     height: 3.5rem;
   }
-
-  /* .fieldBtn { */
-    /* border: 3px solid yellow; */
-    /* margin: 0.1rem; */
-    /* padding-top: 15px; */
-    /* padding-bottom: 15px; */
-    /* padding-left: 20px; */
-    /* padding-right: 20px; */
-  /* } */
 }
 
 @media screen and (max-width: 768px) {
@@ -267,15 +259,6 @@ img {
     width: 3rem;
     height: 3rem;
   }
-
-  /* .fieldBtn { */
-    /* border: 3px solid yellow; */
-    /* margin: 0.1rem; */
-    /* padding-top: 15px; */
-    /* padding-bottom: 15px; */
-    /* padding-left: 20px; */
-    /* padding-right: 20px; */
-  /* } */
 }
 
 @media screen and (max-width: 480px) {
@@ -283,13 +266,16 @@ img {
     width: 2.5rem;
     height: 2.5rem;
   }
+}
 
-  /* .fieldBtn { */
-    /* border: 3px solid yellow; */
-    /* margin: 0.1rem; */
-    /* padding-top: 15px; */
-    /* padding-bottom: 15px; */
-    /* padding-left: 20px; */
-    /* padding-right: 20px; */
-  /* } */
+/* responsive design for field buttons for game board entry */
+
+@media screen and (max-width: 640px) {
+  .fieldBtn {
+    border: 3px solid yellow;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
